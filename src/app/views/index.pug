@@ -1,0 +1,138 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  // Bootstrap CSS
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800&subset=vietnamese' rel='stylesheet')
+  link(rel='stylesheet' href='../vendor/fontawesome/css/all.min.css')
+  link(rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='../css/style.css')
+  title Learning Management System
+// ====================== nvarbar =================================
+nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
+  .container.menu-top
+    a.navbar-brand(href='#') LMS Page
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarTogglerDemo02.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item.active
+          a.nav-link(href='index.html') Home
+        li.nav-item
+          a.nav-link(href='all_course.html') Course
+        li.nav-item
+          a.nav-link(href='#') Contact
+        li.nav-item
+          a.nav-link(href='login.html') Login
+// ======================== carousel ==================================
+#carouselExampleIndicators.carousel.slide(data-ride='carousel')
+  ol.carousel-indicators
+    li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+    li(data-target='#carouselExampleIndicators' data-slide-to='1')
+    li(data-target='#carouselExampleIndicators' data-slide-to='2')
+  .carousel-inner
+    .carousel-item.active
+      img.d-block.w-100(src='../images/banner/s1.jpg' alt='Second slide')
+      .carousel-caption.d-none.d-md-block
+        h1 H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
+        .btn.btn-success Get Started
+    .carousel-item
+      img.d-block.w-100(src='../images/banner/s2.jpg' alt='Third slide')
+      .carousel-caption.d-none.d-md-block
+        h1 H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
+        .btn.btn-success Get Started
+    .carousel-item
+      img.d-block.w-100(src='../images/banner/s3.jpg' alt='Third slide')
+      .carousel-caption.d-none.d-md-block
+        h1 H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
+        .btn.btn-success Get Started
+// ============================= Featured Courses ==========================
+section.featured-course.py-3
+  .container
+    .wrap-title
+      h2.title.py-5 Featured Course
+    .row
+      .col-12.col-md-6.col-lg-4.mb-5
+        .card
+          img.card-img-top(src='../images/course/app1.jpg' alt='Card image cap')
+          .card-body
+            h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh PHP
+            p.card-text
+              | Kh&oacute;a h&#x1ECD;c PHP c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n
+              | g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;.
+            a.btn.btn-success(href='detail-course.html') View detail
+      .col-12.col-md-6.col-lg-4.mb-5
+        .card
+          img.card-img-top(src='../images/course/app2.jpg' alt='Card image cap')
+          .card-body
+            h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh C++
+            p.card-text
+              | Kh&oacute;a h&#x1ECD;c PHP c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n
+              | g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;.
+            a.btn.btn-success(href='detail-course.html') View detail
+      .col-12.col-md-6.col-lg-4.mb-5
+        .card
+          img.card-img-top(src='../images/course/app1.jpg' alt='Card image cap')
+          .card-body
+            h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh JavaScript
+            p.card-text
+              | Kh&oacute;a h&#x1ECD;c PHP c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n
+              | g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;.
+            a.btn.btn-success(href='detail-course.html') View detail
+    a.btn.btn-outline-success.my-3(href='list_course.html') All Course
+// ============================= Contact Us ==========================
+section.contact.my-4
+  .container
+    h2.title.py-5 Contact Us
+    .row.contact-us
+      .col-md-4
+        .card
+          .card-body
+            i.fas.fa-map-marker-alt.contact-icon
+            h3.contact-title Address
+            p.card-text 175 T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
+      .col-md-4
+        .card
+          .card-body
+            i.fas.fa-phone.contact-icon
+            h3.contact-title Phone Number
+            p.card-text 0969 969 969
+      .col-md-4
+        .card
+          .card-body
+            i.far.fa-envelope.contact-icon
+            h3.contact-title Email
+            p.card-text lmspage123@tlu.vn
+// ======================== Footer ========================
+footer.footer.my-5
+  .container
+    .row
+      .col-md-3
+        a.navbar-brand.mt-5(href='#') LMS Page
+        p H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
+        .footer-icon
+          a(target='blank' href='https://fb.com/Minhvn98')
+            i.fab.fa-facebook
+          a(target='blank' href='https://github.com/Minhvn98')
+            i.fab.fa-github
+          a(target='blank' href='https://fb.com/mik.nguyen.102')
+            i.fab.fa-facebook
+      .col-md-5
+        h3.footer-title.mt-5 References
+        ul
+          li.mb-2
+            a(href='https://getbootstrap.com/docs/4.1') Bootstrap 4
+          li.mb-2
+            a(href='https://w3school.com') W3school
+          li.mb-2
+            a(href='https://github.com/Minhvn98/LMS_Project') Source Code
+      .col-md-4
+        h3.footer-title.mt-5 Contact
+        p Add : 175, T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
+        p S&Dstrok;T : 0969 969 969
+        p Email : lmspage123@tlu.vn
+i.fas.fa-chevron-up.back-to-top
+script(defer='' src='../vendor/jquery/jquery.min.js')
+script(defer='' src='../vendor/bootstrap/js/bootstrap.min.js')
+script(defer='' src='../js/main.js')

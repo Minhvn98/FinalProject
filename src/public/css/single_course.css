@@ -1,0 +1,261 @@
+*{margin:0;padding: 0; box-sizing: border-box;}
+
+body{
+    background : #f7f7f7;
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 30px 0;
+    position: relative;
+}
+
+.title:before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 150px;
+    background: #18d26e;
+    bottom: 21px;
+    left: 0;
+    z-index: 999;
+}
+
+.title:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 300px;
+    background: #9f9c9c;
+    left: 0;
+    bottom: 21px;
+}
+
+.content a {
+    color: #18d26e;
+}
+
+/*============ Reponsive Menutop ====================*/
+
+@media(max-width:1115px){
+    .menu-top .navbar-nav{
+        margin-left : 50% !important;
+    }
+}
+
+
+@media(max-width : 1000px){
+    .menu-top .navbar-nav{
+        margin-left : 35% !important;
+    }
+}
+
+@media(max-width:768px){
+    .menu-top .navbar-nav{
+        margin-left: 0px !important;
+    }
+}
+
+/*=============== Css menu-top =======================*/
+
+nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark {
+    background: rgba(0,0,0,0.9) !important;
+}
+
+.menu-top .nav-item .nav-link {
+    font-weight: 700;
+    color: #fff !important;
+    padding: 7px 28px 7px 20px !important;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.menu-top .nav-item .nav-link:hover{
+    color: #18d26e !important;
+}
+
+.menu-top .nav-item.active .nav-link {
+    color: #18d26e !important;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-weight: 700;
+    color: #fff !important;
+    border-left: 4px solid #18d26e;
+    padding: 0 0 0 10px;
+}
+
+.container.menu-top {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.menu-top .navbar-nav {
+    margin-left: 60%;
+}
+
+
+
+/*============== Back to Top =================*/
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: #18d26e;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.5s;
+    z-index: 11;
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+       -moz-transition: all 0.4s;
+        -ms-transition: all 0.4s;
+         -o-transition: all 0.4s;
+            transition: all 0.4s;
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+}
+.back-to-top.show-back-to-top:hover{
+    background: #18d46e;
+    -webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+         -o-transform: scale(1.1);
+            transform: scale(1.1);
+}
+.back-to-top.show-back-to-top{
+    display: block;
+}
+
+
+
+/*=============== Css Footer ================*/
+
+.footer-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    border-bottom: 1px solid gray;
+    position: relative;
+    padding: 10px 0 10px 0;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    background: #18d26e
+    ;width: 100px;
+}
+
+.footer {
+    width: 100%;
+    height: 15%;
+    background: #111;
+    color: #fff;
+}
+
+.footer li {
+    list-style: none;
+    border-bottom: 1px solid gray;
+}
+
+.footer li a {
+    color: #fff;
+}
+
+.footer-icon a {
+    font-size: 27px;
+    color: #e9e9e9;
+    padding: 8px;
+}
+
+.content {
+    margin-top: 90px;
+}
+
+.breadcrumb-item a {
+    font-size: 17px;
+    font-weight: 600;
+    color: #2dbc6f;
+}
+
+/* .you-can-learn li {
+    list-style: none;
+    padding: 3px 0;
+}
+
+.you-can-learn i {
+    color: #18d26e;
+    padding-right: 10px;
+} */
+
+.container li {
+    list-style: none;
+    padding: 3px 0;
+}
+
+.container i {
+    color: #18d26e;
+    padding-right: 10px;
+}
+
+.image-play {
+    position: relative;
+}
+
+.image-play i {
+    position: absolute;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    top: 50%;
+    font-size: 50px;
+    color: #fff;
+}
+
+.modal iframe {
+    width: 100%;
+    height: 430px;
+}
+
+.info-lecture {
+    padding: 15px;
+}
+
+.info-lecture img {
+    width: 120px;
+}
+
+.btn-success {
+    padding: 8px 50px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: #fff !important;
+    
+}
+
+.left-content strong {
+    color: #111;
+}
+
+ul.list-content li {
+    border-bottom: 1px solid #dbd6d6;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.block-rating img {
+    width: 60px;
+    height: 60px;
+}

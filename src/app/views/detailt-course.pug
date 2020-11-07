@@ -1,0 +1,311 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  // Link file CSS
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800&subset=vietnamese' rel='stylesheet')
+  link(rel='stylesheet' href='../vendor/fontawesome/css/all.min.css')
+  link(rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='../css/single_course.css')
+  script(defer='' src='../vendor/jquery/jquery.min.js')
+  script(defer='' src='../vendor/bootstrap/js/bootstrap.min.js')
+  script(defer='' src='../js/main.js')
+  script(defer='' src='../js/detail.course.js')
+  title kh&oacute;a h&#x1ECD;c
+// ====================== nvarbar =================================
+nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
+  .container.menu-top
+    a.navbar-brand(href='index.html') LMS Page
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarTogglerDemo02.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='index.html') Home
+        li.nav-item.active
+          a.nav-link(href='all_course.html') Course
+        li.nav-item
+          a.nav-link(href='#') Contact
+        li.nav-item
+          a.nav-link(href='login.html') Login
+.container
+  .row.content
+    .col-md-8.col-sm-12.left-content
+      nav(aria-label='breadcrumb breadcrumb-detail-course')
+        ol.breadcrumb
+          li.breadcrumb-item
+            a(href='#') Trang chu&#x309;
+          li.breadcrumb-item
+            a(href='#') Kho&#x301;a ho&#x323;c
+          li.breadcrumb-item
+            a(href='#') Pha&#x301;t tri&ecirc;&#x309;n web
+      h3.mt-4 L&acirc;&#x323;p tri&#x300;nh Nodejs t&#x1B0;&#x300; A-Z
+      p.description
+        | X&acirc;y d&#x1EF1;ng web trong th&#x1EF1;c t&#x1EBF; v&#x1EDB;i NodeJS &amp; ExpressJS v&#x1EDB;i c&aacute;ch chia s&#x1EBB; chi ti&#x1EBF;t, t&#x1EAD;n t&acirc;m, d&#x1EC5; hi&#x1EC3;u v&agrave; ch&#x1EA5;t gi&#x1ECD;ng
+        | gi&agrave;u s&#x1EE9;c s&#x1ED1;ng c&#x1EE7;a ng&#x1B0;&#x1EDD;i chia s&#x1EBB;
+      .mt-2.you-can-learn
+        h4 Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300;
+        section
+          ul
+            li
+              i.fas.fa-check
+              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
+              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+            li
+              i.fas.fa-check
+              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
+              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+            li
+              i.fas.fa-check
+              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
+              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+            li
+              i.fas.fa-check
+              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
+              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+      .content-course
+        h4.my-3 N&ocirc;&#x323;i dung kho&#x301;a ho&#x323;c
+        #accordionCourseDetails.accordion
+          .card.shadow-sm
+            #headingOne.card-header
+              h2.mb-0
+                button.btn.btn-link.btn-block.text-left(type='button' data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                  strong Ba&#x300;i gia&#x309;ng
+            #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordionCourseDetails')
+              .card-body
+                ul.list-content
+                  li.d-flex.justify-content-between.align-items-center
+                    | 1. Ba&#x300;i gia&#x309;ng 1
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  li.d-flex.justify-content-between.align-items-center
+                    | 2. Ba&#x300;i gia&#x309;ng 2
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  li.d-flex.justify-content-between.align-items-center
+                    | 3. Ba&#x300;i gia&#x309;ng 3
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+          .card.shadow-sm
+            #headingTwo.card-header
+              h2.mb-0
+                button.btn.btn-link.btn-block.text-left.collapsed(type='button' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+                  strong Ba&#x300;i t&acirc;&#x323;p
+            #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordionCourseDetails')
+              .card-body
+                ul.list-content
+                  li.d-flex.justify-content-between.align-items-center
+                    | 1. Ba&#x300;i t&acirc;&#x323;p 1
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  li.d-flex.justify-content-between.align-items-center
+                    | 2. Ba&#x300;i t&acirc;&#x323;p 2
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  li.d-flex.justify-content-between.align-items-center
+                    | 3. Ba&#x300;i t&acirc;&#x323;p 3
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+          .card.shadow-sm
+            #headingThree.card-header
+              h2.mb-0
+                button.btn.btn-link.btn-block.text-left.collapsed(type='button' data-toggle='collapse' data-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
+                  strong Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+            #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordionCourseDetails')
+              .card-body
+                ul.list-content
+                  li.d-flex.justify-content-between.align-items-center
+                    | 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  li.d-flex.justify-content-between.align-items-center
+                    | 2. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 2
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  li.d-flex.justify-content-between.align-items-center
+                    | 3. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 3
+                    a(href='#')
+                      i.fas.fa-file-download
+                      | Ta&#x309;i xu&ocirc;&#x301;ng
+      .course-requiment.mt-4
+        h4 Y&ecirc;u c&acirc;&#x300;u
+        ul
+          li
+            i.fas.fa-check
+            | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng.
+          li
+            i.fas.fa-check
+            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
+            |               Javascript
+          li
+            i.fas.fa-check
+            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
+            |               Javascript
+          li
+            i.fas.fa-check
+            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
+            |               Javascript
+          li
+            i.fas.fa-check
+            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
+            |               Javascript
+      .info-lecture.shadow-sm
+        h4.mb-3 Th&ocirc;ng tin gia&#x309;ng vi&ecirc;n
+        .media
+          img.mr-3.rounded-circle(src='../images/huan.jpg' alt='...')
+          .media-body
+            h5.mt-0 Bu&#x300;i Xu&acirc;n Hu&acirc;&#x301;n
+            span.lecture-desc
+              | Th&acirc;&#x300;y B&ugrave;i Xu&acirc;n Hu&#x1EA5;n l&agrave; m&#x1ED9;t nha&#x300; gia&#x301;o &#x1B0;u tu&#x301;, giang h&#x1ED3; m&#x1EA1;ng, nh&acirc;n
+              | v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam.C&ocirc;ng vi&#x1EC7;c ch&iacute;nh c&#x1EE7;a th&acirc;&#x300;y
+              | la&#x300; cho vay la&#x303;i su&acirc;&#x301;t cao, no&#x301;i &dstrok;a&#x323;o ly&#x301; tr&ecirc;n ma&#x323;ng v&agrave; kinh doanh c&aacute;c d&#x1ECB;ch v&#x1EE5; t&#x1EEB;
+              | Facebook.
+      .block-rating
+        h4.my-3 Ca&#x309;m nh&acirc;&#x323;n ho&#x323;c vi&ecirc;n
+        .box-rating
+          .media
+            img.mr-3.rounded-circle(src='../images/banh.jpg' alt='...')
+            .media-body
+              .form-group
+                textarea#input-rating.form-control(rows='3' placeholder='Cảm nhận của bạn ?')
+        hr
+        ul.list-unstyled
+          li.media.border-bottom
+            img.mr-3.rounded-circle(src='../images/banh.jpg' alt='...')
+            .media-body
+              h6.mt-0.mb-1 Ng&ocirc; Ba&#x301; Kha&#x301;
+              span.star-rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.far.fa-star
+                i.far.fa-star
+              p
+                | Kho&#x301;a ho&#x323;c hay qua&#x301; anh &#x1A1;i.
+                | H&ocirc;m na&#x300;o va&#x300;o tu&#x300; v&#x1A1;&#x301;i em cho vui.
+          li.media.my-4.border-bottom
+            img.mr-3.rounded-circle(src='../images/dungtroc.jpg' alt='...')
+            .media-body
+              h6.mt-0.mb-1 Du&#x303;ng Tro&#x323;c
+              span.star-rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.far.fa-star
+              p
+                | Va&#x300;o nha&#x300; &dstrok;a&#x301; v&#x1A1;&#x301;i anh &dstrok;i em.
+                | Trong na&#x300;y vui l&abreve;&#x301;m em a&#x323;.
+          li.media.border-bottom
+            img.mr-3.rounded-circle(src='../images/phu.jpg' alt='...')
+            .media-body
+              h6.mt-0.mb-1 Phu&#x301; L&ecirc;
+              span.star-rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+              p
+                | H&ocirc;m na&#x300;o anh em mi&#x300;nh &dstrok;o&#x301;ng MV &dstrok;i.
+    .col-md-4.col-sm-12.right-content
+      .card.shadow
+        .image-play
+          img.card-img-top(src='../images/course/node.jpg' alt='...')
+          i.fas.fa-play-circle(data-toggle='modal' data-target='#previewCourse')
+        .card-body
+          a.btn.btn-block.btn-success(href='#') Ho&#x323;c Ngay
+          ul.mt-3
+            li
+              i.fas.fa-tachometer-alt
+              | Tri&#x300;nh &dstrok;&ocirc;&#x323; c&#x1A1; ba&#x309;n
+            li
+              i.fas.fa-list
+              | N&ocirc;&#x323;i dung &dstrok;&#x1B0;&#x1A1;&#x323;c bi&ecirc;n soa&#x323;n khoa ho&#x323;c
+            li
+              i.fas.fa-chalkboard-teacher
+              | Gia&#x309;ng vi&ecirc;n co&#x301; chuy&ecirc;n
+              |                 m&ocirc;n cao
+  // end rowconent
+  .row.related.course
+    .col-sm-12
+      h4 Kho&#x301;a ho&#x323;c li&ecirc;n quan
+    .col-lg-4.col-md-6.col-sm-12.mb-5
+      .card
+        img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
+        .card-body
+          h5.card-title Kho&#x301;a ho&#x323;c l&acirc;p tri&#x300;nh FrontEnd
+          p.card-text
+            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung
+            | ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
+          a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
+    .col-lg-4.col-md-6.col-sm-12.mb-5
+      .card
+        img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
+        .card-body
+          h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh API v&#x1A1;&#x301;i Nodejs
+          p.card-text
+            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung
+            | ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
+          a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
+    .col-lg-4.col-md-6.col-sm-12.mb-5
+      .card
+        img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
+        .card-body
+          h5.card-title Kho&#x301;a ho&#x323;c Angular Master
+          p.card-text
+            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung
+            | ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
+          a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
+// ======================== Footer ========================
+footer.footer.my-5
+  .container
+    .row
+      .col-md-3
+        a.navbar-brand.mt-5(href='index.html') LMS Page
+        p H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
+        .footer-icon
+          a(target='blank' href='https://fb.com/Minhvn98')
+            i.fab.fa-facebook
+          a(target='blank' href='https://github.com/Minhvn98')
+            i.fab.fa-github
+          a(target='blank' href='https://fb.com/mik.nguyen.102')
+            i.fab.fa-facebook
+      .col-md-5
+        h3.footer-title.mt-5 References
+        ul
+          li.mb-2
+            a(href='https://getbootstrap.com/docs/4.1') Bootstrap 4
+          li.mb-2
+            a(href='https://w3school.com') W3school
+          li.mb-2
+            a(href='https://github.com/Minhvn98/LMS_Project') Source Code
+      .col-md-4
+        h3.footer-title.mt-5 Contact
+        p Add : 175, T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
+        p S&Dstrok;T : 0969 969 969
+        p Email : lmspage123@tlu.vn
+i.fas.fa-chevron-up.back-to-top
+// Modal
+.row
+  .col-sm-4.col-md-6
+    #previewCourse.modal.fade(tabindex='-1' aria-labelledby='previewCourseLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-centered.modal-lg
+        .modal-content
+          .modal-header
+            h5#previewCourseLabel.modal-title
+              | X&acirc;y d&#x1EF1;ng web v&#x1EDB;i NodeJS &amp; ExpressJS
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            iframe.preVideo(src='https://www.youtube.com/embed/j3VKmOYp2eg?enablejsapi=1&version=3&playerapiid=ytplayer' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+// ================== JS ========================
