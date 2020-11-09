@@ -13,6 +13,19 @@ head
   link(href='../bootstrap/css/bootstrap.css' rel='stylesheet')
   link(rel='stylesheet' href='../css/admin1.css ')
   link(href='../datatables/dataTables.bootstrap4.min.css' rel='stylesheet')
+  // Bootstrap core JavaScript
+  script(defer src='../jquery/jquery.min.js')
+  script(defer src='../bootstrap/js/bootstrap.bundle.min.js')
+  // Core plugin JavaScript
+  script(defer src='../jquery-easing/jquery.easing.min.js')
+  // Custom scripts for all pages
+  script(defer src='../javascripts/sb-admin-2.js')
+  // Page level plugins
+  script(defer src='../datatables/jquery.dataTables.min.js')
+  script(defer src='../datatables/dataTables.bootstrap4.min.js')
+  // Page level custom scripts
+  script(defer src='../javascripts/demo/datatables-demo.js')
+body
 // Page Wrapper
 #wrapper
   // Sidebar
@@ -242,214 +255,22 @@ head
                     th Ho&#x323;c vi&ecirc;n
                     th S&#x1B0;&#x309;a-Xo&#x301;a
                 tbody
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td #{nameLecture}
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
-                  tr
-                    td Ng&ocirc; Ba&#x301; Kha&#x301;
-                    td
-                      | Kh&aacute; B&#x1EA3;nh t&ecirc;n th&#x1EAD;t l&agrave; Ng&ocirc; B&aacute; Kh&aacute;, l&agrave; m&#x1ED9;t t&#x1ED9;i ph&#x1EA1;m, hi&#x1EC7;n t&#x1B0;&#x1EE3;ng m&#x1EA1;ng, d&acirc;n giang h&#x1ED3;, nh&acirc;n v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam. N&#x1A1;i &#x1A1;&#x309; hi&ecirc;&#x323;n ta&#x323;i cu&#x309;a anh la&#x300; &#x1A1;&#x309; 1 nha&#x300; tu&#x300; na&#x300;o &dstrok;o&#x301; &#x1A1;&#x309; Vi&ecirc;&#x323;t Nam
-                    td khabanh123@gmail.com
-                    td 0969 666 999
-                    td L&acirc;&#x323;p tri&#x300;nh web
-                    td 9 kho&#x301;a ho&#x323;c
-                    td 69 ho&#x323;c vi&ecirc;n
-                    td
-                      .btn-group(role='group')
-                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
-                          i.far.fa-edit
-                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
-                          i.far.fa-trash-alt
-                  // 1 course
+                  each lecture in lectures
+                    tr
+                      td=lecture.name
+                      td=lecture.description
+                      td=lecture.email
+                      td=lecture.phone
+                      td=lecture.categories
+                      td=lecture.numOfCourse
+                      td=lecture.numOfStudent
+                      td
+                        .btn-group(role='group')
+                          button.btn.btn-success.text-white.btn-edit(type='button' data-toggle='modal' data-target='#editModal')
+                            i.far.fa-edit
+                          button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteModal')
+                            i.far.fa-trash-alt
+                      // 1 course
       // /.container-fluid
     // End of Main Content
     // Footer
@@ -498,15 +319,15 @@ a.scroll-to-top.rounded(href='#page-top')
           .form-group
             label(for='selectCategories') Lĩnh vực giảng dạy
             select#selectCategories.form-control(name='selectCategories')
-              option(selected='' value=1) 1. Lập trình Web
-              option(value=2) 2. Lập trình Mobile
-              option(value=3) 3. Lập trình Game
+              option(selected='' value='Lập trình Web') Lập trình Web
+              option(value='Lập trình Mobile') Lập trình Mobile
+              option(value='Lập trình Game') Lập trình Game
           .form-group
             label(for='avatarLecture') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
             input#avatarLecture.form-control-file(type='file' name='avatarLecture')
           .form-group
-            label(for='inputDescLecture') M&ocirc; ta&#x309; gia&#x309;ng vi&ecirc;n
-            textarea#inputDescLecture.form-control(rows='3' placeholder='Nhập mô tả giảng viên' name='inputDescLecture')
+            label(for='inputDescLecture') Giới thiệu giảng viên
+            textarea#inputDescLecture.form-control(rows='3' placeholder='Nhập giới thiệt giảng viên' name='inputDescLecture')
           hr
           .float-right
             button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal') Đóng
@@ -524,29 +345,29 @@ a.scroll-to-top.rounded(href='#page-top')
         form
           .form-group
             label(for='inputEditNameLecture') T&ecirc;n gia&#x309;ng vi&ecirc;n
-            input#inputEditNameLecture.form-control(type='text' value='Ngô Bá Khá' name='nameLecture')
+            input#inputEditNameLecture.form-control(type='text' value='' name='inputEditNameLecture')
           .form-row
             .form-group.col-md-6
               label(for='inputEditEmailLecture') Email
-              input#inputEditEmailLecture.form-control(type='email' value='khabanh123@gmail.com' name='emailLecture')
+              input#inputEditEmailLecture.form-control(type='email' value='' name='inputEditEmailLecture')
             .form-group.col-md-6
-              label(for='inputEditPhoneLecture') S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
-              input#inputEditPhoneLecture.form-control(type='text' value='0969 666 999' name='e')
+              label(for='inputEditPhoneLecture') Số điện thoại
+              input#inputEditPhoneLecture.form-control(type='text' value='' name='inputEditPhoneLecture')
           .form-group
-            label(for='selectEditCategories') Li&#x303;nh v&#x1B0;&#x323;c gia&#x309;ng da&#x323;y
+            label(for='selectEditCategories') Lĩnh vực giảng dạy
             select#selectEditCategories.form-control
-              option(selected='') 1. L&acirc;&#x323;p tri&#x300;nh Web
-              option 2. L&acirc;&#x323;p tri&#x300;nh Mobile
-              option 3. L&acirc;&#x323;p tri&#x300;nh Game
+              option(value='Lập trình Web') Lập trình Web
+              option(value='Lập trình Mobile') Lập trình Mobile
+              option(value='Lập trình Game') Lập trình Game
           .form-group
-            label(for='imgEditLecture') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
-            input#imgEditLecture.form-control-file(type='file')
+            label(for='editAvatarLecture') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
+            input#editAvatarLecture.form-control-file(type='file' name='editAvatarLecture')
           .form-group
-            label(for='inputEditDescLecture') M&ocirc; ta&#x309; gia&#x309;ng vi&ecirc;n
+            label(for='inputEditDescLecture') Giới thiệu giảng viên
             textarea#inputEditDescLecture.form-control(rows='3')
           hr
           .float-right
-            button.btn.btn-secondary(type='button' data-dismiss='modal') Thoa&#x301;t
+            button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal') Thoa&#x301;t
             button.btn.btn-primary(type='submit') S&#x1B0;&#x309;a gia&#x309;ng vi&ecirc;n
 // end edit modal course
 // Modal
@@ -558,19 +379,8 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        | Bạn có muốn xóa giảng viên: Ngô Bá Khá
+        #nameDelete
       .modal-footer
         button.btn.btn-danger(type='button') Xo&#x301;a
         button.btn.btn-primary(type='button' data-dismiss='modal') Kh&ocirc;ng
-// Bootstrap core JavaScript
-script(src='../jquery/jquery.min.js')
-script(src='../bootstrap/js/bootstrap.bundle.min.js')
-// Core plugin JavaScript
-script(src='../jquery-easing/jquery.easing.min.js')
-// Custom scripts for all pages
-script(src='../javascripts/sb-admin-2.js')
-// Page level plugins
-script(src='../datatables/jquery.dataTables.min.js')
-script(src='../datatables/dataTables.bootstrap4.min.js')
-// Page level custom scripts
-script(src='../javascripts/demo/datatables-demo.js')
+

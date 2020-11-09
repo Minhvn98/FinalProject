@@ -6,10 +6,11 @@ const logger = require('morgan');
 const app = express();
 require('dotenv').config()
 
-
+const db = require('../../config/db')
 const port = (process.env.PORT || 3000)
 const adminRouter = require('./routers/admin');
 
+db.connect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
