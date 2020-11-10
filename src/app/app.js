@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const app = express();
+const methodOverride = require('method-override');
 require('dotenv').config()
 
 const db = require('../../config/db')
@@ -15,6 +16,7 @@ db.connect();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(methodOverride('_method'))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

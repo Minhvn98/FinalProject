@@ -3,6 +3,7 @@ $(document).ready(function () {
   $("#dataTable").DataTable();
 
   $(".btn-edit").click(function (event) {
+    const id = $(this)[0].nextElementSibling.nextElementSibling.textContent
     const name = $(this)[0].parentElement.parentElement.parentElement
       .children[0].textContent;
     const desc = $(this)[0].parentElement.parentElement.parentElement
@@ -15,6 +16,7 @@ $(document).ready(function () {
       .children[4].textContent;
 
     const obj = {
+      id,
       name,
       desc,
       email,
@@ -28,6 +30,7 @@ $(document).ready(function () {
       "Lập trình Game",
     ];
 
+    $("#idLecture").val(id);
     $("#inputEditNameLecture").val(name);
     $("#inputEditEmailLecture").val(email);
     $("#inputEditPhoneLecture").val(phone);
@@ -43,6 +46,10 @@ $(document).ready(function () {
     const name = $(this)[0].parentElement.parentElement.parentElement
       .children[0].textContent;
 
+    const id = $(this)[0].nextElementSibling.textContent
+
     $('#nameDelete')[0].textContent = `Bạn có muốn xóa giảng viên : ${name}`;
+    $('#idDelete').val(id);
+    console.log(id)
   });
 });

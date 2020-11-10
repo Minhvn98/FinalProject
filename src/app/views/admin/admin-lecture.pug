@@ -222,8 +222,8 @@ body
       // Begin Page Content
       .container-fluid
         // Page Heading
-        h1.h3.mb-2.text-gray-800 Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
-        p.mb-4 30 gia&#x309;ng vi&ecirc;n
+        h1.h3.mb-2.text-gray-800 Quản lý giảng viên
+        p.mb-4 #{lectures.length} giảng viên
         // DataTales Example
         .card.shadow.mb-4
           .card-header.py-3.add-something
@@ -268,8 +268,11 @@ body
                         .btn-group(role='group')
                           button.btn.btn-success.text-white.btn-edit(type='button' data-toggle='modal' data-target='#editModal')
                             i.far.fa-edit
+                            
                           button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteModal')
                             i.far.fa-trash-alt
+                          i(hidden)=lecture._id
+                      
                       // 1 course
       // /.container-fluid
     // End of Main Content
@@ -305,7 +308,7 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action="/admin/addLecture" method="post" enctype="multipart/form-data")
+        form(action="/admin/addLecture" method="POST" enctype="multipart/form-data")
           .form-group
             label(for='inputNameLecture') Tên giảng viên
             input#inputNameLecture.form-control(type='text' placeholder='Nhập tên giảng viên' name='inputNameLecture')
@@ -323,11 +326,11 @@ a.scroll-to-top.rounded(href='#page-top')
               option(value='Lập trình Mobile') Lập trình Mobile
               option(value='Lập trình Game') Lập trình Game
           .form-group
-            label(for='avatarLecture') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
+            label(for='avatarLecture') Ảnh đại diện
             input#avatarLecture.form-control-file(type='file' name='avatarLecture')
           .form-group
             label(for='inputDescLecture') Giới thiệu giảng viên
-            textarea#inputDescLecture.form-control(rows='3' placeholder='Nhập giới thiệt giảng viên' name='inputDescLecture')
+            textarea#inputDescLecture.form-control(rows='3' placeholder='Nhập giới thiệu giảng viên' name='inputDescLecture')
           hr
           .float-right
             button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal') Đóng
@@ -342,9 +345,10 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form
+        form(method="POST" action="/admin/updateLecture?_method=PUT" enctype="multipart/form-data")
           .form-group
-            label(for='inputEditNameLecture') T&ecirc;n gia&#x309;ng vi&ecirc;n
+            input#idLecture(type="text" name="idLecture" hidden)
+            label(for='inputEditNameLecture') Tên giảng viên
             input#inputEditNameLecture.form-control(type='text' value='' name='inputEditNameLecture')
           .form-row
             .form-group.col-md-6
@@ -355,24 +359,25 @@ a.scroll-to-top.rounded(href='#page-top')
               input#inputEditPhoneLecture.form-control(type='text' value='' name='inputEditPhoneLecture')
           .form-group
             label(for='selectEditCategories') Lĩnh vực giảng dạy
-            select#selectEditCategories.form-control
+            select#selectEditCategories.form-control(name='selectEditCategories')
               option(value='Lập trình Web') Lập trình Web
               option(value='Lập trình Mobile') Lập trình Mobile
               option(value='Lập trình Game') Lập trình Game
           .form-group
-            label(for='editAvatarLecture') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
+            label(for='editAvatarLecture') Ảnh đại diện
             input#editAvatarLecture.form-control-file(type='file' name='editAvatarLecture')
           .form-group
             label(for='inputEditDescLecture') Giới thiệu giảng viên
-            textarea#inputEditDescLecture.form-control(rows='3')
+            textarea#inputEditDescLecture.form-control(rows='3' name='inputEditDescLecture')
           hr
           .float-right
             button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal') Thoa&#x301;t
-            button.btn.btn-primary(type='submit') S&#x1B0;&#x309;a gia&#x309;ng vi&ecirc;n
+            button.btn.btn-primary(type='submit') Lưu
 // end edit modal course
 // Modal
 #deleteModal.modal.fade(tabindex='-1' aria-labelledby='deleteModalLabel' aria-hidden='true')
   .modal-dialog
+    
     .modal-content
       .modal-header
         h5#deleteModalLabel.modal-title Xóa giảng viên ?
@@ -381,6 +386,8 @@ a.scroll-to-top.rounded(href='#page-top')
       .modal-body
         #nameDelete
       .modal-footer
-        button.btn.btn-danger(type='button') Xo&#x301;a
-        button.btn.btn-primary(type='button' data-dismiss='modal') Kh&ocirc;ng
+        form(action="/admin/deleteLecture?_method=DELETE" method="POST")
+          input#idDelete(type="text" name='idDelete' hidden)
+          button.btn.btn-danger.mr-2(type='submit') Xóa
+          button.btn.btn-primary(type='button' data-dismiss='modal') Thoát
 
