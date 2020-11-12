@@ -5,7 +5,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(name='description' content='')
   meta(name='author' content='')
-  title Trang quản trị
+  title Trang qua&#x309;n tri&#x323;
   // Custom fonts for this template
   link(href='../fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
@@ -24,8 +24,7 @@ head
   script(defer src='../datatables/jquery.dataTables.min.js')
   script(defer src='../datatables/dataTables.bootstrap4.min.js')
   // Page level custom scripts
-  //script(defer src='../javascripts/demo/datatables-demo.js')
-  script(defer src='../javascripts/admin-lecture.js')
+  script(defer src='../javascripts/demo/datatables-demo.js')
 body#page-top
 // Page Wrapper
 #wrapper
@@ -47,24 +46,35 @@ body#page-top
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href='admin#.html')
+      a.nav-link(href='tables.html')
         i.fas.fa-tachometer-alt
         span Dashboard
     // Divider
     hr.sidebar-divider
     // Nav Item - Quản lý khóa học
     li.nav-item
-      a.nav-link(href='admin-course.html')
+      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapse1' aria-expanded='true' aria-controls='collapse1')
         i.fas.fa-book
         span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
+      #collapse1.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
+        .bg-white.py-2.collapse-inner.rounded
+          h6.collapse-header Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
+          a.collapse-item(href='buttons.html') Danh sa&#x301;ch kho&#x301;a ho&#x323;c
+          a.collapse-item(href='cards.html') Th&ecirc;m kho&#x301;a ho&#x323;c
+          a.collapse-item(href='cards.html') S&#x1B0;&#x309;a kho&#x301;a ho&#x323;c
+          a.collapse-item(href='cards.html') Xo&#x301;a kho&#x301;a ho&#x323;c
+    // Nav Item - Quản lý học viên
     li.nav-item
-      a.nav-link(href='admin.lecture.html')
-        i.fas.fa-chalkboard-teacher
-        span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
-    li.nav-item
-      a.nav-link(href='admin.lecture.html')
+      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseStudent' aria-expanded='true' aria-controls='collapseStudent')
         i.fas.fa-user-graduate
         span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+      #collapseStudent.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
+        .bg-white.py-2.collapse-inner.rounded
+          h6.collapse-header Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+          a.collapse-item(href='buttons.html') Danh sa&#x301;ch ho&#x323;c vi&ecirc;n
+          a.collapse-item(href='cards.html') Th&ecirc;m ho&#x323;c vi&ecirc;n
+          a.collapse-item(href='cards.html') S&#x1B0;&#x309;a ho&#x323;c vi&ecirc;n
+          a.collapse-item(href='cards.html') Xo&#x301;a ho&#x323;c vi&ecirc;n
     // Nav Item - Pages Collapse Menu
     li.nav-item
       a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
@@ -73,19 +83,19 @@ body#page-top
       #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
         .bg-white.py-2.collapse-inner.rounded
           h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-          a.collapse-item(href='#') Xem th&ocirc;ng tin
-          a.collapse-item(href='#') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
-          a.collapse-item(href='#') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
+          a.collapse-item(href='buttons.html') Xem th&ocirc;ng tin
+          a.collapse-item(href='buttons.html') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
+          a.collapse-item(href='cards.html') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
     // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href='tables.html')
         i.fas.fa-bell
         span Th&ocirc;ng ba&#x301;o
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href='tables.html')
         i.fas.fa-sign-out-alt
         span &Dstrok;&abreve;ng xu&acirc;&#x301;t
     // Divider
@@ -223,60 +233,51 @@ body#page-top
       // Begin Page Content
       .container-fluid
         // Page Heading
-        h1.h3.mb-2.text-gray-800 Quản lý giảng viên
-        p.mb-4 #{lectures.length} giảng viên
+        h1.h3.mb-2.text-gray-800 Quản lý sinh viên
+        p.mb-4 69 sinh viên
         // DataTales Example
         .card.shadow.mb-4
-          .card-header.py-3.add-something
-            h6.m-0.font-weight-bold.text-primary Danh sa&#x301;ch gia&#x309;ng vi&ecirc;n
+          .card-header.py-3.d-flex.justify-content-between
+            h6.m-0.font-weight-bold.text-primary Danh sách sinh viên
             button.btn.btn-primary(data-toggle='modal' data-target='#addModal')
               i.fas.fa-user-plus
-              |  Th&ecirc;m gia&#x309;ng vi&ecirc;n
+              |  Thêm sinh viên
           .card-body
             .table-responsive
               table#dataTable.table.table-bordered(width='100%' cellspacing='0')
                 thead
                   tr
-                    th Ho&#x323; T&ecirc;n
-                    th M&ocirc; ta&#x309;
+                    th Họ Tên
                     th Email
-                    th S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
-                    th Li&#x303;nh v&#x1B0;&#x323;c gia&#x309;ng da&#x323;y
-                    th Kho&#x301;a ho&#x323;c gia&#x309;ng da&#x323;y
-                    th Ho&#x323;c vi&ecirc;n
-                    th S&#x1B0;&#x309;a-Xo&#x301;a
+                    th Số Điện Thoại
+                    th Thời Gian Tham Gia
+                    th Khóa Học Tham Gia
+                    th Thao Tác
                 tfoot
                   tr
-                    th Ho&#x323; T&ecirc;n
-                    th M&ocirc; ta&#x309;
+                    th Họ Tên
                     th Email
-                    th S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
-                    th Li&#x303;nh v&#x1B0;&#x323;c gia&#x309;ng da&#x323;y
-                    th Kho&#x301;a ho&#x323;c gia&#x309;ng da&#x323;y
-                    th Ho&#x323;c vi&ecirc;n
-                    th S&#x1B0;&#x309;a-Xo&#x301;a
+                    th Số Điện Thoại
+                    th Thời Gian Tham Gia
+                    th Khóa Học Tham Gia
+                    th Thao Tác
                 tbody
-                  each lecture in lectures
-                    tr
-                      td=lecture.name
-                      td=lecture.description
-                      td=lecture.email
-                      td=lecture.phone
-                      td=lecture.categories
-                      td=lecture.numOfCourse
-                      td=lecture.numOfStudent
-                      td
-                        .btn-group(role='group')
-                          button.btn.btn-success.text-white.btn-edit(type='button' data-toggle='modal' data-target='#editModal')
-                            i.far.fa-edit
-                            
-                          button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteModal')
-                            i.far.fa-trash-alt
-                          i(hidden)=lecture._id
-                          i(hidden)=lecture.avatar
-                          //i=lecture.createdAt
-                      
-                      // 1 course
+                  tr
+                    td Bu&#x300;i Xu&acirc;n Hu&acirc;&#x301;n
+                    td huanbx69@gmail.com
+                    td 0969 123 123
+                    td
+                      | 19:05 - 11/11/2020
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button')
+                          i.far.fa-trash-alt
+                    // 1 student
+
+                  
       // /.container-fluid
     // End of Main Content
     // Footer
@@ -302,26 +303,28 @@ a.scroll-to-top.rounded(href='#page-top')
       .modal-footer
         button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
         a.btn.btn-primary(href='login.html') Logout
-// add course modal
+      
+
+// add student modal
 #addModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='addModalLabel' aria-hidden='true')
   .modal-dialog(role='document')
     .modal-content
       .modal-header
-        h5#addModalLabel.modal-title Th&ecirc;m gia&#x309;ng vi&ecirc;n
+        h5#addModalLabel.modal-title Thêm sinh viên
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action="/admin/addLecture" method="POST" enctype="multipart/form-data")
+        form(action="/admin/addStudent" method="POST")
           .form-group
-            label(for='inputNameLecture') Tên giảng viên
-            input#inputNameLecture.form-control(type='text' placeholder='Nhập tên giảng viên' name='inputNameLecture')
-          .form-row
-            .form-group.col-md-6
-              label(for='inputEmailLecture') Email
-              input#inputEmailLecture.form-control(name='inputEmailLecture' type='email' placeholder='Nhập email giảng viên')
-            .form-group.col-md-6
-              label(for='inputPhoneLecture') S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
-              input#inputPhoneLecture.form-control(name='inputPhoneLecture' type='text' placeholder='Nhập số điện thoại')
+            label(for='inputNameStudent') Tên sinh viên
+            input#inputNameStudent.form-control(type='text' placeholder='Nhập tên sinh viên' name='inputNameStudent')
+         
+          .form-group
+            label(for='inputEmailStudent') Email
+            input#inputEmailStudent.form-control(name='inputEmailStudent' type='email' placeholder='Nhập email giảng viên')
+          .form-group
+            label(for='inputPhoneStudent') S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
+            input#inputPhoneStudent.form-control(name='inputPhoneLecture' type='text' placeholder='Nhập số điện thoại')
           .form-group
             label(for='selectCategories') Lĩnh vực giảng dạy
             select#selectCategories.form-control(name='selectCategories')
@@ -351,7 +354,6 @@ a.scroll-to-top.rounded(href='#page-top')
         form(method="POST" action="/admin/updateLecture?_method=PUT" enctype="multipart/form-data")
           .form-group
             input#idLecture(type="text" name="idLecture" hidden)
-            input#avatar2(type="text" name="avatar2")
             label(for='inputEditNameLecture') Tên giảng viên
             input#inputEditNameLecture.form-control(type='text' value='' name='inputEditNameLecture')
           .form-row

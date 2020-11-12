@@ -9,8 +9,8 @@ const Lecture = new Schema({
     categories: String,
     avatar: String,
     description: String,
-    numOfCourse: Number,
-    numOfStudent: Number,
+    listCourse: [ Schema.Types.ObjectId ],
+    listStudent: [ Schema.Types.ObjectId ],
     createdAt: { type: Date, default: Date.now() },
     updateAt: { type: Date, default: Date.now() }
 });
