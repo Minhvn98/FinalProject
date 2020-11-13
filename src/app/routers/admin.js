@@ -14,8 +14,9 @@ router.put('/updateLecture', upload.single('editAvatarLecture'), adminController
 router.delete('/deleteLecture', adminController.deleteLecture);
 
 
-//Management Student
-router.get('/management-student', adminController.managementStudent);
+//Management Course
+router.get('/management-course', adminController.managementCourse);
+router.post('/addCourse', upload.single('image'), adminController.addCourse);
 
 
 module.exports = router;

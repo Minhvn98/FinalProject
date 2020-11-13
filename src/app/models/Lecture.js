@@ -9,11 +9,9 @@ const Lecture = new Schema({
     categories: String,
     avatar: String,
     description: String,
-    listCourse: [ Schema.Types.ObjectId ],
-    listStudent: [ Schema.Types.ObjectId ],
-    createdAt: { type: Date, default: Date.now() },
-    updateAt: { type: Date, default: Date.now() }
-});
+    listCourse: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+    listStudent: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
+}, { timestamps: true });
 
 module.exports = mongoose.model('Lecture', Lecture);
 

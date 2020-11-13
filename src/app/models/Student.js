@@ -6,8 +6,8 @@ const Student = new Schema({
     name: { type: String, required: true },
     phone: { type: String, required: true },
     email: { type: String, require: true },
-    coursesId: [ Schema.Types.ObjectId ],
-});
+    coursesId: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+}, { timestamps: true });
 
 module.exports = mongoose.model('Student', Student);
 

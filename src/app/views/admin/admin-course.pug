@@ -1,0 +1,436 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  title Trang qua&#x309;n tri&#x323;
+  // Custom fonts for this template
+  link(href='../fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+  // Custom styles for this template
+  link(href='../bootstrap/css/bootstrap.min.css' rel='stylesheet')
+  link(rel='stylesheet' href='../css/admin1.css ')
+  link(href='../datatables/dataTables.bootstrap4.min.css' rel='stylesheet')
+  // Bootstrap core JavaScript
+  script(defer src='../jquery/jquery.min.js')
+  script(defer src='../bootstrap/js/bootstrap.bundle.min.js')
+  // Core plugin JavaScript
+  script(defer src='../jquery-easing/jquery.easing.min.js')
+  // Custom scripts for all pages
+  script(defer src='../javascripts/sb-admin-2.js')
+  // Page level plugins
+  script(defer src='../datatables/jquery.dataTables.min.js')
+  script(defer src='../datatables/dataTables.bootstrap4.min.js')
+  // Page level custom scripts
+  script(defer src='../javascripts/admin-course.js')
+  
+body#page-top
+// Page Wrapper
+#wrapper
+  // Sidebar
+  ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
+    // Sidebar - Brand
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+      .sidebar-brand-icon.rotate-n-15
+        i.fas.fa-laugh-wink
+      .sidebar-brand-text.mx-3 LMS Admin
+    // Divider
+    hr.sidebar-divider.my-0
+    hr
+    // Nav Item - Dashboard
+    li.nav-item.active
+      a.nav-link(href='#')
+        i.fas.fa-chalkboard-teacher
+        span Xin cha&#x300;o Admin
+    // Divider
+    hr.sidebar-divider
+    li.nav-item
+      a.nav-link(href='tables.html')
+        i.fas.fa-tachometer-alt
+        span Dashboard
+    // Divider
+    hr.sidebar-divider
+    // Nav Item - Quản lý khóa học
+    li.nav-item
+      a.nav-link(href='admin-course.html')
+        i.fas.fa-book
+        span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
+    li.nav-item
+      a.nav-link(href='admin.lecture.html')
+        i.fas.fa-chalkboard-teacher
+        span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
+    li.nav-item
+      a.nav-link(href='admin.lecture.html')
+        i.fas.fa-user-graduate
+        span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+    // Nav Item - Pages Collapse Menu
+    li.nav-item
+      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
+        i.far.fa-user
+        span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
+      #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
+        .bg-white.py-2.collapse-inner.rounded
+          h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
+          a.collapse-item(href='buttons.html') Xem th&ocirc;ng tin
+          a.collapse-item(href='buttons.html') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
+          a.collapse-item(href='cards.html') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
+    // Nav Item - Utilities Collapse Menu
+    li.nav-item
+      a.nav-link(href='tables.html')
+        i.fas.fa-bell
+        span Th&ocirc;ng ba&#x301;o
+    // Divider
+    hr.sidebar-divider
+    // Nav Item - Tables
+    li.nav-item
+      a.nav-link(href='tables.html')
+        i.fas.fa-sign-out-alt
+        span &Dstrok;&abreve;ng xu&acirc;&#x301;t
+    // Divider
+    hr.sidebar-divider.d-none.d-md-block
+    // Sidebar Toggler (Sidebar)
+    .text-center.d-none.d-md-inline
+      button#sidebarToggle.rounded-circle.border-0
+  // End of Sidebar
+  // Content Wrapper
+  #content-wrapper.d-flex.flex-column
+    // Main Content
+    #content
+      // Topbar
+      nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+        // Sidebar Toggle (Topbar)
+        button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+          i.fa.fa-bars
+        // Topbar Search
+        form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
+          .input-group
+            input.form-control.bg-light.border-0.small(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+            .input-group-append
+              button.btn.btn-primary(type='button')
+                i.fas.fa-search.fa-sm
+        // Topbar Navbar
+        ul.navbar-nav.ml-auto
+          // Nav Item - Search Dropdown (Visible Only XS)
+          li.nav-item.dropdown.no-arrow.d-sm-none
+            a#searchDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-search.fa-fw
+            // Dropdown - Messages
+            .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in(aria-labelledby='searchDropdown')
+              form.form-inline.mr-auto.w-100.navbar-search
+                .input-group
+                  input.form-control.bg-light.border-0.small(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+                  .input-group-append
+                    button.btn.btn-primary(type='button')
+                      i.fas.fa-search.fa-sm
+          // Nav Item - Alerts
+          li.nav-item.dropdown.no-arrow.mx-1
+            a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-bell.fa-fw
+              // Counter - Alerts
+              span.badge.badge-danger.badge-counter 3+
+            // Dropdown - Alerts
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
+              h6.dropdown-header Alerts Center
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .mr-3
+                  .icon-circle.bg-primary
+                    i.fas.fa-file-alt.text-white
+                div
+                  .small.text-gray-500 December 12, 2019
+                  span.font-weight-bold A new monthly report is ready to download!
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .mr-3
+                  .icon-circle.bg-success
+                    i.fas.fa-donate.text-white
+                div
+                  .small.text-gray-500 December 7, 2019
+                  |                       $290.29 has been deposited into your account!
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .mr-3
+                  .icon-circle.bg-warning
+                    i.fas.fa-exclamation-triangle.text-white
+                div
+                  .small.text-gray-500 December 2, 2019
+                  |                       Spending Alert: We&apos;ve noticed unusually high spending for
+                  |                       your account.
+              a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
+          // Nav Item - Messages
+          li.nav-item.dropdown.no-arrow.mx-1
+            a#messagesDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-envelope.fa-fw
+              // Counter - Messages
+              span.badge.badge-danger.badge-counter 7
+            // Dropdown - Messages
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='messagesDropdown')
+              h6.dropdown-header Message Center
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/fn_BT9fwg_E/60x60' alt='')
+                  .status-indicator.bg-success
+                .font-weight-bold
+                  .text-truncate
+                    | Hi there! I am wondering if you can help me with a
+                    | problem I&apos;ve been having.
+                  .small.text-gray-500 Emily Fowler &middot; 58m
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/AU4VPcFN4LE/60x60' alt='')
+                  .status-indicator
+                div
+                  .text-truncate
+                    | I have the photos that you ordered last month, how would
+                    | you like them sent to you?
+                  .small.text-gray-500 Jae Chun &middot; 1d
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/CS2uCrpNzJY/60x60' alt='')
+                  .status-indicator.bg-warning
+                div
+                  .text-truncate
+                    | Last month&apos;s report looks great, I am very happy with
+                    | the progress so far, keep up the good work!
+                  .small.text-gray-500 Morgan Alvarez &middot; 2d
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/Mv9hjnEUHR4/60x60' alt='')
+                  .status-indicator.bg-success
+                div
+                  .text-truncate
+                    | Am I a good boy? The reason I ask is because someone
+                    | told me that people say this to all dogs, even if they
+                    | aren&apos;t good...
+                  .small.text-gray-500
+                    | Chicken the Dog &middot; 2w
+              a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
+          .topbar-divider.d-none.d-sm-block
+          // Nav Item - User Information
+          li.nav-item.dropdown.no-arrow
+            a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              span.mr-2.d-none.d-lg-inline.text-gray-600.small Valerie Luna
+              img.img-profile.rounded-circle(src='https://source.unsplash.com/QAB-WJcbgJk/60x60')
+            // Dropdown - User Information
+            .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
+              a.dropdown-item(href='#')
+                i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                |                     Profile
+              a.dropdown-item(href='#')
+                i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                |                     Settings
+              a.dropdown-item(href='#')
+                i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400
+                |                     Activity Log
+              .dropdown-divider
+              a.dropdown-item(href='#' data-toggle='modal' data-target='#logoutModal')
+                i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                |                     Logout
+      // End of Topbar
+      // Begin Page Content
+      .container-fluid
+        // Page Heading
+        h1.h3.mb-2.text-gray-800 Danh sa&#x301;ch kho&#x301;a ho&#x323;c
+        p.mb-4 56 kho&#x301;a ho&#x323;c
+        // DataTales Example
+        .card.shadow.mb-4
+          .card-header.py-3.add-something
+            h6.m-0.font-weight-bold.text-primary
+              | Danh sa&#x301;ch kho&#x301;a ho&#x323;c
+            button.btn.btn-primary(data-toggle='modal' data-target='#addModal')
+              i.fas.fa-book-medical
+              |  Th&ecirc;m kho&#x301;a ho&#x323;c
+          .card-body
+            .table-responsive
+              table#dataTable.table.table-bordered(width='100%' cellspacing='0')
+                thead
+                  tr
+                    th Tên khóa học
+                    th Mô tả
+                    th Trình độ
+                    th Giảng viên
+                    th Học viên
+                    th Chi phí
+                    th Thao tác
+                tfoot
+                  tr
+                    th Tên khóa học
+                    th Mô tả
+                    th Trình độ
+                    th Giảng viên
+                    th Học viên
+                    th Chi phí
+                    th Thao tác
+                tbody
+                  each course in courses
+                    tr
+                      td=course.name
+                      td=course.description
+                      td=course.level
+                      td=course.lecture.name
+                      td=course.listStudent.length
+                      td=course.price
+                      td
+                        .btn-group(role='group')
+                          button.btn.btn-success.text-white.btn-edit(type='button' data-toggle='modal' data-target='#editModal')
+                            i.far.fa-edit
+                          button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteModal')
+                            i.far.fa-trash-alt
+                    // 1 course
+                
+                  
+      // /.container-fluid
+    // End of Main Content
+    // Footer
+    footer.sticky-footer.bg-white
+      .container.my-auto
+        .copyright.text-center.my-auto
+          span Copyright &copy; Your Website 2020
+    // End of Footer
+  // End of Content Wrapper
+// End of Page Wrapper
+
+// Scroll to Top Button
+a.scroll-to-top.rounded(href='#page-top')
+  i.fas.fa-angle-up
+
+
+// Logout Modal
+#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title Ready to Leave?
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        | Select &quot;Logout&quot; below if you are ready to end your current session.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal')
+          | Cancel
+        a.btn.btn-primary(href='login.html') Logout
+
+
+// add course modal
+#addModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='addModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#addModalLabel.modal-title Thêm Khóa Học
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(method="POST" action="/admin/addCourse" enctype="multipart/form-data")
+          .form-group
+            label(for='inputNameCourse') Tên khóa học
+            input#inputNameCourse.form-control(type='text' placeholder='Nhập tên khóa học' name="name")
+          .form-row
+            .form-group.col-md-6
+              label(for='selectLevelCourse') Level
+              select#selectLevelCourse.form-control.form-control-sm(name="level")
+                option(value='Cơ bản' selected) Cơ bản
+                option(value='Trung bình') Trung bình
+                option(value='Nâng cao') Nâng cao
+            .form-group.col-md-6
+              label(for='selectCategories') Danh mục
+              select#selectCategories.form-control.form-control-sm(name="categories")
+                option(value="Lập trình Web" selected) Lập trình Web
+                option(value="Lập trình Mobile") Lập trình Mobile
+                option(value="Lập trình Game") Lập trình Game
+          .form-row
+            .form-group.col-md-6
+              label(for='selectLecture') Giảng Viên
+              select#selectLecture.form-control.form-control-sm(name="lecture")
+                each lect, idx in lectures
+                  option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
+                  
+            .form-group.col-md-6
+              label(for='inputPriceCourse') Chi phí
+              input#inputPriceCourse.form-control.form-control-sm(type='text' placeholder='Nhập chi phí khóa học' name="price")
+          .form-row
+            .form-group.col-md-6
+              label(for='videoId') VideoId
+              input#videoId.form-control.form-control-sm(type='text' placeholder='Nhập video Id' name='videoId')
+            .form-group.col-md-6
+              label(for='imgCourse') Ảnh mô tả
+              input#imgCourse.form-control-file(type='file' name="image")
+          .form-group
+            label(for='inputDescCourse') Mô tả khóa học
+            textarea#inputDescCourse.form-control(rows='3' placeholder='Nhập mô tả khóa học' name="description")
+          .float-right
+            button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal')
+              | Thoát
+            button.btn.btn-primary(type='submit')
+              | Thêm khóa học
+// end add modal course
+
+
+
+// edit course modal
+#editModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#editModalLabel.modal-title Sửa khóa học
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(method="POST" action="/admin/addCourse" enctype="multipart/form-data")
+          .form-group
+            label(for='editNameCourse') Tên khóa học
+            input#editNameCourse.form-control(type='text' placeholder='Nhập tên khóa học' name="name")
+          .form-row
+            .form-group.col-md-6
+              label(for='editLevel') Level
+              select#editLevel.form-control.form-control-sm(name="level")
+                option(value='Cơ bản' selected) Cơ bản
+                option(value='Trung bình') Trung bình
+                option(value='Nâng cao') Nâng cao
+            .form-group.col-md-6
+              label(for='editCate') Danh mục
+              select#editCate.form-control.form-control-sm(name="categories")
+                option(value="Lập trình Web" selected) Lập trình Web
+                option(value="Lập trình Mobile") Lập trình Mobile
+                option(value="Lập trình Game") Lập trình Game
+          .form-row
+            .form-group.col-md-6
+              label(for='editLecture') Giảng Viên
+              select#editLecture.form-control.form-control-sm(name="lecture")
+                each lect, idx in lectures
+                  option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
+                  
+            .form-group.col-md-6
+              label(for='editPrice') Chi phí
+              input#editPrice.form-control.form-control-sm(type='text' placeholder='Nhập chi phí khóa học' name="price")
+          .form-row
+            .form-group.col-md-6
+              label(for='editVideoId') VideoId
+              input#editVideoId.form-control.form-control-sm(type='text' placeholder='Nhập video Id' name='videoId')
+            .form-group.col-md-6
+              label(for='editImg') Ảnh mô tả
+              input#editImg.form-control-file(type='file' name="image")
+          .form-group
+            label(for='editDesc') Mô tả khóa học
+            textarea#editDesc.form-control(rows='3' placeholder='Nhập mô tả khóa học' name="description")
+          .float-right
+            button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal')
+              | Thoát
+            button.btn.btn-primary(type='submit')
+              | Thêm khóa học
+// end edit modal course
+
+
+// Modal
+#deleteModal.modal.fade(tabindex='-1' aria-labelledby='deleteModalLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#deleteModalLabel.modal-title Xo&#x301;a kho&#x301;a ho&#x323;c ?
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        | Ba&#x323;n co&#x301; ch&abreve;&#x301;c mu&ocirc;&#x301;n xo&#x301;a kho&#x301;a ho&#x323;c : Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs,
+        | ExpressJs, Mongodb ?
+      .modal-footer
+        button.btn.btn-danger(type='button') Xo&#x301;a
+        button.btn.btn-primary(type='button' data-dismiss='modal')
+          | Kh&ocirc;ng

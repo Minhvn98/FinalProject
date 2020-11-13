@@ -2,6 +2,7 @@ const path = require('path');
 
 const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
+const Course = require('../models/Course');
 
 class AdminController {
 
@@ -75,12 +76,51 @@ class AdminController {
     }
 
 
-    // Management Student
-    //[GET] admin/management-student
-    managementStudent(req, res, next) {
-        res.render(path.join('admin', 'admin-student'));
+    // Management Course
+    //[GET] admin/management-course
+    managementCourse(req, res, next) {
+        Course.find({})
+            .then((courses) => {
+                Lecture.find({}, 'name')
+                .then((lectures) => {
+                    console.log('course : ', courses);
+                    console.log('lectures : ', lectures)
+                    res.render(path.join('admin', 'admin-course'), { courses, lectures });
+                })
+            })
+            
+            .catch((err) => next(err));
+        //res.render(path.join('admin', 'admin-course'));
     }
 
+    addCourse(req, res, next) {
+        const file = req.file
+        file ? req.body.image = req.file.path : req.body.image = '';
+        
+        const course = new Course({
+            name: req.body.name,
+            categories: req.body.categories,
+            description: req.body.description,
+            level: req.body.level,
+            lecture: { 
+                lectureId: req.body.lecture.split('-')[0], 
+                name: req.body.lecture.split('-')[1] },
+            videoId: req.body.videoId,
+            image: req.body.image,
+            price: req.body.price
+        });
+
+        console.log(course);
+
+        Course.create(course)
+            .then(() => Course.find()
+                .then((c) => res.json(c)))
+            .catch((err) => next(err))
+        //Course.find({}).then((i)=>res.json(i))
+        
+        //res.json(course1)
+
+    }
       
 }
 
