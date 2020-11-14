@@ -27,7 +27,7 @@ class AdminController {
     addLecture(req, res, next) {
         const file = req.file
         
-        file ? req.body.avatarLecture = req.file.path : req.body.avatarLecture = '';
+        file ? req.body.avatarLecture = req.file.path.split('public')[1] : req.body.avatarLecture = '';
 
         const lect = {
             name: req.body.inputNameLecture,
@@ -48,7 +48,7 @@ class AdminController {
     updateLecture(req, res, next) {
         const file = req.file
 
-        file ? req.body.avatarLecture = req.file.path : req.body.avatarLecture = req.body.avatar2;
+        file ? req.body.avatarLecture = req.file.path.split('public')[1] : req.body.avatarLecture = req.body.avatar2;
 
         const lect = {
             name: req.body.inputEditNameLecture,
@@ -83,8 +83,8 @@ class AdminController {
             .then((courses) => {
                 Lecture.find({}, 'name')
                 .then((lectures) => {
-                    console.log('course : ', courses);
-                    console.log('lectures : ', lectures)
+                    //console.log('course : ', courses);
+                    //.log('lectures : ', lectures)
                     res.render(path.join('admin', 'admin-course'), { courses, lectures });
                 })
             })
@@ -95,7 +95,7 @@ class AdminController {
 
     addCourse(req, res, next) {
         const file = req.file
-        file ? req.body.image = req.file.path : req.body.image = '';
+        file ? req.body.image = req.file.path.split('public')[1] : req.body.image = 'trong';
         
         const course = new Course({
             name: req.body.name,
@@ -113,15 +113,60 @@ class AdminController {
         console.log(course);
 
         Course.create(course)
-            .then(() => Course.find()
-                .then((c) => res.json(c)))
+            .then(() => res.redirect('/admin/management-course'))
             .catch((err) => next(err))
         //Course.find({}).then((i)=>res.json(i))
         
         //res.json(course1)
 
     }
+
+
+    //[PUT] /admin/editCourse
+    editCourse(req, res, next) {
+        const file = req.file
+        file ? req.body.image = req.file.path.split('public')[1] : req.body.image = req.body.imgOld;
+        
+        const course = {
+            name: req.body.name,
+            categories: req.body.categories,
+            description: req.body.description,
+            level: req.body.level,
+            lecture: { 
+                lectureId: req.body.lecture.split('-')[0], 
+                name: req.body.lecture.split('-')[1] },
+            videoId: req.body.videoId,
+            image: req.body.image,
+            price: req.body.price
+        };
+
+        Course.findByIdAndUpdate(req.body.id, course)
+            .then(() => res.redirect('/admin/management-course'))
+            .catch((err) => next(err))
+
+        // console.log(course);
+        // res.json(course);
+    }
       
+    //[DELETE] /admin/deleteCourse
+    deleteCourse(req, res, next) {
+        //res.json(req.body)
+        Course.findByIdAndDelete(req.body.id)
+            .then(() => res.redirect('/admin/management-course'))
+            .catch((err) => next(err))
+    }
+
+
+    managementStudent(req, res, next) {
+        Course.find()
+            .then((courses) => res.render(path.join('admin', 'admin-student'), { courses }))
+            .catch((err) => next(err))
+        
+    }
+
+    addStudent(req, res, next) {
+        res.json(req.body)
+    }
 }
 
-module.exports = new AdminController;
+module.exports = new AdminController();

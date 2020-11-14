@@ -17,6 +17,11 @@ router.delete('/deleteLecture', adminController.deleteLecture);
 //Management Course
 router.get('/management-course', adminController.managementCourse);
 router.post('/addCourse', upload.single('image'), adminController.addCourse);
+router.put('/editCourse', upload.single('editImg'), adminController.editCourse);
+router.delete('/deleteCourse', adminController.deleteCourse);
 
+//Management Student
+router.get('/management-student', adminController.managementStudent );
+router.post('/addStudent', adminController.addStudent );
 
 module.exports = router;

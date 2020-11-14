@@ -33,9 +33,11 @@ $(document).ready(function () {
         $("#inputEditNameLecture").val(name);
         $("#inputEditEmailLecture").val(email);
         $("#inputEditPhoneLecture").val(phone);
-        $("#selectEditCategories")[0].selectedIndex = listSelected.indexOf(
-          categories
-        );
+        $("#selectEditCategories").val(categories)
+
+        // [0].selectedIndex = listSelected.indexOf(
+        //   categories
+        // );
         //$('#editAvatarLecture').val('rỗng')
         $("#inputEditDescLecture").val(desc);
         console.log(obj);

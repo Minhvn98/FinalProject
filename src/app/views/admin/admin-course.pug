@@ -230,7 +230,7 @@ body#page-top
       .container-fluid
         // Page Heading
         h1.h3.mb-2.text-gray-800 Danh sa&#x301;ch kho&#x301;a ho&#x323;c
-        p.mb-4 56 kho&#x301;a ho&#x323;c
+        p.mb-4 #{ courses.length } khóa học
         // DataTales Example
         .card.shadow.mb-4
           .card-header.py-3.add-something
@@ -244,38 +244,50 @@ body#page-top
               table#dataTable.table.table-bordered(width='100%' cellspacing='0')
                 thead
                   tr
+                    th Ảnh
                     th Tên khóa học
                     th Mô tả
                     th Trình độ
                     th Giảng viên
                     th Học viên
                     th Chi phí
+                    th Danh mục
                     th Thao tác
                 tfoot
                   tr
+                    th Ảnh
                     th Tên khóa học
                     th Mô tả
                     th Trình độ
                     th Giảng viên
                     th Học viên
                     th Chi phí
+                    th Danh mục
                     th Thao tác
                 tbody
                   each course in courses
                     tr
+                      td
+                        img(src=course.image width='130px')
                       td=course.name
                       td=course.description
                       td=course.level
-                      td=course.lecture.name
+                      td
+                        p(hidden)=course.lecture.lectureId 
+                        p(hidden) -
+                        =course.lecture.name 
                       td=course.listStudent.length
                       td=course.price
+                      td=course.categories
                       td
                         .btn-group(role='group')
                           button.btn.btn-success.text-white.btn-edit(type='button' data-toggle='modal' data-target='#editModal')
                             i.far.fa-edit
                           button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteModal')
                             i.far.fa-trash-alt
-                    // 1 course
+                          i(hidden)=course.videoId
+                          i(hidden)=course._id
+                      // 1 course
                 
                   
       // /.container-fluid
@@ -374,8 +386,10 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(method="POST" action="/admin/addCourse" enctype="multipart/form-data")
+        form(method="POST" action="/admin/editCourse?_method=PUT" enctype="multipart/form-data")
           .form-group
+            input#idCourse(type="hidden" name='id')
+            input#imgOld(type="hidden" name='imgOld')
             label(for='editNameCourse') Tên khóa học
             input#editNameCourse.form-control(type='text' placeholder='Nhập tên khóa học' name="name")
           .form-row
@@ -394,7 +408,7 @@ a.scroll-to-top.rounded(href='#page-top')
           .form-row
             .form-group.col-md-6
               label(for='editLecture') Giảng Viên
-              select#editLecture.form-control.form-control-sm(name="lecture")
+              select#editLecture.form-control.form-control-sm(name="lecture" required)
                 each lect, idx in lectures
                   option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
                   
@@ -407,7 +421,7 @@ a.scroll-to-top.rounded(href='#page-top')
               input#editVideoId.form-control.form-control-sm(type='text' placeholder='Nhập video Id' name='videoId')
             .form-group.col-md-6
               label(for='editImg') Ảnh mô tả
-              input#editImg.form-control-file(type='file' name="image")
+              input#editImg.form-control-file(type='file' name="editImg")
           .form-group
             label(for='editDesc') Mô tả khóa học
             textarea#editDesc.form-control(rows='3' placeholder='Nhập mô tả khóa học' name="description")
@@ -415,7 +429,7 @@ a.scroll-to-top.rounded(href='#page-top')
             button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal')
               | Thoát
             button.btn.btn-primary(type='submit')
-              | Thêm khóa học
+              | Sửa khóa học
 // end edit modal course
 
 
@@ -428,9 +442,10 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        | Ba&#x323;n co&#x301; ch&abreve;&#x301;c mu&ocirc;&#x301;n xo&#x301;a kho&#x301;a ho&#x323;c : Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs,
-        | ExpressJs, Mongodb ?
+        #nameDelete
       .modal-footer
-        button.btn.btn-danger(type='button') Xo&#x301;a
-        button.btn.btn-primary(type='button' data-dismiss='modal')
-          | Kh&ocirc;ng
+        form(method="POST" action="/admin/deleteCourse?_method=DELETE")
+          input#idDelete(name="id" hidden)
+          button.btn.btn-danger(type='submit') Xo&#x301;a
+          button.btn.btn-primary.ml-2(type='button' data-dismiss='modal')
+            | Kh&ocirc;ng

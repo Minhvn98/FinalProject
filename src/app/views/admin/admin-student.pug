@@ -5,28 +5,26 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(name='description' content='')
   meta(name='author' content='')
-  title Trang quản trị
+  title Trang qua&#x309;n tri&#x323;
   // Custom fonts for this template
-  link(href='../fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
+  link(href='/fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
   // Custom styles for this template
-  link(href='../bootstrap/css/bootstrap.css' rel='stylesheet')
+  link(href='/bootstrap/css/bootstrap.min.css' rel='stylesheet')
   link(rel='stylesheet' href='../css/admin1.css ')
-  link(href='../datatables/dataTables.bootstrap4.min.css' rel='stylesheet')
+  link(href='/datatables/dataTables.bootstrap4.min.css' rel='stylesheet')
   // Bootstrap core JavaScript
-  script(defer src='../jquery/jquery.min.js')
-  script(defer src='../bootstrap/js/bootstrap.bundle.min.js')
+  script(defer src='/jquery/jquery.min.js')
+  script(defer src='/bootstrap/js/bootstrap.bundle.min.js')
   // Core plugin JavaScript
-  script(defer src='../jquery-easing/jquery.easing.min.js')
+  script(defer src='/jquery-easing/jquery.easing.min.js')
   // Custom scripts for all pages
-  script(defer src='../javascripts/sb-admin-2.js')
+  script(defer src='/javascripts/sb-admin-2.js')
   // Page level plugins
-  script(defer src='../datatables/jquery.dataTables.min.js')
-  script(defer src='../datatables/dataTables.bootstrap4.min.js')
+  script(defer src='/datatables/jquery.dataTables.min.js')
+  script(defer src='/datatables/dataTables.bootstrap4.min.js')
   // Page level custom scripts
-  //script(defer src='../javascripts/demo/datatables-demo.js')
-script(defer src='../javascripts/admin-lecture.js')
-  
+  script(defer src='/javascripts/admin-student.js')
 body#page-top
 // Page Wrapper
 #wrapper
@@ -48,35 +46,24 @@ body#page-top
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href='tables.html')
+      a.nav-link(href='admin.html')
         i.fas.fa-tachometer-alt
         span Dashboard
     // Divider
     hr.sidebar-divider
     // Nav Item - Quản lý khóa học
     li.nav-item
-      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapse1' aria-expanded='true' aria-controls='collapse1')
+      a.nav-link(href='admin-course.html')
         i.fas.fa-book
         span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
-      #collapse1.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
-        .bg-white.py-2.collapse-inner.rounded
-          h6.collapse-header Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
-          a.collapse-item(href='buttons.html') Danh sa&#x301;ch kho&#x301;a ho&#x323;c
-          a.collapse-item(href='cards.html') Th&ecirc;m kho&#x301;a ho&#x323;c
-          a.collapse-item(href='cards.html') S&#x1B0;&#x309;a kho&#x301;a ho&#x323;c
-          a.collapse-item(href='cards.html') Xo&#x301;a kho&#x301;a ho&#x323;c
-    // Nav Item - Quản lý học viên
     li.nav-item
-      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseStudent' aria-expanded='true' aria-controls='collapseStudent')
+      a.nav-link(href='admin.lecture.html')
+        i.fas.fa-chalkboard-teacher
+        span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
+    li.nav-item
+      a.nav-link(href='admin.lecture.html')
         i.fas.fa-user-graduate
         span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
-      #collapseStudent.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
-        .bg-white.py-2.collapse-inner.rounded
-          h6.collapse-header Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
-          a.collapse-item(href='buttons.html') Danh sa&#x301;ch ho&#x323;c vi&ecirc;n
-          a.collapse-item(href='cards.html') Th&ecirc;m ho&#x323;c vi&ecirc;n
-          a.collapse-item(href='cards.html') S&#x1B0;&#x309;a ho&#x323;c vi&ecirc;n
-          a.collapse-item(href='cards.html') Xo&#x301;a ho&#x323;c vi&ecirc;n
     // Nav Item - Pages Collapse Menu
     li.nav-item
       a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
@@ -85,19 +72,19 @@ body#page-top
       #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
         .bg-white.py-2.collapse-inner.rounded
           h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-          a.collapse-item(href='buttons.html') Xem th&ocirc;ng tin
-          a.collapse-item(href='buttons.html') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
-          a.collapse-item(href='cards.html') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
+          a.collapse-item(href='#') Xem th&ocirc;ng tin
+          a.collapse-item(href='#') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
+          a.collapse-item(href='#') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
     // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link(href='tables.html')
+      a.nav-link(href='#')
         i.fas.fa-bell
         span Th&ocirc;ng ba&#x301;o
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
     li.nav-item
-      a.nav-link(href='tables.html')
+      a.nav-link(href='#')
         i.fas.fa-sign-out-alt
         span &Dstrok;&abreve;ng xu&acirc;&#x301;t
     // Divider
@@ -235,50 +222,165 @@ body#page-top
       // Begin Page Content
       .container-fluid
         // Page Heading
-        h1.h3.mb-2.text-gray-800 Quản lý sinh viên
-        p.mb-4 69 sinh viên
+        h1.h3.mb-2.text-gray-800 Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+        p.mb-4 500 ho&#x323;c vi&ecirc;n
         // DataTales Example
         .card.shadow.mb-4
-          .card-header.py-3.d-flex.justify-content-between
-            h6.m-0.font-weight-bold.text-primary Danh sách sinh viên
+          .card-header.py-3.add-something
+            h6.m-0.font-weight-bold.text-primary Danh sa&#x301;ch ho&#x323;c vi&ecirc;n
             button.btn.btn-primary(data-toggle='modal' data-target='#addModal')
               i.fas.fa-user-plus
-              |  Thêm sinh viên
+              |  Th&ecirc;m ho&#x323;c vi&ecirc;n
           .card-body
             .table-responsive
               table#dataTable.table.table-bordered(width='100%' cellspacing='0')
                 thead
                   tr
-                    th Họ Tên
+                    th Ho&#x323; T&ecirc;n
                     th Email
-                    th Số Điện Thoại
-                    th Thời Gian Tham Gia
-                    th Khóa Học Tham Gia
-                    th Thao Tác
+                    th S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
+                    th Kho&#x301;a ho&#x323;c tham gia
+                    th S&#x1B0;&#x309;a-Xo&#x301;a
                 tfoot
                   tr
-                    th Họ Tên
+                    th Ho&#x323; T&ecirc;n
                     th Email
-                    th Số Điện Thoại
-                    th Thời Gian Tham Gia
-                    th Khóa Học Tham Gia
-                    th Thao Tác
+                    th S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
+                    th Kho&#x301;a ho&#x323;c tham gia
+                    th S&#x1B0;&#x309;a-Xo&#x301;a
                 tbody
                   tr
-                    td Bùi Xuân Huấn
-                    td huanbx69@gmail.com
-                    td 0969 123 123
-                    td 19:05 - 11/11/2020
-                    td 9 khóa học
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
                     td
                       .btn-group(role='group')
-                        button.btn.btn-success(type='button' data-toggle='modal' data-target='#editModal')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
                           i.far.fa-edit
-                        button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteModal')
-                            i.far.fa-trash-alt
-                    // 1 student
-
-                  
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
+                  tr
+                    td Ho&#x323;c V&abreve;n Vi&ecirc;n
+                    td khabanh123@gmail.com
+                    td 0969 666 999
+                    td 9 kho&#x301;a ho&#x323;c
+                    td
+                      .btn-group(role='group')
+                        button.btn.btn-success.text-white(type='button' data-toggle='modal' data-target='#editModal')
+                          i.far.fa-edit
+                        button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteModal')
+                          i.far.fa-trash-alt
+                  // 1 course
       // /.container-fluid
     // End of Main Content
     // Footer
@@ -304,96 +406,91 @@ a.scroll-to-top.rounded(href='#page-top')
       .modal-footer
         button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
         a.btn.btn-primary(href='login.html') Logout
-      
-
 // add student modal
 #addModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='addModalLabel' aria-hidden='true')
   .modal-dialog(role='document')
     .modal-content
       .modal-header
-        h5#addModalLabel.modal-title Thêm sinh viên
+        h5#addModalLabel.modal-title Th&ecirc;m ho&#x323;c vi&ecirc;n
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action="/admin/addStudent" method="POST")
+        form(method="POST" action="/admin/addStudent")
           .form-group
-            label(for='inputNameStudent') Tên sinh viên
-            input#inputNameStudent.form-control(type='text' placeholder='Nhập tên sinh viên' name='inputNameStudent')
-         
+            label(for='inputNameStudent') T&ecirc;n ho&#x323;c vi&ecirc;n
+            input#inputNameStudent.form-control(type='text' placeholder='Nhập tên học viên' name="name")
+          .form-row
+            .form-group.col-md-6
+              label(for='inputEmailStudent') Email
+              input#inputEmailStudent.form-control(type='email' placeholder='Nhập email học viên' name="email")
+            .form-group.col-md-6
+              label(for='inputPhoneStudent') S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
+              input#inputPhoneStudent.form-control(type='text' placeholder='Nhập số điện thoại' name="phone")
           .form-group
-            label(for='inputEmailStudent') Email
-            input#inputEmailStudent.form-control(name='inputEmailStudent' type='email' placeholder='Nhập email giảng viên')
-          .form-group
-            label(for='inputPhoneStudent') S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
-            input#inputPhoneStudent.form-control(name='inputPhoneLecture' type='text' placeholder='Nhập số điện thoại')
-          .form-group
-            label(for='selectCategories') Lĩnh vực giảng dạy
-            select#selectCategories.form-control(name='selectCategories')
-              option(selected='' value='Lập trình Web') Lập trình Web
-              option(value='Lập trình Mobile') Lập trình Mobile
-              option(value='Lập trình Game') Lập trình Game
-          .form-group
-            label(for='avatarLecture') Ảnh đại diện
-            input#avatarLecture.form-control-file(type='file' name='avatarLecture')
-          .form-group
-            label(for='inputDescLecture') Giới thiệu giảng viên
-            textarea#inputDescLecture.form-control(rows='3' placeholder='Nhập giới thiệu giảng viên' name='inputDescLecture')
+            label(for='selectCategories') Ph&acirc;n quy&ecirc;&#x300;n kho&#x301;a ho&#x323;c
+            select#selectCategories.form-control(name="courses" multiple)
+              each course, idx in courses
+               option(value=course._id+'-'+course.name) #{ idx + 1} - #{ course.name }
+          
           hr
           .float-right
-            button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal') Đóng
-            button.btn.btn-primary(type='submit') Thêm giảng viên
+            button.btn.btn-secondary(type='button' data-dismiss='modal') Thoa&#x301;t
+            button.btn.btn-primary.ml-2(type='submit') Th&ecirc;m ho&#x323;c vi&ecirc;n
 // end add modal course
+
 // edit course modal
 #editModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true')
   .modal-dialog(role='document')
     .modal-content
       .modal-header
-        h5#editModalLabel.modal-title S&#x1B0;&#x309;a gia&#x309;ng vi&ecirc;n
+        h5#editModalLabel.modal-title S&#x1B0;&#x309;a ho&#x323;c vi&ecirc;n
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(method="POST" action="/admin/updateLecture?_method=PUT" enctype="multipart/form-data")
+        form
           .form-group
-            input#idLecture(type="text" name="idLecture" hidden)
-            label(for='inputEditNameLecture') Tên giảng viên
-            input#inputEditNameLecture.form-control(type='text' value='' name='inputEditNameLecture')
+            label(for='inputEditNameStudent') T&ecirc;n ho&#x323;c vi&ecirc;n
+            input#inputEditNameStudent.form-control(type='text' value='Ngô Bá Khá')
           .form-row
             .form-group.col-md-6
-              label(for='inputEditEmailLecture') Email
-              input#inputEditEmailLecture.form-control(type='email' value='' name='inputEditEmailLecture')
+              label(for='inputEditEmailStudent') Email
+              input#inputEditEmailStudent.form-control(type='email' value='khabanh123@gmail.com')
             .form-group.col-md-6
-              label(for='inputEditPhoneLecture') Số điện thoại
-              input#inputEditPhoneLecture.form-control(type='text' value='' name='inputEditPhoneLecture')
+              label(for='inputEditPhoneStudent') S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
+              input#inputEditPhoneStudent.form-control(type='text' value='0969 666 999')
           .form-group
-            label(for='selectEditCategories') Lĩnh vực giảng dạy
-            select#selectEditCategories.form-control(name='selectEditCategories')
-              option(value='Lập trình Web') Lập trình Web
-              option(value='Lập trình Mobile') Lập trình Mobile
-              option(value='Lập trình Game') Lập trình Game
+            label(for='selectCategories') Ph&acirc;n quy&ecirc;&#x300;n kho&#x301;a ho&#x323;c
+            select#selectCategories.form-control
+              option(selected='') 1. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 2. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 3. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 2. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 3. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 2. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 3. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 2. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 3. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 2. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
+              option 3. Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh NodeJs, ExpressJs, Mongodb
           .form-group
-            label(for='editAvatarLecture') Ảnh đại diện
-            input#editAvatarLecture.form-control-file(type='file' name='editAvatarLecture')
-          .form-group
-            label(for='inputEditDescLecture') Giới thiệu giảng viên
-            textarea#inputEditDescLecture.form-control(rows='3' name='inputEditDescLecture')
+            label(for='imgEditStudent') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
+            input#imgEditStudent.form-control-file(type='file')
           hr
           .float-right
-            button.btn.btn-secondary.mr-2(type='button' data-dismiss='modal') Thoa&#x301;t
-            button.btn.btn-primary(type='submit') Lưu
+            button.btn.btn-secondary(type='button' data-dismiss='modal') Thoa&#x301;t
+            button.btn.btn-primary(type='submit') S&#x1B0;&#x309;a ho&#x323;c vi&ecirc;n
 // end edit modal course
 // Modal
 #deleteModal.modal.fade(tabindex='-1' aria-labelledby='deleteModalLabel' aria-hidden='true')
   .modal-dialog
-    
     .modal-content
       .modal-header
-        h5#deleteModalLabel.modal-title Xóa giảng viên ?
+        h5#deleteModalLabel.modal-title Xo&#x301;a ho&#x323;c vi&ecirc;n ?
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        #nameDelete
+        | Ba&#x323;n  co&#x301; ch&abreve;&#x301;c mu&ocirc;&#x301;n xo&#x301;a ho&#x323;c vi&ecirc;n : Ng&ocirc; Ba&#x301; Kha&#x301; ?
       .modal-footer
-        form(action="/admin/deleteLecture?_method=DELETE" method="POST")
-          input#idDelete(type="text" name='idDelete' hidden)
-          button.btn.btn-danger.mr-2(type='submit') Xóa
-          button.btn.btn-primary(type='button' data-dismiss='modal') Thoát
+        button.btn.btn-danger(type='button') Xo&#x301;a
+        button.btn.btn-primary(type='button' data-dismiss='modal') Kh&ocirc;ng
+

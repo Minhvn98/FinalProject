@@ -2,55 +2,71 @@
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  $(".btn-edit").click(function (event) {
-    const id = $(this)[0].nextElementSibling.nextElementSibling.textContent
-    const name = $(this)[0].parentElement.parentElement.parentElement
-      .children[0].textContent;
-    const desc = $(this)[0].parentElement.parentElement.parentElement
-      .children[1].textContent;
-    const email = $(this)[0].parentElement.parentElement.parentElement
-      .children[2].textContent;
-    const phone = $(this)[0].parentElement.parentElement.parentElement
-      .children[3].textContent;
-    const categories = $(this)[0].parentElement.parentElement.parentElement
-      .children[4].textContent;
+  function getDataEdit() {
+    const element = $(this)[0].parentElement.parentElement.parentElement.children;
 
+    const id = $(this)[0].parentElement.lastElementChild.textContent;
+    const name = element[1].textContent;
+    const image = element[0].children[0].currentSrc.split('3000')[1];
+    const desc = element[2].textContent;
+    const level = element[3].textContent;
+    const lecture = element[4].textContent;
+    const price = element[6].textContent;
+    const categories = element[7].textContent;
+    const videoId = $(this)[0].parentElement.children[2].textContent
     const obj = {
       id,
+      image,
       name,
-      desc,
-      email,
-      phone,
       categories,
+      desc,
+      level,
+      lecture,
+      price,
+      videoId
     };
 
-    const listSelected = [
-      "Lập trình Web",
-      "Lập trình Mobile",
-      "Lập trình Game",
-    ];
+    // const listSelected = [
+    //   "Lập trình Web",
+    //   "Lập trình Mobile",
+    //   "Lập trình Game",
+    // ];
 
-    $("#idLecture").val(id);
-    
-    $("#inputEditNameLecture").val(name);
-    $("#inputEditEmailLecture").val(email);
-    $("#inputEditPhoneLecture").val(phone);
-    $("#selectEditCategories")[0].selectedIndex = listSelected.indexOf(
-      categories
-    );
-    //$('#editAvatarLecture').val('rỗng')
-    $("#inputEditDescLecture").val(desc);
+    // const listLecture = [];
+
+    // const lst = $('#selectLecture')[0];
+    // for(let item of lst) {
+    //   listLecture.push(item.value)
+    // }
+   
+    $("#idCourse").val(id);
+    $('#imgOld').val(image);
+    $('#editNameCourse').val(name);
+    $('#editLevel').val(level);
+    $('#editCate').val(categories);
+    $('#editLecture').val(lecture);
+    $('#editVideoId').val(videoId);
+    $('#editPrice').val(price);
+    $('#editDesc').val(desc);
     console.log(obj);
-  });
+  }
 
-  $('.btn-delete').click(function() {
+  function getIdDelete() {
     const name = $(this)[0].parentElement.parentElement.parentElement
-      .children[0].textContent;
+      .children[1].textContent;
 
-    const id = $(this)[0].nextElementSibling.textContent
+    const id = $(this)[0].nextElementSibling.nextElementSibling.textContent
 
-    $('#nameDelete')[0].textContent = `Bạn có muốn xóa giảng viên : ${name}`;
+    $('#nameDelete')[0].textContent = `Bạn có muốn xóa khóa học : ${name}`;
     $('#idDelete').val(id);
-    console.log(id)
-  });
+    console.log(id);
+  }
+
+  $(".btn-edit").click(getDataEdit);
+  $('.btn-delete').click(getIdDelete);
+
+  $('#dataTable_paginate').click(function(){
+    $(".btn-edit").click(getDataEdit);
+    $('.btn-delete').click(getIdDelete);
+  })
 });
