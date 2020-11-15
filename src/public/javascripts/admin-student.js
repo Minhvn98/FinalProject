@@ -1,29 +1,23 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
   $("#dataTable").DataTable();
-
   function getDataEdit() {
     const element = $(this)[0].parentElement.parentElement.parentElement.children;
 
     const id = $(this)[0].parentElement.lastElementChild.textContent;
-    const name = element[1].textContent;
-    const image = element[0].children[0].currentSrc.split('3000')[1];
-    const desc = element[2].textContent;
-    const level = element[3].textContent;
+    const name = element[0].textContent;
+    const email = element[1].textContent;
+    const phone = element[2].textContent;
+    const courses = element[3].textContent;
     const lecture = element[4].textContent;
-    const price = element[6].textContent;
-    const categories = element[7].textContent;
-    const videoId = $(this)[0].parentElement.children[2].textContent
+  
     const obj = {
       id,
-      image,
       name,
-      categories,
-      desc,
-      level,
+      email,
+      phone,
+      courses,
       lecture,
-      price,
-      videoId
     };
 
     // const listSelected = [
@@ -38,26 +32,21 @@ $(document).ready(function () {
     // for(let item of lst) {
     //   listLecture.push(item.value)
     // }
-   
-    $("#idCourse").val(id);
-    $('#imgOld').val(image);
-    $('#editNameCourse').val(name);
-    $('#editLevel').val(level);
-    $('#editCate').val(categories);
-    $('#editLecture').val(lecture);
-    $('#editVideoId').val(videoId);
-    $('#editPrice').val(price);
-    $('#editDesc').val(desc);
+    
+    $('#idStudent').val(id);
+    $('#nameStudent').val(name);
+    $('#emailStudent').val(email);
+    $('#phoneStudent').val(phone);
     console.log(obj);
   }
 
   function getIdDelete() {
     const name = $(this)[0].parentElement.parentElement.parentElement
-      .children[1].textContent;
+      .children[0].textContent;
 
-    const id = $(this)[0].nextElementSibling.nextElementSibling.textContent
+    const id = $(this)[0].nextElementSibling.textContent;
 
-    $('#nameDelete')[0].textContent = `Bạn có muốn xóa khóa học : ${name}`;
+    $('#nameDelete')[0].textContent = `Bạn có muốn xóa học viên : ${name}`;
     $('#idDelete').val(id);
     console.log(id);
   }

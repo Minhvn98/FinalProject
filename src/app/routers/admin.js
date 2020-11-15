@@ -23,5 +23,8 @@ router.delete('/deleteCourse', adminController.deleteCourse);
 //Management Student
 router.get('/management-student', adminController.managementStudent );
 router.post('/addStudent', adminController.addStudent );
+router.put('/editStudent', adminController.editStudent );
+router.delete('/deleteStudent', adminController.deleteStudent);
+
 
 module.exports = router;
