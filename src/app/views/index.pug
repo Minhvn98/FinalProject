@@ -5,26 +5,26 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   // Bootstrap CSS
   link(href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800&subset=vietnamese' rel='stylesheet')
-  link(rel='stylesheet' href='../vendor/fontawesome/css/all.min.css')
-  link(rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css')
-  link(rel='stylesheet' href='../css/style.css')
+  link(rel='stylesheet' href='/fontawesome/css/all.min.css')
+  link(rel='stylesheet' href='/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='/css/style.css')
   title Learning Management System
 // ====================== nvarbar =================================
 nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
   .container.menu-top
-    a.navbar-brand(href='#') LMS Page
+    a.navbar-brand(href='/') LMS Page
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarTogglerDemo02.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item.active
-          a.nav-link(href='index.html') Home
+          a.nav-link(href='/') Home
         li.nav-item
-          a.nav-link(href='all_course.html') Course
+          a.nav-link(href='/courses') Course
         li.nav-item
-          a.nav-link(href='#') Contact
+          a.nav-link(href='#contact') Contact
         li.nav-item
-          a.nav-link(href='login.html') Login
+          a.nav-link(href='/login') Login
 // ======================== carousel ==================================
 #carouselExampleIndicators.carousel.slide(data-ride='carousel')
   ol.carousel-indicators
@@ -36,67 +36,53 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
       img.d-block.w-100(src='../images/banner/s1.jpg' alt='Second slide')
       .carousel-caption.d-none.d-md-block
         h1 H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
-        .btn.btn-success Get Started
+        .btn.btn-success
+          a.text-white(href='/courses') Kho&#x301;a Ho&#x323;c
     .carousel-item
       img.d-block.w-100(src='../images/banner/s2.jpg' alt='Third slide')
       .carousel-caption.d-none.d-md-block
         h1 H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
-        .btn.btn-success Get Started
+        .btn.btn-success
+          a.text-white(href='/courses') Kho&#x301;a Ho&#x323;c
     .carousel-item
       img.d-block.w-100(src='../images/banner/s3.jpg' alt='Third slide')
       .carousel-caption.d-none.d-md-block
         h1 H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
-        .btn.btn-success Get Started
+        .btn.btn-success
+          a.text-white(href='/courses') Kho&#x301;a Ho&#x323;c
 // ============================= Featured Courses ==========================
 section.featured-course.py-3
   .container
     .wrap-title
-      h2.title.py-5 Featured Course
+      h4.title.py-5 Kho&#x301;a ho&#x323;c g&acirc;&#x300;n &dstrok;&acirc;y
     .row
-      .col-12.col-md-6.col-lg-4.mb-5
-        .card
-          img.card-img-top(src='../images/course/app1.jpg' alt='Card image cap')
-          .card-body
-            h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh PHP
-            p.card-text
-              | Kh&oacute;a h&#x1ECD;c PHP c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n
-              | g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;.
-            a.btn.btn-success(href='detail-course.html') View detail
-      .col-12.col-md-6.col-lg-4.mb-5
-        .card
-          img.card-img-top(src='../images/course/app2.jpg' alt='Card image cap')
-          .card-body
-            h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh C++
-            p.card-text
-              | Kh&oacute;a h&#x1ECD;c PHP c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n
-              | g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;.
-            a.btn.btn-success(href='detail-course.html') View detail
-      .col-12.col-md-6.col-lg-4.mb-5
-        .card
-          img.card-img-top(src='../images/course/app1.jpg' alt='Card image cap')
-          .card-body
-            h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh JavaScript
-            p.card-text
-              | Kh&oacute;a h&#x1ECD;c PHP c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n
-              | g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;.
-            a.btn.btn-success(href='detail-course.html') View detail
-    a.btn.btn-outline-success.my-3(href='list_course.html') All Course
+      each course in courses
+        .col-12.col-md-6.col-lg-4.mb-5
+          .card
+            img.card-img-top(src= course.image alt= course.name)
+            .card-body
+              h5.card-title= course.name
+              p.card-text= course.description
+              a.btn.btn-success.btn-block(href='/courses/'+ course.slug) Xem chi tiết
+      
+    
+    a.btn.btn-outline-success.my-3(href='/courses') T&acirc;&#x301;t ca&#x309; kho&#x301;a ho&#x323;c
 // ============================= Contact Us ==========================
-section.contact.my-4
+section#contact.contact.my-4
   .container
-    h2.title.py-5 Contact Us
+    h4.title.py-5 Li&ecirc;n h&ecirc;&#x323;
     .row.contact-us
       .col-md-4
         .card
           .card-body
             i.fas.fa-map-marker-alt.contact-icon
-            h3.contact-title Address
+            h3.contact-title &Dstrok;i&#x323;a Chi&#x309;
             p.card-text 175 T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
       .col-md-4
         .card
           .card-body
             i.fas.fa-phone.contact-icon
-            h3.contact-title Phone Number
+            h3.contact-title S&ocirc;&#x301; &Dstrok;i&ecirc;&#x323;n Thoa&#x323;i
             p.card-text 0969 969 969
       .col-md-4
         .card
@@ -104,6 +90,10 @@ section.contact.my-4
             i.far.fa-envelope.contact-icon
             h3.contact-title Email
             p.card-text lmspage123@tlu.vn
+    br
+    br
+    .map
+      iframe(src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29798.09980430974!2d105.81848971149901!3d21.002156310101796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1605709701623!5m2!1svi!2s' height='450' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false' tabindex='0')
 // ======================== Footer ========================
 footer.footer.my-5
   .container
@@ -133,6 +123,6 @@ footer.footer.my-5
         p S&Dstrok;T : 0969 969 969
         p Email : lmspage123@tlu.vn
 i.fas.fa-chevron-up.back-to-top
-script(defer='' src='../vendor/jquery/jquery.min.js')
-script(defer='' src='../vendor/bootstrap/js/bootstrap.min.js')
-script(defer='' src='../js/main.js')
+script(defer src='/jquery/jquery.min.js')
+script(defer src='/bootstrap/js/bootstrap.min.js')
+script(defer src='/javascripts/main.js')

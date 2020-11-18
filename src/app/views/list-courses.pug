@@ -1,0 +1,153 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  // Link file CSS
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800&subset=vietnamese' rel='stylesheet')
+  link(rel='stylesheet' href='/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='/css/css_all_course.css')
+  title T&#x1EA5;t c&#x1EA3; kh&oacute;a h&#x1ECD;c
+// ====================== nvarbar =================================
+nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
+  .container.menu-top
+    a.navbar-brand(href='index.html') LMS Page
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarTogglerDemo02.collapse.navbar-collapse
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link(href='index.html') Home
+        li.nav-item.active
+          a.nav-link(href='all_course.html') Course
+        li.nav-item
+          a.nav-link(href='#') Contact
+        li.nav-item
+          a.nav-link(href='login.html') Login
+// ======================== Courses =========================
+section.courses.my-5
+  .container
+    h4.title.text-center Danh sa&#x301;ch kho&#x301;a ho&#x323;c
+    .row
+      ul#myTab.nav.nav-tabs(role='tablist')
+        li.nav-item
+          a#all-tab.nav-link.active(data-toggle='tab' href='#all' role='tab' aria-controls='home' aria-selected='true') All
+        li.nav-item
+          a#web-tab.nav-link(data-toggle='tab' href='#web' role='tab' aria-controls='profile' aria-selected='false') Web
+        li.nav-item
+          a#mobile-tab.nav-link(data-toggle='tab' href='#mobile' role='tab' aria-controls='contact' aria-selected='false') Mobile
+        li.nav-item
+          a#game-tab.nav-link(data-toggle='tab' href='#game' role='tab' aria-controls='contact' aria-selected='false') Game
+      #myTabContent.tab-content
+        #all.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='all-tab')
+          .row
+            each course in courses
+              .col-12.col-md-6.col-lg-4.mb-5
+                .card
+                  img.card-img-top(src=course.image alt=course.name)
+                  .card-body
+                    h5.card-title=course.name
+                    p.card-text
+                      =course.description
+                    a.btn.btn-success.btn-block(href='/courses/' + course.slug) Xem Chi  Tiết
+            
+          // end row
+        // end tab all
+
+        #web.tab-pane.fade(role='tabpanel' aria-labelledby='web-tab')
+          .row
+            each course in courses
+              if course.categories == 'Lập trình Web'
+                .col-12.col-md-6.col-lg-4.mb-5
+                  .card
+                    img.card-img-top(src=course.image alt=course.name)
+                    .card-body
+                      h5.card-title=course.name
+                      p.card-text
+                        =course.description
+                      a.btn.btn-success.btn-block(href='/courses/' + course.slug) Xem Chi  Tiết
+            // end row
+        // end tab web
+
+        #mobile.tab-pane.fade(role='tabpanel' aria-labelledby='mobile-tab')
+          .row
+            each course in courses
+              if course.categories == 'Lập trình Mobile'
+                .col-12.col-md-6.col-lg-4.mb-5
+                  .card
+                    img.card-img-top(src=course.image alt=course.name)
+                    .card-body
+                      h5.card-title=course.name
+                      p.card-text
+                        =course.description
+                      a.btn.btn-success.btn-block(href='/courses/' + course.slug) Xem Chi  Tiết
+            
+            // end row
+
+        // end tab mobile
+        #game.tab-pane.fade(role='tabpanel' aria-labelledby='game-tab')
+          .row
+            each course in courses
+              if course.categories == 'Lập trình Game'
+                .col-12.col-md-6.col-lg-4.mb-5
+                  .card
+                    img.card-img-top(src=course.image alt=course.name)
+                    .card-body
+                      h5.card-title=course.name
+                      p.card-text
+                        =course.description
+                      a.btn.btn-success.btn-block(href='/courses/' + course.slug) Xem Chi  Tiết
+            // end row
+        // end tab game
+      // end content tab
+    .pagination
+      nav(aria-label='Page navigation example')
+        ul.pagination
+          li.page-item.disabled
+            a.page-link(href='#' aria-label='Previous')
+              span(aria-hidden='true') &laquo;
+              span.sr-only Previous
+          li.page-item
+            a.page-link(href='#') 1
+          li.page-item.disabled
+            a.page-link(href='#') 2
+          li.page-item.disabled
+            a.page-link(href='#') 3
+          li.page-item.disabled
+            a.page-link(href='#' aria-label='Next')
+              span(aria-hidden='true') &raquo;
+              span.sr-only Next
+    // end pagination
+// ======================== Footer ========================
+footer.footer.my-5
+  .container
+    .row
+      .col-md-3
+        a.navbar-brand.mt-5(href='index.html') LMS Page
+        p H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
+        .footer-icon
+          a(target='blank' href='https://fb.com/Minhvn98')
+            i.fab.fa-facebook
+          a(target='blank' href='https://github.com/Minhvn98')
+            i.fab.fa-github
+          a(target='blank' href='https://fb.com/mik.nguyen.102')
+            i.fab.fa-facebook
+      .col-md-5
+        h3.footer-title.mt-5 References
+        ul
+          li.mb-2
+            a(href='https://getbootstrap.com/docs/4.1') Bootstrap 4
+          li.mb-2
+            a(href='https://w3school.com') W3school
+          li.mb-2
+            a(href='https://github.com/Minhvn98/LMS_Project') Source Code
+      .col-md-4
+        h3.footer-title.mt-5 Contact
+        p Add : 175, T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
+        p S&Dstrok;T : 0969 969 969
+        p Email : lmspage123@tlu.vn
+i.fas.fa-chevron-up.back-to-top
+// ================== JS ========================
+script(defer='' src='/jquery/jquery.min.js')
+script(defer='' src='/bootstrap/js/bootstrap.min.js')
+script(defer='' src='/javascript/main.js')

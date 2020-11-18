@@ -9,6 +9,8 @@ require('dotenv').config()
 
 const db = require('../../config/db')
 const port = (process.env.PORT || 3000)
+
+const indexRouter = require('./routers') 
 const adminRouter = require('./routers/admin');
 
 db.connect();
@@ -24,11 +26,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.static(path.join(__dirname, '..', 'vendor')));
 
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
-
-app.get('/', (req, res) => res.render('hehe'))
 
 
 

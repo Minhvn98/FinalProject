@@ -282,3 +282,11 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark {
         height: 300px;
     }
 }
+
+.map {
+    width: 100%;
+}
+
+.map iframe {
+    width: 100%;
+}
