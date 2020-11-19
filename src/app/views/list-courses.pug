@@ -5,6 +5,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   // Link file CSS
   link(href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800&subset=vietnamese' rel='stylesheet')
+  link(rel="stylesheet", href="/fontawesome/css/all.min.css")
   link(rel='stylesheet' href='/bootstrap/css/bootstrap.min.css')
   link(rel='stylesheet' href='/css/css_all_course.css')
   title T&#x1EA5;t c&#x1EA3; kh&oacute;a h&#x1ECD;c
@@ -65,7 +66,7 @@ section.courses.my-5
                       h5.card-title=course.name
                       p.card-text
                         =course.description
-                      a.btn.btn-success.btn-block(href='/courses/' + course.slug) Xem Chi  Tiết
+                      a.btn.btn-success.btn-block(href=`/courses/${course.slug}`) Xem Chi  Tiết
             // end row
         // end tab web
 
@@ -150,4 +151,4 @@ i.fas.fa-chevron-up.back-to-top
 // ================== JS ========================
 script(defer='' src='/jquery/jquery.min.js')
 script(defer='' src='/bootstrap/js/bootstrap.min.js')
-script(defer='' src='/javascript/main.js')
+script(defer='' src='/javascripts/main.js')

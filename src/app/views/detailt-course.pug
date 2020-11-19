@@ -5,45 +5,44 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   // Link file CSS
   link(href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800&subset=vietnamese' rel='stylesheet')
-  link(rel='stylesheet' href='../vendor/fontawesome/css/all.min.css')
-  link(rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css')
-  link(rel='stylesheet' href='../css/single_course.css')
-  script(defer='' src='../vendor/jquery/jquery.min.js')
-  script(defer='' src='../vendor/bootstrap/js/bootstrap.min.js')
-  script(defer='' src='../js/main.js')
-  script(defer='' src='../js/detail.course.js')
-  title kh&oacute;a h&#x1ECD;c
+  link(rel='stylesheet' href='/fontawesome/css/all.min.css')
+  link(rel='stylesheet' href='/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='/css/single_course.css')
+  script(defer src='/jquery/jquery.min.js')
+  script(defer src='/bootstrap/js/bootstrap.min.js')
+  script(defer src='/javascripts/main.js')
+  script(defer src='/javascripts/detail-course.js')
+  title=course.name
 // ====================== nvarbar =================================
 nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
   .container.menu-top
-    a.navbar-brand(href='index.html') LMS Page
+    a.navbar-brand(href='/') LMS Page
     button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarTogglerDemo02.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item
-          a.nav-link(href='index.html') Home
+          a.nav-link(href='/') Home
         li.nav-item.active
-          a.nav-link(href='all_course.html') Course
+          a.nav-link(href='/courses') Course
         li.nav-item
           a.nav-link(href='#') Contact
         li.nav-item
-          a.nav-link(href='login.html') Login
+          a.nav-link(href='/login') Login
 .container
   .row.content
     .col-md-8.col-sm-12.left-content
       nav(aria-label='breadcrumb breadcrumb-detail-course')
         ol.breadcrumb
           li.breadcrumb-item
-            a(href='#') Trang chu&#x309;
+            a(href='/') Trang chu&#x309;
           li.breadcrumb-item
-            a(href='#') Kho&#x301;a ho&#x323;c
+            a(href='/courses') Kho&#x301;a ho&#x323;c
           li.breadcrumb-item
-            a(href='#') Pha&#x301;t tri&ecirc;&#x309;n web
-      h3.mt-4 L&acirc;&#x323;p tri&#x300;nh Nodejs t&#x1B0;&#x300; A-Z
+            a(href='#')=course.categories
+      h3.mt-4=course.name
       p.description
-        | X&acirc;y d&#x1EF1;ng web trong th&#x1EF1;c t&#x1EBF; v&#x1EDB;i NodeJS &amp; ExpressJS v&#x1EDB;i c&aacute;ch chia s&#x1EBB; chi ti&#x1EBF;t, t&#x1EAD;n t&acirc;m, d&#x1EC5; hi&#x1EC3;u v&agrave; ch&#x1EA5;t gi&#x1ECD;ng
-        | gi&agrave;u s&#x1EE9;c s&#x1ED1;ng c&#x1EE7;a ng&#x1B0;&#x1EDD;i chia s&#x1EBB;
+        = course.description
       .mt-2.you-can-learn
         h4 Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300;
         section
@@ -81,7 +80,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
                       i.fas.fa-file-download
                       | Ta&#x309;i xu&ocirc;&#x301;ng
                   li.d-flex.justify-content-between.align-items-center
-                    | 2. Ba&#x300;i gia&#x309;ng 2
+                    | 2. Ba&#x300;i gia&#x309;ng 2 
                     a(href='#')
                       i.fas.fa-file-download
                       | Ta&#x309;i xu&ocirc;&#x301;ng
@@ -104,7 +103,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
                       i.fas.fa-file-download
                       | Ta&#x309;i xu&ocirc;&#x301;ng
                   li.d-flex.justify-content-between.align-items-center
-                    | 2. Ba&#x300;i t&acirc;&#x323;p 2
+                    | 2. Ba&#x300;i t&acirc;&#x323;p 2 
                     a(href='#')
                       i.fas.fa-file-download
                       | Ta&#x309;i xu&ocirc;&#x301;ng
@@ -127,7 +126,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
                       i.fas.fa-file-download
                       | Ta&#x309;i xu&ocirc;&#x301;ng
                   li.d-flex.justify-content-between.align-items-center
-                    | 2. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 2
+                    | 2. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 2 
                     a(href='#')
                       i.fas.fa-file-download
                       | Ta&#x309;i xu&ocirc;&#x301;ng
@@ -161,14 +160,11 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
       .info-lecture.shadow-sm
         h4.mb-3 Th&ocirc;ng tin gia&#x309;ng vi&ecirc;n
         .media
-          img.mr-3.rounded-circle(src='../images/huan.jpg' alt='...')
+          img.mr-3.rounded-circle(src=lect.avatar alt=lect.name)
           .media-body
-            h5.mt-0 Bu&#x300;i Xu&acirc;n Hu&acirc;&#x301;n
+            h5.mt-0= lect.name
             span.lecture-desc
-              | Th&acirc;&#x300;y B&ugrave;i Xu&acirc;n Hu&#x1EA5;n l&agrave; m&#x1ED9;t nha&#x300; gia&#x301;o &#x1B0;u tu&#x301;, giang h&#x1ED3; m&#x1EA1;ng, nh&acirc;n
-              | v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam.C&ocirc;ng vi&#x1EC7;c ch&iacute;nh c&#x1EE7;a th&acirc;&#x300;y
-              | la&#x300; cho vay la&#x303;i su&acirc;&#x301;t cao, no&#x301;i &dstrok;a&#x323;o ly&#x301; tr&ecirc;n ma&#x323;ng v&agrave; kinh doanh c&aacute;c d&#x1ECB;ch v&#x1EE5; t&#x1EEB;
-              | Facebook.
+              = lect.description
       .block-rating
         h4.my-3 Ca&#x309;m nh&acirc;&#x323;n ho&#x323;c vi&ecirc;n
         .box-rating
@@ -219,11 +215,11 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
                 | H&ocirc;m na&#x300;o anh em mi&#x300;nh &dstrok;o&#x301;ng MV &dstrok;i.
     .col-md-4.col-sm-12.right-content
       .card.shadow
-        .image-play
-          img.card-img-top(src='../images/course/node.jpg' alt='...')
-          i.fas.fa-play-circle(data-toggle='modal' data-target='#previewCourse')
+        .image-play(data-toggle='modal' data-target='#previewCourse')
+          img.card-img-top(src=course.image alt=course.name)
+          i.fas.fa-play-circle
         .card-body
-          a.btn.btn-block.btn-success(href='#') Ho&#x323;c Ngay
+          a.btn.btn-success.btn-block(href='#') Đăng ký khóa học
           ul.mt-3
             li
               i.fas.fa-tachometer-alt
@@ -233,8 +229,13 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
               | N&ocirc;&#x323;i dung &dstrok;&#x1B0;&#x1A1;&#x323;c bi&ecirc;n soa&#x323;n khoa ho&#x323;c
             li
               i.fas.fa-chalkboard-teacher
-              | Gia&#x309;ng vi&ecirc;n co&#x301; chuy&ecirc;n
-              |                 m&ocirc;n cao
+              | Giảng viên có trình độ chuyên môn cao
+            li
+              i.fas.fa-money-check-alt
+              | Chỉ với 
+              =course.price
+              
+              
   // end rowconent
   .row.related.course
     .col-sm-12
@@ -245,8 +246,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
         .card-body
           h5.card-title Kho&#x301;a ho&#x323;c l&acirc;p tri&#x300;nh FrontEnd
           p.card-text
-            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung
-            | ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
+            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
           a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
     .col-lg-4.col-md-6.col-sm-12.mb-5
       .card
@@ -254,8 +254,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
         .card-body
           h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh API v&#x1A1;&#x301;i Nodejs
           p.card-text
-            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung
-            | ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
+            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
           a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
     .col-lg-4.col-md-6.col-sm-12.mb-5
       .card
@@ -263,8 +262,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
         .card-body
           h5.card-title Kho&#x301;a ho&#x323;c Angular Master
           p.card-text
-            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung
-            | ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
+            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
           a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
 // ======================== Footer ========================
 footer.footer.my-5
@@ -307,5 +305,5 @@ i.fas.fa-chevron-up.back-to-top
             button.close(type='button' data-dismiss='modal' aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
-            iframe.preVideo(src='https://www.youtube.com/embed/j3VKmOYp2eg?enablejsapi=1&version=3&playerapiid=ytplayer' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
-// ================== JS ========================
+            iframe.preVideo(src=`https://www.youtube.com/embed/${course.videoId}?enablejsapi=1&version=3&playerapiid=ytplayer` frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+

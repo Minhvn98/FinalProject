@@ -1466,3 +1466,127 @@ html {
     display: flex;
     justify-content: space-between;
   }
+
+  
+.breadcrumb-item a {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2dbc6f;
+}
+
+.left-content li {
+list-style: none;
+}
+
+.course-requiment li, .you-can-learn li {
+padding: 5px;
+}
+
+
+.course-requiment ul, .you-can-learn ul {
+padding: 0;
+}
+
+.course-requiment i, .you-can-learn i {
+  color: #18d26e;
+  padding-right: 10px;
+}
+
+.container li {
+  list-style: none;
+  padding: 3px 0;
+}
+
+.container i {
+  color: #18d26e;
+  padding-right: 10px;
+}
+
+.image-play {
+  position: relative;
+}
+
+.image-play i {
+  position: absolute;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  top: 50%;
+  font-size: 50px;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+.modal iframe {
+  width: 100%;
+  height: 430px;
+}
+
+.info-lecture {
+  padding: 15px;
+}
+
+.info-lecture img {
+  width: 120px;
+}
+
+/* .btn-success {
+  padding: 8px 50px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #fff !important;
+  
+} */
+
+.left-content strong {
+  color: #111;
+}
+
+ul.list-content li {
+  border-bottom: 1px solid #dbd6d6;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.block-rating img {
+  width: 60px;
+  height: 60px;
+}
+
+.right-content ul {
+list-style: none;
+padding: 0;
+}
+
+.right-content li {
+padding: 5px;
+}
+
+.right-content i {
+padding-right: 10px;
+color: #18d26e;
+}
+
+.avatar {
+width: 120px;
+height: 120px;
+margin-bottom: 30px;
+border: 1px solid #cdc6c6;
+}
+
+.row.content {
+padding: 2rem 0rem;
+background-color: #fff;
+}
+
+.list-info li{
+list-style: none;
+margin: 1rem 0rem;
+}
+
+.list-content {
+padding: 0;
+}
+
+.list-content a {
+color: #18d26e;
+}

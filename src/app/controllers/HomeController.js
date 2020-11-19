@@ -1,6 +1,8 @@
 
 const path = require('path');
 const Course = require('../models/Course');
+const Lecture = require('../models/Lecture');
+const Student = require('../models/Student');
 
 class HomeController {
 
@@ -18,9 +20,23 @@ class HomeController {
     }
 
     detailsCourse(req, res, next) {
-        Course.find({slug: req.params.slug})
-            .then(courses => res.send(courses))
+        Course.findOne({slug: req.params.slug})
+            .then(function(course) {
+                course.price = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(course.price);
+                course.price = course.price.slice(1) +' đ';
+                console.log(course.price)
+                Lecture.findById(course.lecture.lectureId)
+                    .then(lect => res.render('detailt-course', {course, lect}))
+        })
             .catch(err => next(err))
+
+     
+    
+            // .then(courses => res.render('detailt-course'))
+            // .catch(err => next(err))
+            
+        //     console.log(x)
+        // res.json(x);
     }
 
     login(req, res, next) {
@@ -33,6 +49,13 @@ class HomeController {
 
     forgotPassword(req, res, next) {
         res.render('forgot-password')
+    }
+
+    createAcc(req, res, next) {
+        const student = new Student(req.body);
+        Student.create(student)
+            .then(() => res.redirect('/'))
+            .catch(err => next(err))
     }
 }
 

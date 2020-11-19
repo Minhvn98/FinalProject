@@ -12,6 +12,7 @@ const port = (process.env.PORT || 3000)
 
 const indexRouter = require('./routers') 
 const adminRouter = require('./routers/admin');
+const lectureRouter = require('./routers/lecture')
 
 db.connect();
 // view engine setup
@@ -27,8 +28,8 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.static(path.join(__dirname, '..', 'vendor')));
 
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
+app.use('/lecture', lectureRouter);
 
 
 

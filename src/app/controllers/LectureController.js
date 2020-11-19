@@ -64,6 +64,19 @@ class LectureController {
             .then(() => res.redirect('/admin/management-lecture'))
             .catch((err) => next(err));
     }
+
+
+    //[GET] /lecture
+    lecture(req, res, next) {
+        Lecture.findById(req.params.id)
+            .then((lect) => res.render(path.join('lecture', 'lecture'), {lect}))
+    }
+
+    showInfo(req, res, next) {
+        //res.json(req.params.id)
+        Lecture.findById(req.params.id)
+            .then((lect) => res.render(path.join('lecture', 'lecture-info'), {lect}))
+    }
 }
 
 module.exports = new LectureController();

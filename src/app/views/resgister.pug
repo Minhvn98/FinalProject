@@ -11,6 +11,7 @@ head
   // Custom styles for this template
   link(href='/bootstrap/css/bootstrap.min.css' rel='stylesheet')
   link(rel='stylesheet' href='/css/login.css')
+  script(src="/javascripts/resgister.js")
 body.bg-gradient-primary
 .container
   .row.justify-content-center
@@ -19,17 +20,19 @@ body.bg-gradient-primary
         .p-5
           .text-center
             h1.h4.text-gray-900.mb-4 Ta&#x323;o Ta&#x300;i Khoa&#x309;n!
-          form.user
+          form.user#create-account(method="POST" action="/create-account")
             .form-group
-              input#inputName.form-control.form-control-user(type='text' placeholder='Nhập họ tên')
+              input#inputName.form-control.form-control-user(type='text' placeholder='Nhập họ tên' name='name')
             .form-group
-              input#exampleInputEmail.form-control.form-control-user(type='email' placeholder='Email Address')
+              input#inputEmail.form-control.form-control-user(type='email' placeholder='Nhập Email của bạn' name='email')
+            .form-group
+              input#inputPhone.form-control.form-control-user(type='text' placeholder='Nhập số điện thoại của bạn' name='phone')
             .form-group.row
               .col-sm-6.mb-3.mb-sm-0
-                input#exampleInputPassword.form-control.form-control-user(type='password' placeholder='Mật khẩu')
+                input#inputPassword.form-control.form-control-user(type='password' placeholder='Mật khẩu' name='password' autocomplete="true")
               .col-sm-6
-                input#exampleRepeatPassword.form-control.form-control-user(type='password' placeholder='Nhập lại mật khẩu')
-            a.btn.btn-primary.btn-user.btn-block(href='#')
+                input#repeatPassword.form-control.form-control-user(type='password' placeholder='Nhập lại mật khẩu' name="repeat-password" autocomplete="true")
+            button(type="submit").btn.btn-primary.btn-user.btn-block
               | &Dstrok;&abreve;ng ky&#x301; ta&#x300;i khoa&#x309;n
             hr
             a.btn.btn-google.btn-user.btn-block(href='#')
