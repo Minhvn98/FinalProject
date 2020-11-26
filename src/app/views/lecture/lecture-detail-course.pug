@@ -1,0 +1,738 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  title Trang qua&#x309;n tri&#x323;
+  // Custom fonts for this template
+  link(href='/fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+  // Custom styles for this template
+  link(href='/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+  link(rel='stylesheet' href='/css/lecture-detail-course.css')
+// Page Wrapper
+body#page-top
+#wrapper
+  // Sidebar
+  ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
+    // Sidebar - Brand
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+      .sidebar-brand-icon.rotate-n-15
+        i.fas.fa-laugh-wink
+      .sidebar-brand-text.mx-3 LMS Admin
+    // Divider
+    hr.sidebar-divider.my-0
+    hr
+    // Nav Item - Dashboard
+    li.nav-item.active
+      a.nav-link(href='#')
+        i.fas.fa-chalkboard-teacher
+        span Xin cha&#x300;o Admin
+    // Divider
+    hr.sidebar-divider
+    li.nav-item
+      a.nav-link(href='#')
+        i.fas.fa-tachometer-alt
+        span Dashboard
+    // Divider
+    hr.sidebar-divider
+    // Nav Item - Quản lý khóa học
+    li.nav-item
+      a.nav-link(href='admin-course.html')
+        i.fas.fa-book
+        span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
+    li.nav-item
+      a.nav-link(href='admin.lecture.html')
+        i.fas.fa-chalkboard-teacher
+        span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
+    li.nav-item
+      a.nav-link(href='admin.lecture.html')
+        i.fas.fa-user-graduate
+        span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+    // Nav Item - Pages Collapse Menu
+    li.nav-item
+      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
+        i.far.fa-user
+        span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
+      #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
+        .bg-white.py-2.collapse-inner.rounded
+          h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
+          a.collapse-item(href='#') Xem th&ocirc;ng tin
+          a.collapse-item(href='#') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
+          a.collapse-item(href='#') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
+    // Nav Item - Utilities Collapse Menu
+    li.nav-item
+      a.nav-link(href='#')
+        i.fas.fa-bell
+        span Th&ocirc;ng ba&#x301;o
+    // Divider
+    hr.sidebar-divider
+    // Nav Item - Tables
+    li.nav-item
+      a.nav-link(href='#')
+        i.fas.fa-sign-out-alt
+        span &Dstrok;&abreve;ng xu&acirc;&#x301;t
+    // Divider
+    hr.sidebar-divider.d-none.d-md-block
+    // Sidebar Toggler (Sidebar)
+    .text-center.d-none.d-md-inline
+      button#sidebarToggle.rounded-circle.border-0
+  // End of Sidebar
+  // Content Wrapper
+  #content-wrapper.d-flex.flex-column
+    // Main Content
+    #content
+      // Topbar
+      nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+        // Sidebar Toggle (Topbar)
+        button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+          i.fa.fa-bars
+        // Topbar Search
+        form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
+          .input-group
+            input.form-control.bg-light.border-0.small(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+            .input-group-append
+              button.btn.btn-primary(type='button')
+                i.fas.fa-search.fa-sm
+        // Topbar Navbar
+        ul.navbar-nav.ml-auto
+          // Nav Item - Search Dropdown (Visible Only XS)
+          li.nav-item.dropdown.no-arrow.d-sm-none
+            a#searchDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-search.fa-fw
+            // Dropdown - Messages
+            .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in(aria-labelledby='searchDropdown')
+              form.form-inline.mr-auto.w-100.navbar-search
+                .input-group
+                  input.form-control.bg-light.border-0.small(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+                  .input-group-append
+                    button.btn.btn-primary(type='button')
+                      i.fas.fa-search.fa-sm
+          // Nav Item - Alerts
+          li.nav-item.dropdown.no-arrow.mx-1
+            a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-bell.fa-fw
+              // Counter - Alerts
+              span.badge.badge-danger.badge-counter 3+
+            // Dropdown - Alerts
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
+              h6.dropdown-header
+                | Alerts Center
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .mr-3
+                  .icon-circle.bg-primary
+                    i.fas.fa-file-alt.text-white
+                div
+                  .small.text-gray-500 December 12, 2019
+                  span.font-weight-bold A new monthly report is ready to download!
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .mr-3
+                  .icon-circle.bg-success
+                    i.fas.fa-donate.text-white
+                div
+                  .small.text-gray-500 December 7, 2019
+                  |                     $290.29 has been deposited into your account!
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .mr-3
+                  .icon-circle.bg-warning
+                    i.fas.fa-exclamation-triangle.text-white
+                div
+                  .small.text-gray-500 December 2, 2019
+                  |                     Spending Alert: We&apos;ve noticed unusually high spending for your account.
+              a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
+          // Nav Item - Messages
+          li.nav-item.dropdown.no-arrow.mx-1
+            a#messagesDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-envelope.fa-fw
+              // Counter - Messages
+              span.badge.badge-danger.badge-counter 7
+            // Dropdown - Messages
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='messagesDropdown')
+              h6.dropdown-header
+                | Message Center
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/fn_BT9fwg_E/60x60' alt='')
+                  .status-indicator.bg-success
+                .font-weight-bold
+                  .text-truncate Hi there! I am wondering if you can help me with a problem I&apos;ve been having.
+                  .small.text-gray-500 Emily Fowler &middot; 58m
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/AU4VPcFN4LE/60x60' alt='')
+                  .status-indicator
+                div
+                  .text-truncate
+                    | I have the photos that you ordered last month, how would you like them sent to you?
+                  .small.text-gray-500 Jae Chun &middot; 1d
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/CS2uCrpNzJY/60x60' alt='')
+                  .status-indicator.bg-warning
+                div
+                  .text-truncate
+                    | Last month&apos;s report looks great, I am very happy with the progress so far, keep up the good work!
+                  .small.text-gray-500 Morgan Alvarez &middot; 2d
+              a.dropdown-item.d-flex.align-items-center(href='#')
+                .dropdown-list-image.mr-3
+                  img.rounded-circle(src='https://source.unsplash.com/Mv9hjnEUHR4/60x60' alt='')
+                  .status-indicator.bg-success
+                div
+                  .text-truncate
+                    | Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren&apos;t good...
+                  .small.text-gray-500 Chicken the Dog &middot; 2w
+              a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
+          .topbar-divider.d-none.d-sm-block
+          // Nav Item - User Information
+          li.nav-item.dropdown.no-arrow
+            a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              span.mr-2.d-none.d-lg-inline.text-gray-600.small Valerie Luna
+              img.img-profile.rounded-circle(src='https://source.unsplash.com/QAB-WJcbgJk/60x60')
+            // Dropdown - User Information
+            .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
+              a.dropdown-item(href='#')
+                i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                |                   Profile
+              a.dropdown-item(href='#')
+                i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                |                   Settings
+              a.dropdown-item(href='#')
+                i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400
+                |                   Activity Log
+              .dropdown-divider
+              a.dropdown-item(href='#' data-toggle='modal' data-target='#logoutModal')
+                i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                |                   Logout
+      // End of Topbar
+      // Begin Page Content
+      .container-fluid
+        // Content Row
+        .row.content
+          .col-md-7.col-sm-12.left-content
+            h3.my-4 L&acirc;&#x323;p tri&#x300;nh Nodejs t&#x1B0;&#x300; A-Z
+            p.description
+              | X&acirc;y d&#x1EF1;ng web trong th&#x1EF1;c t&#x1EBF; v&#x1EDB;i NodeJS &amp; ExpressJS v&#x1EDB;i c&aacute;ch chia s&#x1EBB; chi ti&#x1EBF;t, t&#x1EAD;n t&acirc;m, d&#x1EC5; hi&#x1EC3;u v&agrave; ch&#x1EA5;t gi&#x1ECD;ng gi&agrave;u s&#x1EE9;c s&#x1ED1;ng c&#x1EE7;a ng&#x1B0;&#x1EDD;i chia s&#x1EBB;
+            .my-2.you-can-learn
+              .group-header.d-flex.justify-content-between
+                h4 Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300;
+                button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addYouCanLearn')
+                  | Th&ecirc;m
+              section
+                ul
+                  li
+                    i.fas.fa-check
+                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+                    .btn-group(role='group' aria-label='Basic example')
+                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
+                        i.far.fa-edit
+                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
+                        i.far.fa-trash-alt
+                  li
+                    i.fas.fa-check
+                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+                    .btn-group(role='group' aria-label='Basic example')
+                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
+                        i.far.fa-edit
+                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
+                        i.far.fa-trash-alt
+                  li
+                    i.fas.fa-check
+                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+                    .btn-group(role='group' aria-label='Basic example')
+                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
+                        i.far.fa-edit
+                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
+                        i.far.fa-trash-alt
+                  li
+                    i.fas.fa-check
+                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+                    .btn-group(role='group' aria-label='Basic example')
+                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
+                        i.far.fa-edit
+                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
+                        i.far.fa-trash-alt
+            .content-course
+              h4.my-3 N&ocirc;&#x323;i dung kho&#x301;a ho&#x323;c
+              #accordionCourseDetails.accordion
+                .card.shadow-sm
+                  #headingOne.card-header.d-flex.justify-content-between
+                    h2.mb-0
+                      button.btn.btn-link.btn-block.text-left(type='button' data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                        strong Ba&#x300;i gia&#x309;ng
+                    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addLesson')
+                      | Th&ecirc;m ba&#x300;i gia&#x309;ng
+                  #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordionCourseDetails')
+                    .card-body
+                      ul.list-content
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ba&#x300;i gia&#x309;ng 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editLesson')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteLesson')
+                              i.far.fa-trash-alt
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ba&#x300;i gia&#x309;ng 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editLesson')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteLesson')
+                              i.far.fa-trash-alt
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ba&#x300;i gia&#x309;ng 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editLesson')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteLesson')
+                              i.far.fa-trash-alt
+                .card.shadow-sm
+                  #headingTwo.card-header.d-flex.justify-content-between
+                    h2.mb-0
+                      button.btn.btn-link.btn-block.text-left.collapsed(type='button' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+                        strong Ba&#x300;i t&acirc;&#x323;p
+                    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addExp')
+                      | Th&ecirc;m ba&#x300;i t&acirc;&#x323;p
+                  #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordionCourseDetails')
+                    .card-body
+                      ul.list-content
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ba&#x300;i t&acirc;&#x323;p 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editExp')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteExp')
+                              i.far.fa-trash-alt
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ba&#x300;i t&acirc;&#x323;p 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editExp')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteExp')
+                              i.far.fa-trash-alt
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ba&#x300;i t&acirc;&#x323;p 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editExp')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteExp')
+                              i.far.fa-trash-alt
+                .card.shadow-sm
+                  #headingThree.card-header.d-flex.justify-content-between
+                    h2.mb-0
+                      button.btn.btn-link.btn-block.text-left.collapsed(type='button' data-toggle='collapse' data-target='#collapseThree' aria-expanded='false' aria-controls='collapseThree')
+                        strong Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+                    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addRef')
+                      | Th&ecirc;m ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+                  #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordionCourseDetails')
+                    .card-body
+                      ul.list-content
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRef')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRef')
+                              i.far.fa-trash-alt
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRef')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRef')
+                              i.far.fa-trash-alt
+                        li.d-flex.justify-content-between.align-items-center
+                          a(href='#') 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
+                          .btn-group(role='group' aria-label='Basic example')
+                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRef')
+                              i.far.fa-edit
+                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRef')
+                              i.far.fa-trash-alt
+            .course-requiment.mt-4
+              .group-header.d-flex.justify-content-between.my-3
+                h4 Y&ecirc;u c&acirc;&#x300;u
+                button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addRequiment')
+                  | Th&ecirc;m
+              ul
+                li.d-flex.justify-content-between.align-items-center
+                  span
+                    i.fas.fa-check
+                    | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng.
+                  .btn-group(role='group' aria-label='Basic example')
+                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRequiment')
+                      i.far.fa-edit
+                    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
+                      i.far.fa-trash-alt
+                li.d-flex.justify-content-between.align-items-center
+                  span
+                    i.fas.fa-check
+                    | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng.
+                  .btn-group(role='group' aria-label='Basic example')
+                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRequiment')
+                      i.far.fa-edit
+                    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
+                      i.far.fa-trash-alt
+                li.d-flex.justify-content-between.align-items-center
+                  span
+                    i.fas.fa-check
+                    | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng Me&#x323; &#x1A1;i con mu&ocirc;&#x301;n l&acirc;&#x301;y chi&#x323; na&#x300;y
+                  .btn-group(role='group' aria-label='Basic example')
+                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRequiment')
+                      i.far.fa-edit
+                    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
+                      i.far.fa-trash-alt
+            .info-lecture.shadow-sm
+              h4.mb-3 Th&ocirc;ng tin gia&#x309;ng vi&ecirc;n
+              .media
+                img.mr-3.rounded-circle(src='../images/huan.jpg' alt='...')
+                .media-body
+                  h5.mt-0 Bu&#x300;i Xu&acirc;n Hu&acirc;&#x301;n
+                  span.lecture-desc
+                    | Th&acirc;&#x300;y B&ugrave;i Xu&acirc;n Hu&#x1EA5;n l&agrave; m&#x1ED9;t nha&#x300; gia&#x301;o &#x1B0;u tu&#x301;, giang h&#x1ED3; m&#x1EA1;ng, nh&acirc;n
+                    | v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam.C&ocirc;ng vi&#x1EC7;c ch&iacute;nh c&#x1EE7;a th&acirc;&#x300;y
+                    | la&#x300; cho vay la&#x303;i su&acirc;&#x301;t cao, no&#x301;i &dstrok;a&#x323;o ly&#x301; tr&ecirc;n ma&#x323;ng v&agrave; kinh doanh c&aacute;c d&#x1ECB;ch v&#x1EE5; t&#x1EEB;
+                    | Facebook.
+            .block-rating
+              h4.my-3 Bi&#x300;nh lu&acirc;&#x323;n
+              .box-comment
+                form(action='#' method='post')
+                  .media
+                    img.mr-3.rounded-circle(src='../images/banh.jpg' alt='...')
+                    .media-body
+                      .form-group
+                        textarea#input-comment.form-control(rows='3' placeholder='Cảm nhận của bạn ?')
+                  .block-button
+                    .btn.btn-primary Bi&#x300;nh lu&acirc;&#x323;n
+                    .btn.btn-secondary.ml-2 Hu&#x309;y
+              hr
+              ul.list-unstyled
+                li.media.border-bottom.py-2
+                  img.mr-3.rounded-circle(src='../images/banh.jpg' alt='...')
+                  .media-body
+                    h6.mt-0.mb-1 Ng&ocirc; Ba&#x301; Kha&#x301;
+                    p
+                      | Kho&#x301;a ho&#x323;c hay qua&#x301; anh &#x1A1;i.
+                      | H&ocirc;m na&#x300;o va&#x300;o tu&#x300; v&#x1A1;&#x301;i em cho vui.
+                    span
+                li.media.my-4.border-bottom.py-2
+                  img.mr-3.rounded-circle(src='../images/dungtroc.jpg' alt='...')
+                  .media-body
+                    h6.mt-0.mb-1 Du&#x303;ng Tro&#x323;c
+                    p
+                      | Va&#x300;o nha&#x300; &dstrok;a&#x301; v&#x1A1;&#x301;i anh &dstrok;i em.
+                      | Trong na&#x300;y vui l&abreve;&#x301;m em a&#x323;.
+                li.media.border-bottom.py-2
+                  img.mr-3.rounded-circle(src='../images/phu.jpg' alt='...')
+                  .media-body
+                    h6.mt-0.mb-1 Phu&#x301; L&ecirc;
+                    p
+                      | H&ocirc;m na&#x300;o anh em mi&#x300;nh &dstrok;o&#x301;ng MV &dstrok;i.
+          .col-md-4.col-sm-12.right-content
+            .card.shadow
+              .image-play
+                img.card-img-top(src='../images/course/node.jpg' alt='...')
+                i.fas.fa-play-circle(data-toggle='modal' data-target='#previewCourse')
+              .card-body
+                a.btn.btn-block.btn-success(href='#' data-toggle='modal' data-target='#previewCourse') Xem gi&#x1A1;&#x301;i thi&ecirc;&#x323;u
+                ul.mt-3
+                  li
+                    i.fas.fa-tachometer-alt
+                    | Tri&#x300;nh &dstrok;&ocirc;&#x323; c&#x1A1; ba&#x309;n
+                  li
+                    i.fas.fa-list
+                    | N&ocirc;&#x323;i dung &dstrok;&#x1B0;&#x1A1;&#x323;c bi&ecirc;n soa&#x323;n khoa ho&#x323;c
+                  li
+                    i.fas.fa-chalkboard-teacher
+                    | Gia&#x309;ng vi&ecirc;n co&#x301; chuy&ecirc;n
+                    |                       m&ocirc;n cao
+        // end rowconent
+      // /.container-fluid
+    // End of Main Content
+    // Footer
+    footer.sticky-footer.bg-white
+      .container.my-auto
+        .copyright.text-center.my-auto
+          span Copyright &copy; Your Website 2020
+    // End of Footer
+  // End of Content Wrapper
+// End of Page Wrapper
+// Scroll to Top Button
+a.scroll-to-top.rounded(href='#page-top')
+  i.fas.fa-angle-up
+// Logout Modal
+#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title Ready to Leave?
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body Select &quot;Logout&quot; below if you are ready to end your current session.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
+        a.btn.btn-primary(href='login.html') Logout
+.row
+  .col-sm-4.col-md-6
+    #previewCourse.modal.fade(tabindex='-1' aria-labelledby='previewCourseLabel' aria-hidden='true')
+      .modal-dialog.modal-dialog-centered.modal-lg
+        .modal-content
+          .modal-header
+            h5#previewCourseLabel.modal-title
+              | X&acirc;y d&#x1EF1;ng web v&#x1EDB;i NodeJS &amp; ExpressJS
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            iframe.preVideo(src='https://www.youtube.com/embed/j3VKmOYp2eg?enablejsapi=1&version=3&playerapiid=ytplayer' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+// add you can learn
+#addYouCanLearn.modal.fade(tabindex='-1' aria-labelledby='addYouCanLearnLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#addYouCanLearnLabel.modal-title Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300; ?
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Edit you can learn
+#editYouCanLearn.modal.fade(tabindex='-1' aria-labelledby='editYouCanLearnLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#editYouCanLearnLabel.modal-title S&#x1B0;&#x309;a th&ocirc;ng tin
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Delete You can learn
+#deleteYouCanLearn.modal.fade(tabindex='-1' aria-labelledby='deleteYouCanLearnLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#deleteYouCanLearnLabel.modal-title Xo&#x301;a th&ocirc;ng tin
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;N&abreve;&#x301;m ch&abreve;&#x301;c ly&#x301; thuy&ecirc;&#x301;t chung trong vi&ecirc;&#x323;c x&acirc;y d&#x1B0;&#x323;ng web&quot; ?
+          .modal-footer.mt-3
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-danger(type='button') Xo&#x301;a
+// Add bài giảng
+#addLesson.modal.fade(tabindex='-1' aria-labelledby='addLessonLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#addLessonLabel.modal-title Th&ecirc;m ba&#x300;i gia&#x309;ng
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            label(for='nameLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
+            input#nameLesson.form-control(type='text' value='Bài giảng 1')
+          .form-group
+            label(for='fileLesson') File ba&#x300;i gia&#x309;ng
+            input#fileLesson.form-control-file(type='file')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Edit bài giảng
+#editLesson.modal.fade(tabindex='-1' aria-labelledby='editLessonLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#editLessonLabel.modal-title S&#x1B0;&#x309;a ba&#x300;i gia&#x309;ng
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            label(for='editNameLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
+            input#editNameLesson.form-control(type='text' value='Bài giảng 1')
+          .form-group
+            label(for='fileLesson') File ba&#x300;i gia&#x309;ng
+            input#fileLesson.form-control-file(type='file')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Delete Lesson
+#deleteLesson.modal.fade(tabindex='-1' aria-labelledby='deleteLessonLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#deleteLessonLabel.modal-title Xo&#x301;a ba&#x300;i gia&#x309;ng
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;Ba&#x300;i gia&#x309;ng 1&quot; ?
+          .modal-footer.mt-3
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-danger(type='button') Xo&#x301;a
+// Add bài tập
+#addExp.modal.fade(tabindex='-1' aria-labelledby='addExpLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#addExpLabel.modal-title Th&ecirc;m ba&#x300;i t&acirc;&#x323;p
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            label(for='nameLesson') T&ecirc;n ba&#x300;i t&acirc;&#x323;p
+            input#nameLesson.form-control(type='text')
+          .form-group
+            label(for='fileLesson') File ba&#x300;i t&acirc;&#x323;p
+            input#fileLesson.form-control-file(type='file')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Edit bài tập
+#editExp.modal.fade(tabindex='-1' aria-labelledby='editExpLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#editExpLabel.modal-title S&#x1B0;&#x309;a ba&#x300;i t&acirc;&#x323;p
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            label(for='editNameLesson') T&ecirc;n ba&#x300;i t&acirc;&#x323;p
+            input#editNameLesson.form-control(type='text' value='Bài tập 1')
+          .form-group
+            label(for='fileLesson') File ba&#x300;i t&acirc;&#x323;p
+            input#fileLesson.form-control-file(type='file')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Delete Exp
+#deleteExp.modal.fade(tabindex='-1' aria-labelledby='deleteExpLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#deleteExpLabel.modal-title Xo&#x301;a ba&#x300;i t&acirc;&#x323;p
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;Ba&#x300;i t&acirc;&#x323;p 1&quot; ?
+          .modal-footer.mt-3
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-danger(type='button') Xo&#x301;a
+// Add tài liệu tham khảo
+#addRef.modal.fade(tabindex='-1' aria-labelledby='addRefLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#addRefLabel.modal-title Th&ecirc;m ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            label(for='nameLesson') T&ecirc;n ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+            input#nameLesson.form-control(type='text')
+          .form-group
+            label(for='fileLesson') File ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+            input#fileLesson.form-control-file(type='file')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Edit tài liệu tham khảo
+#editRef.modal.fade(tabindex='-1' aria-labelledby='editRefLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#editRefLabel.modal-title S&#x1B0;&#x309;a ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            label(for='editNameLesson') T&ecirc;n ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+            input#editNameLesson.form-control(type='text' value='tài liệu tham khảo 1')
+          .form-group
+            label(for='fileLesson') File ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+            input#fileLesson.form-control-file(type='file')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Delete Ref
+#deleteRef.modal.fade(tabindex='-1' aria-labelledby='deleteRefLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#deleteRefLabel.modal-title Xo&#x301;a ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1&quot; ?
+          .modal-footer.mt-3
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-danger(type='button') Xo&#x301;a
+// add course requiment
+#addRequiment.modal.fade(tabindex='-1' aria-labelledby='addRequimentLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#addRequimentLabel.modal-title Y&ecirc;u c&acirc;&#x300;u kho&#x301;a ho&#x323;c
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Nhập yêu cầu khóa học ?')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Edit course requiment
+#editRequiment.modal.fade(tabindex='-1' aria-labelledby='editRequimentLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#editRequimentLabel.modal-title S&#x1B0;&#x309;a y&ecirc;u c&acirc;&#x300;u kho&#x301;a ho&#x323;c
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          .form-group
+            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?')
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
+// Delete course requiment
+#deleteRequiment.modal.fade(tabindex='-1' aria-labelledby='deleteRequimentLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#deleteRequimentLabel.modal-title Xo&#x301;a y&ecirc;u c&acirc;&#x300;u kho&#x301;a ho&#x323;c
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='' method='POST')
+          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;N&abreve;&#x301;m ch&abreve;&#x301;c ly&#x301; thuy&ecirc;&#x301;t chung trong vi&ecirc;&#x323;c x&acirc;y d&#x1B0;&#x323;ng web&quot; ?
+          .modal-footer.mt-3
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-danger(type='button') Xo&#x301;a
+// Bootstrap core JavaScript
+script(src='/jquery/jquery.min.js')
+script(src='/bootstrap/js/bootstrap.bundle.min.js')
+// Core plugin JavaScript
+script(src='/jquery-easing/jquery.easing.min.js')
+// Custom scripts for all pages
+script(src='/javascripts/sb-admin-2.min.js')
+script(src='/javascripts/detail.course.js')

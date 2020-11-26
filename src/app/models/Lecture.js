@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const Lecture = new Schema({
+const LectureSchema = new Schema({
     name: String,
     email: String,
     phone: String,
@@ -13,6 +13,6 @@ const Lecture = new Schema({
     listStudent: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
 }, { timestamps: true });
 
-module.exports = mongoose.model('Lecture', Lecture);
+module.exports = mongoose.model('Lecture', LectureSchema);
 
 

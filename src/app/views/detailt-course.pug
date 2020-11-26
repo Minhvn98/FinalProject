@@ -12,7 +12,7 @@ head
   script(defer src='/bootstrap/js/bootstrap.min.js')
   script(defer src='/javascripts/main.js')
   script(defer src='/javascripts/detail-course.js')
-  title=course.name
+  title Khóa học #{ course.name }
 // ====================== nvarbar =================================
 nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
   .container.menu-top
@@ -301,7 +301,7 @@ i.fas.fa-chevron-up.back-to-top
         .modal-content
           .modal-header
             h5#previewCourseLabel.modal-title
-              | X&acirc;y d&#x1EF1;ng web v&#x1EDB;i NodeJS &amp; ExpressJS
+              | #{ course.name }
             button.close(type='button' data-dismiss='modal' aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body

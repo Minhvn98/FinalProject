@@ -77,6 +77,10 @@ class LectureController {
         Lecture.findById(req.params.id)
             .then((lect) => res.render(path.join('lecture', 'lecture-info'), {lect}))
     }
+
+    detailCourse(req, res, next) {
+        res.render(path.join('lecture', 'lecture-detail-course'));
+    }
 }
 
 module.exports = new LectureController();

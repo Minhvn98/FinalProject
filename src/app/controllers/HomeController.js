@@ -3,6 +3,9 @@ const path = require('path');
 const Course = require('../models/Course');
 const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
+const Lesson = require('../models/details_course/Lesson');
+const HomeWork = require('../models/details_course/HomeWork');
+const Document = require('../models/details_course/Document');
 
 class HomeController {
 
@@ -11,6 +14,8 @@ class HomeController {
         Course.find({}, null, { sort: {'createdAt': -1}, limit: 3 })
             .then(courses => res.render('', {courses}))
             .catch(err => next(err));
+
+           
     }
 
     listCourses(req, res, next) {

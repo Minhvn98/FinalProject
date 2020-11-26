@@ -7,19 +7,22 @@ const Course = require('../models/Course');
 class CourseController {
 
     //[GET] /admin/management-course
-    index(req, res, next) {
-        Course.find({})
-            .then((courses) => {
-                Lecture.find({}, 'name')
-                .then((lectures) => {
-                    //console.log('course : ', courses);
-                    //.log('lectures : ', lectures)
-                    res.render(path.join('admin', 'admin-course'), { courses, lectures });
-                })
-            })
-            
-            .catch((err) => next(err));
+    async index(req, res, next) {
+        // Course.find({})
+        //     .then((courses) => {
+        //         Lecture.find({}, 'name')
+        //         .then((lectures) => {
+        //             //console.log('course : ', courses);
+        //             //.log('lectures : ', lectures)
+        //             res.render(path.join('admin', 'admin-course'), { courses, lectures });
+        //         })
+        //     })
+        //     .catch((err) => next(err));
         //res.render(path.join('admin', 'admin-course'));
+        const c = Course.findById('5faea38afaffa2368883a90e')
+        const doc = await c
+        console.log(doc)
+
     }
 
     //[POST] /admin/addCourse
@@ -40,11 +43,21 @@ class CourseController {
             price: req.body.price
         });
 
-        console.log(course);
+        Lecture.findByIdAndUpdate(course.lecture.lectureId, { 
+            $push: {
+                listCourse: course._id
+                }
+            })
+            .then(() => {
+                Course.create(course)
+                    .then(() => res.redirect('/admin/management-course'))
+                    .catch((err) => next(err))
+            })
+            .catch(err => next(err))
 
-        Course.create(course)
-            .then(() => res.redirect('/admin/management-course'))
-            .catch((err) => next(err))
+
+        
+
         //Course.find({}).then((i)=>res.json(i))
         
         //res.json(course1)
@@ -82,7 +95,20 @@ class CourseController {
     deleteCourse(req, res, next) {
         //res.json(req.body)
         Course.findByIdAndDelete(req.body.id)
-            .then(() => res.redirect('/admin/management-course'))
+            //.then(() => res.redirect('/admin/management-course'))
+            .then((course) => {
+                console.log(course.lecture.lectureId)
+                console.log('---------------');
+                console.log(course._id)
+                Lecture.findByIdAndUpdate(course.lecture.lectureId, {
+                    $pull: {
+                        listCourse: course._id
+                        }
+                    })
+                    .then(data => res.json(data))
+                    .catch(err => next(err))
+
+            })
             .catch((err) => next(err))
     }
 }
