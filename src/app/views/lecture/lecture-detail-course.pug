@@ -5,7 +5,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(name='description' content='')
   meta(name='author' content='')
-  title Trang qua&#x309;n tri&#x323;
+  title Khóa học #{ course.name }
   // Custom fonts for this template
   link(href='/fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
@@ -21,7 +21,7 @@ body#page-top
     a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
       .sidebar-brand-icon.rotate-n-15
         i.fas.fa-laugh-wink
-      .sidebar-brand-text.mx-3 LMS Admin
+      .sidebar-brand-text.mx-3 LMS Lecture
     // Divider
     hr.sidebar-divider.my-0
     hr
@@ -29,7 +29,7 @@ body#page-top
     li.nav-item.active
       a.nav-link(href='#')
         i.fas.fa-chalkboard-teacher
-        span Xin cha&#x300;o Admin
+        span= course.lecture.name
     // Divider
     hr.sidebar-divider
     li.nav-item
@@ -211,9 +211,8 @@ body#page-top
         // Content Row
         .row.content
           .col-md-7.col-sm-12.left-content
-            h3.my-4 L&acirc;&#x323;p tri&#x300;nh Nodejs t&#x1B0;&#x300; A-Z
-            p.description
-              | X&acirc;y d&#x1EF1;ng web trong th&#x1EF1;c t&#x1EBF; v&#x1EDB;i NodeJS &amp; ExpressJS v&#x1EDB;i c&aacute;ch chia s&#x1EBB; chi ti&#x1EBF;t, t&#x1EAD;n t&acirc;m, d&#x1EC5; hi&#x1EC3;u v&agrave; ch&#x1EA5;t gi&#x1ECD;ng gi&agrave;u s&#x1EE9;c s&#x1ED1;ng c&#x1EE7;a ng&#x1B0;&#x1EDD;i chia s&#x1EBB;
+            h3.my-4 #{ course.name }
+            p.description #{ course.description }
             .my-2.you-can-learn
               .group-header.d-flex.justify-content-between
                 h4 Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300;
@@ -431,8 +430,8 @@ body#page-top
           .col-md-4.col-sm-12.right-content
             .card.shadow
               .image-play
-                img.card-img-top(src='../images/course/node.jpg' alt='...')
-                i.fas.fa-play-circle(data-toggle='modal' data-target='#previewCourse')
+                img.card-img-top(src= course.image alt='...' data-toggle='modal' data-target='#previewCourse')
+                i.fas.fa-play-circle
               .card-body
                 a.btn.btn-block.btn-success(href='#' data-toggle='modal' data-target='#previewCourse') Xem gi&#x1A1;&#x301;i thi&ecirc;&#x323;u
                 ul.mt-3
@@ -478,24 +477,28 @@ a.scroll-to-top.rounded(href='#page-top')
       .modal-dialog.modal-dialog-centered.modal-lg
         .modal-content
           .modal-header
-            h5#previewCourseLabel.modal-title
-              | X&acirc;y d&#x1EF1;ng web v&#x1EDB;i NodeJS &amp; ExpressJS
+            h5#previewCourseLabel.modal-title #{ course.name }
             button.close(type='button' data-dismiss='modal' aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
-            iframe.preVideo(src='https://www.youtube.com/embed/j3VKmOYp2eg?enablejsapi=1&version=3&playerapiid=ytplayer' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+            iframe.preVideo(src=`https://www.youtube.com/embed/${course.videoId}?enablejsapi=1&version=3&playerapiid=ytplayer` frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+
+
+
+
 // add you can learn
 #addYouCanLearn.modal.fade(tabindex='-1' aria-labelledby='addYouCanLearnLabel' aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h5#addYouCanLearnLabel.modal-title Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300; ?
+        h5#addYouCanLearnLabel.modal-title Bạn sẽ học được gì?
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/addYouCanLearn' method='POST')
+          input(type="text", name="idCourse" value= course._id)
           .form-group
-            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?')
+            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?' name="content")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -735,4 +738,4 @@ script(src='/bootstrap/js/bootstrap.bundle.min.js')
 script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
-script(src='/javascripts/detail.course.js')
+script(src='/javascripts/detail-course.js')

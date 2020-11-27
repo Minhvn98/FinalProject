@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const HomeWorkSchema = new Schema(
+const YouCanLearnSchema = new Schema(
   {
     idCourse: { type: Schema.Types.ObjectId, ref: "Course" },
-    title: String,
-    path: String,
+    content: String,
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("HomeWork", HomeWorkSchema);
+module.exports = mongoose.model("YouCanLearn", YouCanLearnSchema);
