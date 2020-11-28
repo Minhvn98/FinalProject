@@ -5,6 +5,7 @@ const Student = require("../models/Student");
 const Course = require("../models/Course");
 
 class LectureController {
+  //[GET] /admin/management-lecture
   index(req, res, next) {
     Lecture.find({})
       .then((lectures) => {
@@ -16,6 +17,7 @@ class LectureController {
     //res.render(path.join('admin', 'admin-lecture'));
   }
 
+  //[POST] /admin/addLecture
   addLecture(req, res, next) {
     const file = req.file;
 
@@ -37,6 +39,8 @@ class LectureController {
     });
   } //end addLecture
 
+
+  //[PUT] admin/updateLecture
   updateLecture(req, res, next) {
     const file = req.file;
 
@@ -62,6 +66,7 @@ class LectureController {
     // res.json(lect)
   }
 
+  //[DELETE] /admin/deleteLecture
   deleteLecture(req, res, next) {
     Lecture.findByIdAndDelete(req.body.idDelete)
       .then(() => res.redirect("/admin/management-lecture"))

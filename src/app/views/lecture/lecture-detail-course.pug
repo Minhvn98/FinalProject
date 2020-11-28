@@ -216,42 +216,23 @@ body#page-top
             .my-2.you-can-learn
               .group-header.d-flex.justify-content-between
                 h4 Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300;
-                button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addYouCanLearn')
+                button.btn.btn-primary.mr-1(type='button' data-toggle='modal' data-target='#addYouCanLearn')
                   | Th&ecirc;m
               section
                 ul
-                  li
-                    i.fas.fa-check
-                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-                    .btn-group(role='group' aria-label='Basic example')
-                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
-                        i.far.fa-edit
-                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
-                        i.far.fa-trash-alt
-                  li
-                    i.fas.fa-check
-                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-                    .btn-group(role='group' aria-label='Basic example')
-                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
-                        i.far.fa-edit
-                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
-                        i.far.fa-trash-alt
-                  li
-                    i.fas.fa-check
-                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-                    .btn-group(role='group' aria-label='Basic example')
-                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
-                        i.far.fa-edit
-                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
-                        i.far.fa-trash-alt
-                  li
-                    i.fas.fa-check
-                    |                       N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-                    .btn-group(role='group' aria-label='Basic example')
-                      button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editYouCanLearn')
-                        i.far.fa-edit
-                      button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
-                        i.far.fa-trash-alt
+                  each item in course.youCanLearn
+                    li.d-flex.justify-content-between.align-items-center
+                      span
+                        i.fas.fa-check
+                        = item.content
+                      .btn-group(role='group' aria-label='Basic example')
+                        button.btn.btn-warning.btn-edit(type='button' data-toggle='modal' data-target='#editYouCanLearn')
+                          i.far.fa-edit
+                        button.btn.btn-danger.btn-delete(type='button' data-toggle='modal' data-target='#deleteYouCanLearn')
+                          i.far.fa-trash-alt
+                        span(hidden)=item._id
+                  
+                  
             .content-course
               h4.my-3 N&ocirc;&#x323;i dung kho&#x301;a ho&#x323;c
               #accordionCourseDetails.accordion
@@ -265,27 +246,17 @@ body#page-top
                   #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordionCourseDetails')
                     .card-body
                       ul.list-content
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ba&#x300;i gia&#x309;ng 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editLesson')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteLesson')
-                              i.far.fa-trash-alt
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ba&#x300;i gia&#x309;ng 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editLesson')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteLesson')
-                              i.far.fa-trash-alt
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ba&#x300;i gia&#x309;ng 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editLesson')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteLesson')
-                              i.far.fa-trash-alt
+                        each lesson in course.lessons
+                          li.d-flex.justify-content-between.align-items-center
+                            a(href=lesson.path)= lesson.title
+                            .btn-group(role='group' aria-label='Basic example')
+                              button.btn.btn-warning.editLesson(type='button' data-toggle='modal' data-target='#editLesson')
+                                i.far.fa-edit
+                              button.btn.btn-danger.deleteLesson(type='button' data-toggle='modal' data-target='#deleteLesson')
+                                i.far.fa-trash-alt
+                              span= lesson._id  
+                        
+                       
                 .card.shadow-sm
                   #headingTwo.card-header.d-flex.justify-content-between
                     h2.mb-0
@@ -296,27 +267,16 @@ body#page-top
                   #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordionCourseDetails')
                     .card-body
                       ul.list-content
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ba&#x300;i t&acirc;&#x323;p 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editExp')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteExp')
-                              i.far.fa-trash-alt
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ba&#x300;i t&acirc;&#x323;p 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editExp')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteExp')
-                              i.far.fa-trash-alt
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ba&#x300;i t&acirc;&#x323;p 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editExp')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteExp')
-                              i.far.fa-trash-alt
+                        each hw in course.homeworks
+                          li.d-flex.justify-content-between.align-items-center
+                            a(href= hw.path)= hw.title
+                            .btn-group(role='group' aria-label='Basic example')
+                              button.btn.btn-warning.editHW(type='button' data-toggle='modal' data-target='#editExp')
+                                i.far.fa-edit
+                              button.btn.btn-danger.deleteHW(type='button' data-toggle='modal' data-target='#deleteExp')
+                                i.far.fa-trash-alt
+                              span= hw._id
+                        
                 .card.shadow-sm
                   #headingThree.card-header.d-flex.justify-content-between
                     h2.mb-0
@@ -327,31 +287,21 @@ body#page-top
                   #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordionCourseDetails')
                     .card-body
                       ul.list-content
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRef')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRef')
-                              i.far.fa-trash-alt
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRef')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRef')
-                              i.far.fa-trash-alt
-                        li.d-flex.justify-content-between.align-items-center
-                          a(href='#') 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
-                          .btn-group(role='group' aria-label='Basic example')
-                            button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRef')
-                              i.far.fa-edit
-                            button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRef')
-                              i.far.fa-trash-alt
+                        each doc in course.documents
+                          li.d-flex.justify-content-between.align-items-center
+                            a(href= doc.path)= doc.title
+                            .btn-group(role='group' aria-label='Basic example')
+                              button.btn.btn-warning.editDoc(type='button' data-toggle='modal' data-target='#editRef')
+                                i.far.fa-edit
+                              button.btn.btn-danger.deleteDoc(type='button' data-toggle='modal' data-target='#deleteRef')
+                                i.far.fa-trash-alt  
+                              span= doc._id
+                        
+                       
             .course-requiment.mt-4
               .group-header.d-flex.justify-content-between.my-3
                 h4 Y&ecirc;u c&acirc;&#x300;u
-                button.btn.btn-primary(type='button' data-toggle='modal' data-target='#addRequiment')
+                button.btn.btn-primary.mr-1(type='button' data-toggle='modal' data-target='#addRequiment')
                   | Th&ecirc;m
               ul
                 li.d-flex.justify-content-between.align-items-center
@@ -382,16 +332,12 @@ body#page-top
                     button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
                       i.far.fa-trash-alt
             .info-lecture.shadow-sm
-              h4.mb-3 Th&ocirc;ng tin gia&#x309;ng vi&ecirc;n
+              h4.mb-3 Thông tin giảng viên
               .media
-                img.mr-3.rounded-circle(src='../images/huan.jpg' alt='...')
+                img.mr-3.rounded-circle(src=course.lecture.lectureId.avatar alt=course.lecture.name)
                 .media-body
-                  h5.mt-0 Bu&#x300;i Xu&acirc;n Hu&acirc;&#x301;n
-                  span.lecture-desc
-                    | Th&acirc;&#x300;y B&ugrave;i Xu&acirc;n Hu&#x1EA5;n l&agrave; m&#x1ED9;t nha&#x300; gia&#x301;o &#x1B0;u tu&#x301;, giang h&#x1ED3; m&#x1EA1;ng, nh&acirc;n
-                    | v&#x1EAD;t gi&#x1EA3;i tr&iacute;, YouTuber ng&#x1B0;&#x1EDD;i Vi&#x1EC7;t Nam.C&ocirc;ng vi&#x1EC7;c ch&iacute;nh c&#x1EE7;a th&acirc;&#x300;y
-                    | la&#x300; cho vay la&#x303;i su&acirc;&#x301;t cao, no&#x301;i &dstrok;a&#x323;o ly&#x301; tr&ecirc;n ma&#x323;ng v&agrave; kinh doanh c&aacute;c d&#x1ECB;ch v&#x1EE5; t&#x1EEB;
-                    | Facebook.
+                  h5.mt-0=course.lecture.name
+                  span.lecture-desc=course.lecture.lectureId.description
             .block-rating
               h4.my-3 Bi&#x300;nh lu&acirc;&#x323;n
               .box-comment
@@ -511,9 +457,10 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/editYouCanLearn?_method=PUT' method='POST')
+          input#idYouCanLearn(name='id' type="hidden")
           .form-group
-            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?')
+            textarea#editContent.form-control(rows='3' placeholder='Bạn sẽ học được gì ?' name='content')
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -526,11 +473,13 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
-          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;N&abreve;&#x301;m ch&abreve;&#x301;c ly&#x301; thuy&ecirc;&#x301;t chung trong vi&ecirc;&#x323;c x&acirc;y d&#x1B0;&#x323;ng web&quot; ?
+        form(action='/lecture/courses/deleteYouCanLearn?_method=DELETE' method='POST')
+          input#idDeleteYouCanLearn(name='id' type="hidden")
+          input(name='idCourse' value=course._id type="hidden")
+          #contentDelete
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
-            button.btn.btn-danger(type='button') Xo&#x301;a
+            button.btn.btn-danger(type='submit') Xo&#x301;a
 // Add bài giảng
 #addLesson.modal.fade(tabindex='-1' aria-labelledby='addLessonLabel' aria-hidden='true')
   .modal-dialog
@@ -540,13 +489,14 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/addLesson' method='POST' enctype="multipart/form-data")
+          input(type="text", name="idCourse" value= course._id)
           .form-group
-            label(for='nameLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
-            input#nameLesson.form-control(type='text' value='Bài giảng 1')
+            label(for='titleLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
+            input#titleLesson.form-control(type='text' name='title')
           .form-group
             label(for='fileLesson') File ba&#x300;i gia&#x309;ng
-            input#fileLesson.form-control-file(type='file')
+            input#fileLesson.form-control-file(type='file' name='fileLesson')
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -559,13 +509,15 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/editLesson?_method=PUT' method='POST' enctype="multipart/form-data")
+          input#oldPath(type="text" name='oldPath')
+          input#idLesson(type="text" name='id')
           .form-group
-            label(for='editNameLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
-            input#editNameLesson.form-control(type='text' value='Bài giảng 1')
+            label(for='editTitleLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
+            input#editTitleLesson.form-control(type='text' name='title')
           .form-group
             label(for='fileLesson') File ba&#x300;i gia&#x309;ng
-            input#fileLesson.form-control-file(type='file')
+            input#fileLesson.form-control-file(type='file' name="fileLesson")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -578,11 +530,13 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
-          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;Ba&#x300;i gia&#x309;ng 1&quot; ?
+        form(action='/lecture/courses/deleteLesson?_method=DELETE' method='POST')
+          input(type="text" name='idCourse' value=course._id)
+          input#idDeleteLesson(type="text" name='id')
+          label#contentLesson
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
-            button.btn.btn-danger(type='button') Xo&#x301;a
+            button.btn.btn-danger(type='submit') Xo&#x301;a
 // Add bài tập
 #addExp.modal.fade(tabindex='-1' aria-labelledby='addExpLabel' aria-hidden='true')
   .modal-dialog
@@ -592,13 +546,14 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/addHomeWork' method='POST' enctype="multipart/form-data")
           .form-group
-            label(for='nameLesson') T&ecirc;n ba&#x300;i t&acirc;&#x323;p
-            input#nameLesson.form-control(type='text')
+            input(type="text" name="idCourse" value=course._id)
+            label(for='titleHomeWork') Tên bài tập
+            input#titleHomeWork.form-control(type='text' name="title")
           .form-group
-            label(for='fileLesson') File ba&#x300;i t&acirc;&#x323;p
-            input#fileLesson.form-control-file(type='file')
+            label(for='fileHomeWork') File bài tập
+            input#fileHomeWork.form-control-file(type='file' name="fileHomeWork")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -611,13 +566,15 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/editHomeWork?_method=PUT' method='POST' enctype="multipart/form-data")
+          input#idHomeWork(type="text" name="id")
+          input#oldPathHW(type="text" name="oldPathHW")
           .form-group
-            label(for='editNameLesson') T&ecirc;n ba&#x300;i t&acirc;&#x323;p
-            input#editNameLesson.form-control(type='text' value='Bài tập 1')
+            label(for='editTitleHW') Tên bài tập
+            input#editTitleHW.form-control(type='text' name="title")
           .form-group
-            label(for='fileLesson') File ba&#x300;i t&acirc;&#x323;p
-            input#fileLesson.form-control-file(type='file')
+            label(for='fileHomeWork') File bài tập
+            input#fileHomeWork.form-control-file(type='file' name="fileHomeWork")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -630,27 +587,30 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
-          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;Ba&#x300;i t&acirc;&#x323;p 1&quot; ?
+        form(action='/lecture/courses/deleteHomeWork?_method=DELETE' method='POST')
+          input(type="text" name="idCourse" value= course._id)
+          input#idDeleteHW(type="text" name="id")
+          #contentHomeWork
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
-            button.btn.btn-danger(type='button') Xo&#x301;a
+            button.btn.btn-danger(type='submit') Xo&#x301;a
 // Add tài liệu tham khảo
 #addRef.modal.fade(tabindex='-1' aria-labelledby='addRefLabel' aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h5#addRefLabel.modal-title Th&ecirc;m ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+        h5#addRefLabel.modal-title Thêm tài liệu tham khảo
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/addDocument' method='POST' enctype="multipart/form-data")
+          input(type="text" name="idCourse" value= course._id)
           .form-group
-            label(for='nameLesson') T&ecirc;n ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
-            input#nameLesson.form-control(type='text')
+            label(for='nameDocument') Tên tài liệu tham khảo
+            input#nameDocument.form-control(type='text' name="title")
           .form-group
-            label(for='fileLesson') File ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
-            input#fileLesson.form-control-file(type='file')
+            label(for='fileDocument') File tài liệu tham khảo
+            input#fileDocument.form-control-file(type='file' name="fileDocument")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -663,13 +623,15 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/editDocument?_method=PUT' method='POST' enctype="multipart/form-data")
+          input#idDoc(type="text" name="id")
+          input#oldPathDoc(type="text" name="oldPath")
           .form-group
-            label(for='editNameLesson') T&ecirc;n ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
-            input#editNameLesson.form-control(type='text' value='tài liệu tham khảo 1')
+            label(for='editNameLesson') Tên tài liệu tham khảo
+            input#editTitleDoc.form-control(type='text' name="title")
           .form-group
-            label(for='fileLesson') File ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
-            input#fileLesson.form-control-file(type='file')
+            label(for='fileDocument') File ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o
+            input#fileDocument.form-control-file(type='file' name="fileDocument")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
@@ -682,11 +644,13 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
-          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1&quot; ?
+        form(action='/lecture/courses/deleteDocument?_method=DELETE' method='POST')
+          input(type="text" name="idCourse" value= course._id)
+          input#idDeleteDoc(type="text" name="id")
+          #contentDoc
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
-            button.btn.btn-danger(type='button') Xo&#x301;a
+            button.btn.btn-danger(type='submit') Xo&#x301;a
 // add course requiment
 #addRequiment.modal.fade(tabindex='-1' aria-labelledby='addRequimentLabel' aria-hidden='true')
   .modal-dialog
@@ -738,4 +702,4 @@ script(src='/bootstrap/js/bootstrap.bundle.min.js')
 script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
-script(src='/javascripts/detail-course.js')
+script(src='/javascripts/lecture-detail-course.js')
