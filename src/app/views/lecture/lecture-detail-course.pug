@@ -254,7 +254,7 @@ body#page-top
                                 i.far.fa-edit
                               button.btn.btn-danger.deleteLesson(type='button' data-toggle='modal' data-target='#deleteLesson')
                                 i.far.fa-trash-alt
-                              span= lesson._id  
+                              span(hidden)= lesson._id  
                         
                        
                 .card.shadow-sm
@@ -275,7 +275,7 @@ body#page-top
                                 i.far.fa-edit
                               button.btn.btn-danger.deleteHW(type='button' data-toggle='modal' data-target='#deleteExp')
                                 i.far.fa-trash-alt
-                              span= hw._id
+                              span(hidden)= hw._id
                         
                 .card.shadow-sm
                   #headingThree.card-header.d-flex.justify-content-between
@@ -295,42 +295,27 @@ body#page-top
                                 i.far.fa-edit
                               button.btn.btn-danger.deleteDoc(type='button' data-toggle='modal' data-target='#deleteRef')
                                 i.far.fa-trash-alt  
-                              span= doc._id
+                              span(hidden)= doc._id
                         
                        
             .course-requiment.mt-4
               .group-header.d-flex.justify-content-between.my-3
                 h4 Y&ecirc;u c&acirc;&#x300;u
                 button.btn.btn-primary.mr-1(type='button' data-toggle='modal' data-target='#addRequiment')
-                  | Th&ecirc;m
+                  | Thêm
               ul
-                li.d-flex.justify-content-between.align-items-center
-                  span
-                    i.fas.fa-check
-                    | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng.
-                  .btn-group(role='group' aria-label='Basic example')
-                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRequiment')
-                      i.far.fa-edit
-                    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
-                      i.far.fa-trash-alt
-                li.d-flex.justify-content-between.align-items-center
-                  span
-                    i.fas.fa-check
-                    | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng.
-                  .btn-group(role='group' aria-label='Basic example')
-                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRequiment')
-                      i.far.fa-edit
-                    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
-                      i.far.fa-trash-alt
-                li.d-flex.justify-content-between.align-items-center
-                  span
-                    i.fas.fa-check
-                    | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng Me&#x323; &#x1A1;i con mu&ocirc;&#x301;n l&acirc;&#x301;y chi&#x323; na&#x300;y
-                  .btn-group(role='group' aria-label='Basic example')
-                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#editRequiment')
-                      i.far.fa-edit
-                    button.btn.btn-danger(type='button' data-toggle='modal' data-target='#deleteRequiment')
-                      i.far.fa-trash-alt
+                each re in course.requirements
+                  li.d-flex.justify-content-between.align-items-center
+                    span
+                      i.fas.fa-check
+                      | #{ re.content }
+                    .btn-group(role='group' aria-label='Basic example')
+                      button.btn.btn-warning.editRequirement(type='button' data-toggle='modal' data-target='#editRequirement')
+                        i.far.fa-edit
+                      button.btn.btn-danger.deleteRequirement(type='button' data-toggle='modal' data-target='#deleteRequirement')
+                        i.far.fa-trash-alt
+                      span(hidden)= re._id
+                
             .info-lecture.shadow-sm
               h4.mb-3 Thông tin giảng viên
               .media
@@ -490,7 +475,7 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/addLesson' method='POST' enctype="multipart/form-data")
-          input(type="text", name="idCourse" value= course._id)
+          input(type="hidden", name="idCourse" value= course._id)
           .form-group
             label(for='titleLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
             input#titleLesson.form-control(type='text' name='title')
@@ -510,8 +495,8 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/editLesson?_method=PUT' method='POST' enctype="multipart/form-data")
-          input#oldPath(type="text" name='oldPath')
-          input#idLesson(type="text" name='id')
+          input#oldPath(type="hidden" name='oldPath')
+          input#idLesson(type="hidden" name='id')
           .form-group
             label(for='editTitleLesson') T&ecirc;n ba&#x300;i gia&#x309;ng
             input#editTitleLesson.form-control(type='text' name='title')
@@ -531,8 +516,8 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/deleteLesson?_method=DELETE' method='POST')
-          input(type="text" name='idCourse' value=course._id)
-          input#idDeleteLesson(type="text" name='id')
+          input(type="hidden" name='idCourse' value=course._id)
+          input#idDeleteLesson(type="hidden" name='id')
           label#contentLesson
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
@@ -548,7 +533,7 @@ a.scroll-to-top.rounded(href='#page-top')
       .modal-body
         form(action='/lecture/courses/addHomeWork' method='POST' enctype="multipart/form-data")
           .form-group
-            input(type="text" name="idCourse" value=course._id)
+            input(type="hidden" name="idCourse" value=course._id)
             label(for='titleHomeWork') Tên bài tập
             input#titleHomeWork.form-control(type='text' name="title")
           .form-group
@@ -567,8 +552,8 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/editHomeWork?_method=PUT' method='POST' enctype="multipart/form-data")
-          input#idHomeWork(type="text" name="id")
-          input#oldPathHW(type="text" name="oldPathHW")
+          input#idHomeWork(type="hidden" name="id")
+          input#oldPathHW(type="hidden" name="oldPathHW")
           .form-group
             label(for='editTitleHW') Tên bài tập
             input#editTitleHW.form-control(type='text' name="title")
@@ -588,8 +573,8 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/deleteHomeWork?_method=DELETE' method='POST')
-          input(type="text" name="idCourse" value= course._id)
-          input#idDeleteHW(type="text" name="id")
+          input(type="hidden" name="idCourse" value= course._id)
+          input#idDeleteHW(type="hidden" name="id")
           #contentHomeWork
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
@@ -604,7 +589,7 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/addDocument' method='POST' enctype="multipart/form-data")
-          input(type="text" name="idCourse" value= course._id)
+          input(type="hidden" name="idCourse" value= course._id)
           .form-group
             label(for='nameDocument') Tên tài liệu tham khảo
             input#nameDocument.form-control(type='text' name="title")
@@ -624,8 +609,8 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/editDocument?_method=PUT' method='POST' enctype="multipart/form-data")
-          input#idDoc(type="text" name="id")
-          input#oldPathDoc(type="text" name="oldPath")
+          input#idDoc(type="hidden" name="id")
+          input#oldPathDoc(type="hidden" name="oldPath")
           .form-group
             label(for='editNameLesson') Tên tài liệu tham khảo
             input#editTitleDoc.form-control(type='text' name="title")
@@ -645,8 +630,8 @@ a.scroll-to-top.rounded(href='#page-top')
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/deleteDocument?_method=DELETE' method='POST')
-          input(type="text" name="idCourse" value= course._id)
-          input#idDeleteDoc(type="text" name="id")
+          input(type="hidden" name="idCourse" value= course._id)
+          input#idDeleteDoc(type="hidden" name="id")
           #contentDoc
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
@@ -660,41 +645,46 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/addRequirement' method='POST')
+          input(type="hidden" name="idCourse" value= course._id)
+          
           .form-group
-            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Nhập yêu cầu khóa học ?')
+            textarea.form-control(rows='3' placeholder='Nhập yêu cầu khóa học ?' name="content")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
 // Edit course requiment
-#editRequiment.modal.fade(tabindex='-1' aria-labelledby='editRequimentLabel' aria-hidden='true')
+#editRequirement.modal.fade(tabindex='-1' aria-labelledby='editRequirementLabel' aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h5#editRequimentLabel.modal-title S&#x1B0;&#x309;a y&ecirc;u c&acirc;&#x300;u kho&#x301;a ho&#x323;c
+        h5#editRequirementLabel.modal-title S&#x1B0;&#x309;a y&ecirc;u c&acirc;&#x300;u kho&#x301;a ho&#x323;c
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
+        form(action='/lecture/courses/editRequirement?_method=PUT' method='POST')
+          input#idRequirement(type="hidden" name="id")
           .form-group
-            textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?')
+            textarea#editRequire.form-control(rows='3' name="content")
           .modal-footer
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-primary(type='submit') L&#x1B0;u
 // Delete course requiment
-#deleteRequiment.modal.fade(tabindex='-1' aria-labelledby='deleteRequimentLabel' aria-hidden='true')
+#deleteRequirement.modal.fade(tabindex='-1' aria-labelledby='deleteRequirementLabel' aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h5#deleteRequimentLabel.modal-title Xo&#x301;a y&ecirc;u c&acirc;&#x300;u kho&#x301;a ho&#x323;c
+        h5#deleteRequirementLabel.modal-title Xóa yêu cầu khóa học
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='' method='POST')
-          | Ba&#x323;n co&#x301; mu&ocirc;&#x301;n xo&#x301;a : &quot;N&abreve;&#x301;m ch&abreve;&#x301;c ly&#x301; thuy&ecirc;&#x301;t chung trong vi&ecirc;&#x323;c x&acirc;y d&#x1B0;&#x323;ng web&quot; ?
+        form(action='/lecture/courses/deleteRequirement?_method=DELETE' method='POST')
+          input(type="hidden" name="idCourse" value= course._id)
+          input#idDeleteReq(type="hidden" name='id')
+          #contentRequire
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
-            button.btn.btn-danger(type='button') Xo&#x301;a
+            button.btn.btn-danger(type='submit') Xo&#x301;a
 // Bootstrap core JavaScript
 script(src='/jquery/jquery.min.js')
 script(src='/bootstrap/js/bootstrap.bundle.min.js')

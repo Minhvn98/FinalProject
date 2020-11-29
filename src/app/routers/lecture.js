@@ -29,4 +29,10 @@ router.delete('/courses/deleteHomeWork',detailCourseController.deleteHomeWork)
 router.post('/courses/addDocument', upload.single('fileDocument'), detailCourseController.addDocument)
 router.put('/courses/editDocument', upload.single('fileDocument'), detailCourseController.editDocument)
 router.delete('/courses/deleteDocument',detailCourseController.deleteDocument)
+
+router.post('/courses/addRequirement', detailCourseController.addRequirement);
+router.put('/courses/editRequirement', detailCourseController.editRequirement);
+router.delete('/courses/deleteRequirement', detailCourseController.deleteRequirement);
+
+
 module.exports = router;

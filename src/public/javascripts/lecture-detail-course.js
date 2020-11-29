@@ -19,7 +19,6 @@ $(document).ready(function () {
     const content = this.parentElement.parentElement.firstChild.textContent;
     $('#idYouCanLearn').val(id);
     $('#editContent').val(content);
-    console.log($('#idYouCanLearn'))
   })
 
   $('.btn-delete').click(function() {
@@ -94,4 +93,21 @@ $(document).ready(function () {
     $('#contentDoc')[0].textContent = `Bạn có muốn xóa : ${title}`;
   
   })  
+
+
+  $('.editRequirement').click(function(){
+    const id = this.parentElement.lastChild.textContent;
+    const content = this.parentElement.parentElement.firstChild.textContent;
+    $('#idRequirement').val(id);
+    $('#editRequire').val(content);
+  })
+
+  $('.deleteRequirement').click(function() {
+    const id = this.parentElement.lastChild.textContent;
+    const content = this.parentElement.parentElement.firstChild.textContent;
+    
+    $('#idDeleteReq').val(id);
+    $('#contentRequire')[0].textContent = `Bạn có muốn xóa : ${content} ?`;
+
+  })
 });

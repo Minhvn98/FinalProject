@@ -20,6 +20,8 @@ const CourseSchema = new Schema(
     lessons: [{ type: Schema.Types.ObjectId, ref: 'Lesson' }],
     homeworks: [{ type: Schema.Types.ObjectId, ref: 'HomeWork' }],
     youCanLearn: [{ type: Schema.Types.ObjectId, ref: 'YouCanLearn' }],
+    requirements: [{ type: Schema.Types.ObjectId, ref: 'Requirement' }],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   },
   { timestamps: true }
 );
