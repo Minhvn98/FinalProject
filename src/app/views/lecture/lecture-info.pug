@@ -18,7 +18,7 @@ body#page-top
   // Sidebar
   ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
     // Sidebar - Brand
-    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/lecture/${lect._id}`)
       .sidebar-brand-icon.rotate-n-15
         i.fas.fa-laugh-wink
       .sidebar-brand-text.mx-3 LMS Lecture
@@ -27,27 +27,23 @@ body#page-top
     hr
     // Nav Item - Dashboard
     li.nav-item.active
-      a.nav-link(href='#')
+      a.nav-link(href=`/lecture/${lect._id}`)
         i.fas.fa-chalkboard-teacher
         span Xin chào 
-        = lect.name + ' !'
+          = lect.name + ' !'
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href=`/lecture/${lect._id}`)
         i.fas.fa-tachometer-alt
         span Dashboard
     // Divider
     hr.sidebar-divider
     // Nav Item - Quản lý khóa học
     li.nav-item
-      a.nav-link(href='admin-course.html')
+      a.nav-link(href=`/lecture/${lect._id}#my-courses`)
         i.fas.fa-book
         span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
-    li.nav-item
-      a.nav-link(href='admin.lecture.html')
-        i.fas.fa-chalkboard-teacher
-        span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
     li.nav-item
       a.nav-link(href='admin.lecture.html')
         i.fas.fa-user-graduate
@@ -231,11 +227,10 @@ body#page-top
                 = lect.phone
               li
                 strong Nga&#x300;y sinh : 
-                |  30/04/1975
+                = lect.birthday
               li
                 strong Facebook : 
-                |  https://www.facebook.com/phule123/
-            br
+                = lect.facebook
             // Button trigger modal
             button.btn.btn-primary.ml-5(type='button' data-toggle='modal' data-target='#editInfo')
               | S&#x1B0;&#x309;a th&ocirc;ng tin
@@ -277,7 +272,7 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='#' method='POST')
+        form(action='/lecture/editInfo' method='POST')
           .form-group
             label(for='name') Ho&#x323; t&ecirc;n
             input#name.form-control(type='text' name='name' value=lect.name)
@@ -285,17 +280,17 @@ a.scroll-to-top.rounded(href='#page-top')
             label(for='email') Email
             input#email.form-control(type='email' name="email" value=lect.email)
           .form-group
-            label(for='phoneNumber') S&ocirc;&#x301; &Dstrok;i&ecirc;&#x323;n Thoa&#x323;i
-            input#phoneNumber.form-control(type='text' name='phoneNumber' pattern='((09|03|07|08|05)+([0-9]{8})\b)' value=lect.phone)
+            label(for='phone') S&ocirc;&#x301; &Dstrok;i&ecirc;&#x323;n Thoa&#x323;i
+            input#phone.form-control(type='text' name='phone' pattern='((09|03|07|08|05)+([0-9]{8})\b)' value=lect.phone)
           .form-group
-            label(for='date_of_birth') Nga&#x300;y sinh
-            input#date_of_birth.form-control(type='date' name='date_of_birth' value=lect.date_of_birth)
+            label(for='birthday') Nga&#x300;y sinh
+            input#birthday.form-control(type='text' name='birthday' value=lect.birthday)
           .form-group
             label(for='facebook') Facebook
-            input#facebook.form-control(type='url' name='facebook' value=lect.fb)
+            input#facebook.form-control(type='url' name='facebook' value=lect.facebook)
           .form-group
-            label(for='new_avatar') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
-            input#new_avatar.form-control-file(type='file' name='new_avatar')
+            label(for='avatar') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
+            input#avatar.form-control-file(type='file' name='avatar')
           br
           .modal-footer
             button.btn.btn-primary(type='submit') L&#x1B0;u

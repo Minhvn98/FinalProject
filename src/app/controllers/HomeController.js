@@ -5,6 +5,8 @@ const Student = require("../models/Student");
 const Lesson = require("../models/details_course/Lesson");
 const HomeWork = require("../models/details_course/HomeWork");
 const Document = require("../models/details_course/Document");
+const Admin = require("../models/Admin");
+const User = require("../models/User");
 
 class HomeController {
   //[GET] /
@@ -60,6 +62,51 @@ class HomeController {
     Student.create(student)
       .then(() => res.redirect("/"))
       .catch((err) => next(err));
+  }
+
+  async checkLogin(req, res, next) {
+    const { email, password, role } = req.body;
+    console.log(`email: ${email} - pass: ${password} - role ${role}`)
+    if(role === '0') {
+      const student = await Student.findOne({email: email});
+      if(!student)
+        return res.redirect('back')
+      if(student.password === password){
+        req.session.studentId = student._id;
+        req.session.role = role;
+        res.redirect(`/student/${ student._id }`)
+      } else {
+        return res.redirect('back')
+      }
+    }
+
+    if(role === '1') {
+      const lecture = await Lecture.findOne({email: email});
+      if(!lecture)
+        return res.redirect('back')
+      if(lecture.password === password){
+        req.session.lectureId = lecture._id;
+        req.session.role = role;
+        res.redirect(`/lecture/${ lecture._id }`)
+      } else {
+        return res.redirect('back')
+      }
+    }
+
+    if(role === '2') {
+      const admin = await Admin.findOne({email: email});
+      if(!admin)
+        return res.redirect('back')
+      if(admin.password === password){
+        req.session.adminId = admin._id;
+        req.session.role = role;
+        res.redirect(`/admin`)
+      } else {
+        return res.redirect('back')
+      }
+      
+      
+    }
   }
 }
 

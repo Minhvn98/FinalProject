@@ -18,7 +18,7 @@ body#page-top
   // Sidebar
   ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
     // Sidebar - Brand
-    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/lecture/${lect._id}`)
       .sidebar-brand-icon.rotate-n-15
         i.fas.fa-laugh-wink
       .sidebar-brand-text.mx-3 LMS Lecture
@@ -27,7 +27,7 @@ body#page-top
     hr
     // Nav Item - Dashboard
     li.nav-item.active
-      a.nav-link(href='#')
+      a.nav-link(href=`/lecture/${lect._id}`)
         i.fas.fa-chalkboard-teacher
         span Xin chào #{lect.name} !
     // Divider
@@ -39,7 +39,7 @@ body#page-top
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href='#my-courses')
         i.fas.fa-book
         span Kho&#x301;a ho&#x323;c cu&#x309;a ba&#x323;n
     // Nav Item - Pages Collapse Menu
@@ -207,7 +207,7 @@ body#page-top
                 .row.no-gutters.align-items-center
                   .col.mr-2
                     .text-xs.font-weight-bold.text-primary.text-uppercase.mb-1 Kho&#x301;a ho&#x323;c cu&#x309;a ba&#x323;n
-                    .h5.mb-0.font-weight-bold.text-gray-800 5 kho&#x301;a ho&#x323;c
+                    .h5.mb-0.font-weight-bold.text-gray-800 #{lect.listCourse.length} khóa học
                   .col-auto
                     i.fas.fa-book.fa-2x.text-gray-300
           .col-xl-3.col-md-6.mb-4
@@ -215,8 +215,8 @@ body#page-top
               .card-body
                 .row.no-gutters.align-items-center
                   .col.mr-2
-                    .text-xs.font-weight-bold.text-success.text-uppercase.mb-1 Ho&#x323;c vi&ecirc;n cu&#x309;a ba&#x323;n
-                    .h5.mb-0.font-weight-bold.text-gray-800 500 anh em
+                    .text-xs.font-weight-bold.text-success.text-uppercase.mb-1 Học viên của bạn
+                    .h5.mb-0.font-weight-bold.text-gray-800 #{lect.listStudent.length} học viên
                   .col-auto
                     i.fas.fa-user.fa-2x.text-gray-300
           // Earnings (Monthly) Card Example
@@ -244,41 +244,18 @@ body#page-top
         // Content Row
         // Khóa học gần đây
         .d-sm-flex.align-items-center.justify-content-between.my-4
-          h1.h3.mb-0.text-gray-800 Kho&#x301;a ho&#x323;c g&acirc;&#x300;n &dstrok;&acirc;y
+          h1#my-courses.h3.mb-0.text-gray-800 Khóa học của bạn
         // Content Row
         .row
-          .col-xl-3.col-md-6.mb-4
-            .card.shadow.h-100
-              img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-              .card-body
-                h5.card-title Kho&#x301;a ho&#x323;c Angular Master
-                p.card-text
-                  | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-                a.btn.btn-block.btn-success(href='#') Xem chi ti&ecirc;&#x301;t
-          .col-xl-3.col-md-6.mb-4
-            .card.shadow.h-100
-              img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-              .card-body
-                h5.card-title Kho&#x301;a ho&#x323;c Angular Master
-                p.card-text
-                  | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-                a.btn.btn-block.btn-success(href='#') Xem chi ti&ecirc;&#x301;t
-          .col-xl-3.col-md-6.mb-4
-            .card.shadow.h-100
-              img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-              .card-body
-                h5.card-title Kho&#x301;a ho&#x323;c Angular Master
-                p.card-text
-                  | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-                a.btn.btn-block.btn-success(href='#') Xem chi ti&ecirc;&#x301;t
-          .col-xl-3.col-md-6.mb-4
-            .card.shadow.h-100
-              img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-              .card-body
-                h5.card-title Kho&#x301;a ho&#x323;c Angular Master
-                p.card-text
-                  | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-                a.btn.btn-block.btn-success(href='#') Xem chi ti&ecirc;&#x301;t
+          each course in lect.listCourse
+            .col-xl-3.col-md-6.mb-4
+              .card.shadow.h-100
+                img.card-img-top(src=course.image alt=course.name)
+                .card-body
+                  h5.card-title= course.name
+                  p.card-text= course.description
+                  a.btn.btn-block.btn-success(href=`/lecture/courses/${course.slug}`) Xem chi ti&ecirc;&#x301;t
+          
       // /.container-fluid
     // End of Main Content
     // Footer

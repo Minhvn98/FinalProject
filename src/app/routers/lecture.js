@@ -6,6 +6,7 @@ const upload = require('../middlewares/upload.file')
 const lectureController = require('../controllers/LectureController');
 const detailCourseController = require('../controllers/DetailCouseController');
 
+const authLecutreMiddleware = require('../middlewares/authLecture');
 
 router.get('/info/:id', lectureController.showInfo);
 router.get('/:id', lectureController.lecture);

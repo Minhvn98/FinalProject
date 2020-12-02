@@ -1462,4 +1462,15 @@ html {
     width: 100%;
   }
   
-  
+  img.card-img-top {
+    width: 287px;
+    height: 200px;
+  }
+
+  p.card-text {
+    height: 140px;
+}
+
+h5.card-title {
+  height: 45px;
+}

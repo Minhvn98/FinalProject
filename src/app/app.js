@@ -5,6 +5,9 @@ const path = require('path');
 const logger = require('morgan');
 const app = express();
 const methodOverride = require('method-override');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+
 require('dotenv').config()
 
 const db = require('../../config/db')
@@ -12,7 +15,8 @@ const port = (process.env.PORT || 3000)
 
 const indexRouter = require('./routers') 
 const adminRouter = require('./routers/admin');
-const lectureRouter = require('./routers/lecture')
+const lectureRouter = require('./routers/lecture');
+const studentRouter = require('./routers/student')
 
 db.connect();
 // view engine setup
@@ -23,13 +27,18 @@ app.use(methodOverride('_method'))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-//app.use(cookieParser());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.static(path.join(__dirname, '..', 'vendor')));
-
+app.use(expressSession({
+  secret: 'con cac',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/lecture', lectureRouter);
+app.use('/student', studentRouter);
 
 
 

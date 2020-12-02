@@ -9,7 +9,7 @@ class LectureController {
   index(req, res, next) {
     Lecture.find({})
       .then((lectures) => {
-        lectures.forEach((item) => console.log(item.createdAt));
+        //lectures.forEach((item) => console.log(item.createdAt));
         res.render(path.join("admin", "admin-lecture"), { lectures });
       })
       .catch((err) => next(err));
@@ -77,9 +77,13 @@ class LectureController {
 
   //[GET] /lecture
   lecture(req, res, next) {
-    Lecture.findById(req.params.id).then((lect) =>
-      res.render(path.join("lecture", "lecture"), { lect })
-    );
+
+    Lecture.findById(req.params.id)
+      .populate('listCourse')
+      .then((lect) => {
+        return res.render(path.join("lecture", "lecture"), { lect })
+    });
+ 
   }
 
   //[GET] /lecture/info/:id

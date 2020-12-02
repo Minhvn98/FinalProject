@@ -7,6 +7,7 @@ const homeWorkController = require('./detail_course/HomeWorkController');
 const lessonController = require('./detail_course/LessonController');
 const youCanLearnController = require('./detail_course/YouCanLearnController');
 const requirementController = require('./detail_course/RequirementController');
+const Admin = require('../models/Admin');
 
 class DetailCourseController {
   //[Get] /lecture/courses/:slug
@@ -22,6 +23,7 @@ class DetailCourseController {
       )
       .catch((err) => next(err));
     //res.render(path.join("lecture", "lecture-detail-course"));
+    
   }
 
   //[POST] /lesson/courses/addYouCanLearn

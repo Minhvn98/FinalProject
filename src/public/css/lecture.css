@@ -1521,3 +1521,12 @@ ul.list-content li {
   width: 60px;
   height: 60px;
 }
+
+img.card-img-top {
+  width: 287px;
+  height: 200px;
+}
+
+p.card-text {
+  height: 140px;
+}
