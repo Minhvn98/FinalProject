@@ -32,7 +32,7 @@ body#page-top
   // Sidebar
   ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
     // Sidebar - Brand
-    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/admin/${admin._id}`)
       .sidebar-brand-icon.rotate-n-15
         i.fas.fa-laugh-wink
       .sidebar-brand-text.mx-3 LMS Admin
@@ -41,42 +41,35 @@ body#page-top
     hr
     // Nav Item - Dashboard
     li.nav-item.active
-      a.nav-link(href='#')
+      a.nav-link(href=`/admin/${admin._id}`)
         i.fas.fa-chalkboard-teacher
-        span Xin cha&#x300;o Admin
+        span Xin cha&#x300;o #{admin.name} !
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href='admin#.html')
+      a.nav-link(href=`/admin/${admin._id}`)
         i.fas.fa-tachometer-alt
         span Dashboard
     // Divider
     hr.sidebar-divider
     // Nav Item - Quản lý khóa học
     li.nav-item
-      a.nav-link(href='admin-course.html')
+      a.nav-link(href='/admin/management-course')
         i.fas.fa-book
         span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
     li.nav-item
-      a.nav-link(href='admin.lecture.html')
+      a.nav-link(href='/admin/management-lecture')
         i.fas.fa-chalkboard-teacher
         span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
     li.nav-item
-      a.nav-link(href='admin.lecture.html')
+      a.nav-link(href='/admin/management-student')
         i.fas.fa-user-graduate
         span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
     // Nav Item - Pages Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
+      a.nav-link.collapsed(href=`/admin/info/${admin._id}`)
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-      #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
-        .bg-white.py-2.collapse-inner.rounded
-          h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-          a.collapse-item(href='#') Xem th&ocirc;ng tin
-          a.collapse-item(href='#') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
-          a.collapse-item(href='#') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
-    // Nav Item - Utilities Collapse Menu
     li.nav-item
       a.nav-link(href='#')
         i.fas.fa-bell
@@ -85,7 +78,7 @@ body#page-top
     hr.sidebar-divider
     // Nav Item - Tables
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href='/auth/logout')
         i.fas.fa-sign-out-alt
         span &Dstrok;&abreve;ng xu&acirc;&#x301;t
     // Divider

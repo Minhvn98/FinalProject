@@ -31,18 +31,19 @@ head
     hr.sidebar-divider
     // Nav Item - Pages Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
+      a.nav-link(href=`/student/${student._id}`)
+        i.fas.fa-tachometer-alt
+        span Dashboard
+    // Divider
+    hr.sidebar-divider
+    li.nav-item
+      a.nav-link.collapsed(href=`/student/info/${student._id}` )
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-      #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
-        .bg-white.py-2.collapse-inner.rounded
-          h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-          a.collapse-item(href='buttons.html') Xem th&ocirc;ng tin
-          a.collapse-item(href='buttons.html') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
-          a.collapse-item(href='cards.html') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
+      
     // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#')
+      a.nav-link.collapsed(href='/auth/logout')
         i.far.fa-bell
         span Th&ocirc;ng ba&#x301;o
     // Divider
@@ -203,7 +204,8 @@ head
                 .card-body
                   h5.card-title=course.idCourse.name
                   p.card-text= course.idCourse.description
-                  a.btn.btn-block.btn-success(href=`/courses/${course.idCourse.slug}`) Học ngay
+                  div
+                    a.btn.btn-block.btn-success(href=`/courses/${course.idCourse.slug}`) Học ngay
           
           
             
@@ -222,7 +224,8 @@ head
                 .card-body
                   h5.card-title= course.name
                   p.card-text= course.description
-                  a.btn.btn-block.btn-success(href=`/courses/${course.slug}`) Ho&#x323;c ngay
+                  div
+                    a.btn.btn-block.btn-success(href=`/courses/${course.slug}`) Ho&#x323;c ngay
           
         // Content Row
       // /.container-fluid

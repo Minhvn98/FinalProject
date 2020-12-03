@@ -3,14 +3,15 @@ const path = require("path");
 const Lecture = require("../models/Lecture");
 const Student = require("../models/Student");
 const Course = require("../models/Course");
-
+const Admin = require("../models/Admin");
 class LectureController {
   //[GET] /admin/management-lecture
-  index(req, res, next) {
+  async index(req, res, next) {
+    const admin = await Admin.findById(req.session.adminId);
     Lecture.find({})
       .then((lectures) => {
         //lectures.forEach((item) => console.log(item.createdAt));
-        res.render(path.join("admin", "admin-lecture"), { lectures });
+        res.render(path.join("admin", "admin-lecture"), { admin, lectures });
       })
       .catch((err) => next(err));
 
@@ -94,6 +95,38 @@ class LectureController {
     );
   }
 
+  //[POST] /lecture/editInfo
+  editInfo(req, res, next) {
+    const file = req.file;
+    file
+      ? (req.body.avatar = req.file.path.split("public")[1])
+      : (req.body.avatar = req.body.oldAvatar);
+    console.log(req.file)
+    
+    Lecture.findByIdAndUpdate(req.body.id, req.body)
+      .then(() => res.redirect('back'))
+      .catch((err) => next(err))
+  }
+
+  async changePassword(req, res, next) {
+    const lecture = await Lecture.findById(req.body.id);
+
+    if(lecture.password !== req.body.password) {
+      const lect = JSON.parse(JSON.stringify(lecture))
+      lect.changePassword = false;
+      res.location('/foo/bar')
+      return res.render(path.join("lecture", "lecture-info"), { lect })
+
+    } else {
+      await Lecture.findByIdAndUpdate(req.body.id, { password: req.body.new_password })
+      const lect = JSON.parse(JSON.stringify(lecture))
+      lect.changePassword = true;
+      res.location('/foo/bar')
+      return res.render(path.join("lecture", "lecture-info"), { lect })
+    }
+
+    
+  }
 
 }
 

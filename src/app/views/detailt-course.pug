@@ -26,9 +26,9 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
         li.nav-item.active
           a.nav-link(href='/courses') Course
         li.nav-item
-          a.nav-link(href='#') Contact
+          a.nav-link(href='#contact') Contact
         li.nav-item
-          a.nav-link(href='/login') Login
+          a.nav-link(href='/auth/login') Login
 .container
   .row.content
     .col-md-8.col-sm-12.left-content
@@ -40,29 +40,18 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             a(href='/courses') Kho&#x301;a ho&#x323;c
           li.breadcrumb-item
             a(href='#')=course.categories
-      h3.mt-4=course.name
+      h3.mt-4= course.name
       p.description
         = course.description
       .mt-2.you-can-learn
         h4 Ba&#x323;n se&#x303; ho&#x323;c &dstrok;&#x1B0;&#x1A1;&#x323;c gi&#x300;
         section
           ul
-            li
-              i.fas.fa-check
-              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
-              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-            li
-              i.fas.fa-check
-              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
-              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-            li
-              i.fas.fa-check
-              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
-              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
-            li
-              i.fas.fa-check
-              | N&#x1EAF;m ch&#x1EAF;c l&yacute; thuy&#x1EBF;t chung trong
-              |                 vi&#x1EC7;c x&acirc;y d&#x1EF1;ng web
+            each item in course.youCanLearn
+              li
+                i.fas.fa-check
+                = item.content  
+            
       .content-course
         h4.my-3 N&ocirc;&#x323;i dung kho&#x301;a ho&#x323;c
         #accordionCourseDetails.accordion
@@ -74,21 +63,14 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordionCourseDetails')
               .card-body
                 ul.list-content
-                  li.d-flex.justify-content-between.align-items-center
-                    | 1. Ba&#x300;i gia&#x309;ng 1
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
-                  li.d-flex.justify-content-between.align-items-center
-                    | 2. Ba&#x300;i gia&#x309;ng 2 
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
-                  li.d-flex.justify-content-between.align-items-center
-                    | 3. Ba&#x300;i gia&#x309;ng 3
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  each less, index in course.lessons
+                    li.d-flex.justify-content-between.align-items-center
+                      | #{index+1} #{less.title}
+                      a(href= less.path)
+                        i.fas.fa-file-download
+                        | Ta&#x309;i xu&ocirc;&#x301;ng  
+                  
+                
           .card.shadow-sm
             #headingTwo.card-header
               h2.mb-0
@@ -97,21 +79,14 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordionCourseDetails')
               .card-body
                 ul.list-content
-                  li.d-flex.justify-content-between.align-items-center
-                    | 1. Ba&#x300;i t&acirc;&#x323;p 1
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
-                  li.d-flex.justify-content-between.align-items-center
-                    | 2. Ba&#x300;i t&acirc;&#x323;p 2 
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
-                  li.d-flex.justify-content-between.align-items-center
-                    | 3. Ba&#x300;i t&acirc;&#x323;p 3
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  each hw, index in course.homeworks
+                    li.d-flex.justify-content-between.align-items-center
+                      | #{index+ 1} #{hw.title}
+                      a(href= hw.path)
+                        i.fas.fa-file-download
+                        | Ta&#x309;i xu&ocirc;&#x301;ng
+                  
+                  
           .card.shadow-sm
             #headingThree.card-header
               h2.mb-0
@@ -120,51 +95,29 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordionCourseDetails')
               .card-body
                 ul.list-content
-                  li.d-flex.justify-content-between.align-items-center
-                    | 1. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 1
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
-                  li.d-flex.justify-content-between.align-items-center
-                    | 2. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 2 
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
-                  li.d-flex.justify-content-between.align-items-center
-                    | 3. Ta&#x300;i li&ecirc;&#x323;u tham kha&#x309;o 3
-                    a(href='#')
-                      i.fas.fa-file-download
-                      | Ta&#x309;i xu&ocirc;&#x301;ng
+                  each doc, idx in course.documents
+                    li.d-flex.justify-content-between.align-items-center
+                      | #{idx+1} #{doc.title}
+                      a(href=doc.path)
+                        i.fas.fa-file-download
+                        | Ta&#x309;i xu&ocirc;&#x301;ng  
+                  
       .course-requiment.mt-4
         h4 Y&ecirc;u c&acirc;&#x300;u
         ul
-          li
-            i.fas.fa-check
-            | C&acirc;&#x300;n cu&#x300; bu&#x300; si&ecirc;ng n&abreve;ng.
-          li
-            i.fas.fa-check
-            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
-            |               Javascript
-          li
-            i.fas.fa-check
-            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
-            |               Javascript
-          li
-            i.fas.fa-check
-            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
-            |               Javascript
-          li
-            i.fas.fa-check
-            | C&oacute; ki&#x1EBF;n th&#x1EE9;c c&#x1A1; b&#x1EA3;n v&#x1EC1; HTML, CSS v&agrave;
-            |               Javascript
+          each req in course.requirements
+            li
+              i.fas.fa-check
+              = req.content
+       
       .info-lecture.shadow-sm
         h4.mb-3 Th&ocirc;ng tin gia&#x309;ng vi&ecirc;n
         .media
-          img.mr-3.rounded-circle(src=lect.avatar alt=lect.name)
+          img.mr-3.rounded-circle(src= course.lecture.lectureId.avatar alt=course.lecture.lectureId.name)
           .media-body
-            h5.mt-0= lect.name
+            h5.mt-0= course.lecture.lectureId.name
             span.lecture-desc
-              = lect.description
+              = course.lecture.lectureId.description
       .block-rating
         h4.my-3 Ca&#x309;m nh&acirc;&#x323;n ho&#x323;c vi&ecirc;n
         .box-rating
@@ -232,40 +185,26 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
               | Giảng viên có trình độ chuyên môn cao
             li
               i.fas.fa-money-check-alt
-              | Chỉ với 
-              =course.price
+              | Chỉ với #{course.price}
+              
               
               
   // end rowconent
   .row.related.course
     .col-sm-12
       h4 Kho&#x301;a ho&#x323;c li&ecirc;n quan
-    .col-lg-4.col-md-6.col-sm-12.mb-5
-      .card
-        img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-        .card-body
-          h5.card-title Kho&#x301;a ho&#x323;c l&acirc;p tri&#x300;nh FrontEnd
-          p.card-text
-            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-          a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
-    .col-lg-4.col-md-6.col-sm-12.mb-5
-      .card
-        img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-        .card-body
-          h5.card-title Kho&#x301;a ho&#x323;c l&acirc;&#x323;p tri&#x300;nh API v&#x1A1;&#x301;i Nodejs
-          p.card-text
-            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-          a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
-    .col-lg-4.col-md-6.col-sm-12.mb-5
-      .card
-        img.card-img-top(src='../images/course/node.jpg' alt='Card image cap')
-        .card-body
-          h5.card-title Kho&#x301;a ho&#x323;c Angular Master
-          p.card-text
-            | Kh&oacute;a h&#x1ECD;c Javascript c&#x1A1; b&#x1EA3;n d&agrave;nh cho m&#x1ECD;i &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng b&#x1EAF;t &dstrok;&#x1EA7;u h&#x1ECD;c l&#x1EAD;p tr&igrave;nh v&#x1EDB;i n&#x1ED9;i dung ng&#x1EAF;n g&#x1ECD;n, d&#x1EC5; hi&#x1EC3;u v&agrave; h&#x1EC7; th&#x1ED1;ng l&agrave;m b&agrave;i t&#x1EAD;p phong ph&uacute;
-          a.btn.btn-block.btn-success(href='#') Ho&#x323;c ngay
+    each course in reCourses
+      .col-lg-4.col-md-6.col-sm-12.mb-5
+        .card
+          img.card-img-top(src= course.image alt= course.name)
+          .card-body
+            h5.card-title= course.name
+            p.card-text= course.description
+            a.btn.btn-block.btn-success(href=`/courses/${course.slug}`) Ho&#x323;c ngay
+    
+    
 // ======================== Footer ========================
-footer.footer.my-5
+footer#contact.footer.my-5
   .container
     .row
       .col-md-3

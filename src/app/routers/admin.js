@@ -5,7 +5,7 @@ const router = express.Router();
 const adminController = require('../controllers/AdminController');
 const upload = require('../middlewares/upload.file')
 
-router.get('/', adminController.index);
+
 
 //Management Lecture
 router.get('/management-lecture', adminController.managementLecture);
@@ -26,5 +26,8 @@ router.post('/addStudent', adminController.addStudent );
 router.put('/editStudent', adminController.editStudent );
 router.delete('/deleteStudent', adminController.deleteStudent);
 
-
+router.get('/:id', adminController.index);
+router.get('/info/:id', adminController.showInfo);
+router.put('/editInfo', upload.single('avatar'), adminController.editInfo);
+router.put('/changePassword', adminController.changePassword);
 module.exports = router;

@@ -3,20 +3,22 @@ const path = require("path");
 const Lecture = require("../models/Lecture");
 const Student = require("../models/Student");
 const Course = require("../models/Course");
+const Admin = require("../models/Admin");
 
 class CourseController {
   //[GET] /admin/management-course
-  index(req, res, next) {
+  async index(req, res, next) {
+    const admin = await Admin.findById(req.session.adminId);
     Course.find({})
       .then((courses) => {
         Lecture.find({}, "name").then((lectures) => {
-          //console.log('course : ', courses);
-          //.log('lectures : ', lectures)
-          res.render(path.join("admin", "admin-course"), { courses, lectures });
+          res.render(path.join("admin", "admin-course"), { admin, courses, lectures });
         });
       })
       .catch((err) => next(err));
     //res.render(path.join('admin', 'admin-course'));
+    console.log(req.session)
+    //console.log(admin)
   }
 
   //[POST] /admin/addCourse

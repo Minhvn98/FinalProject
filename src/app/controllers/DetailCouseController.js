@@ -19,6 +19,7 @@ class DetailCourseController {
       )
       // .then((data) => res.json(data))
       .then((course) =>
+        // res.json(course)
         res.render(path.join('lecture', 'lecture-detail-course'), { course })
       )
       .catch((err) => next(err));

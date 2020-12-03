@@ -18,40 +18,42 @@ body#page-top
   // Sidebar
   ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
     // Sidebar - Brand
-    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/lecture/${lect._id}`)
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/admin/${admin._id}`)
       .sidebar-brand-icon.rotate-n-15
         i.fas.fa-laugh-wink
-      .sidebar-brand-text.mx-3 LMS Lecture
+      .sidebar-brand-text.mx-3 LMS Admin
     // Divider
     hr.sidebar-divider.my-0
     hr
     // Nav Item - Dashboard
     li.nav-item.active
-      a.nav-link(href=`/lecture/${lect._id}`)
+      a.nav-link(href=`/admin/${admin._id}`)
         i.fas.fa-chalkboard-teacher
         span Xin chào 
-          = lect.name + ' !'
+          = admin.name + ' !'
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href=`/lecture/${lect._id}`)
+      a.nav-link(href=`/admin/${admin._id}`)
         i.fas.fa-tachometer-alt
         span Dashboard
     // Divider
     hr.sidebar-divider
     // Nav Item - Quản lý khóa học
     li.nav-item
-      a.nav-link(href=`/lecture/${lect._id}#my-courses`)
+      a.nav-link(href=`/admin/${admin._id}#my-courses`)
         i.fas.fa-book
         span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
-
+    li.nav-item
+      a.nav-link(href='/admin/management-student')
+        i.fas.fa-user-graduate
+        span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
     // Nav Item - Pages Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#')
+      a.nav-link.collapsed(href=`/admin/info/${admin._id}`)
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
       
-    // Nav Item - Utilities Collapse Menu
     li.nav-item
       a.nav-link(href='#')
         i.fas.fa-bell
@@ -200,10 +202,10 @@ body#page-top
         // Page Heading
         .d-sm-flex.align-items-center.justify-content-between.mb-4
           h1.h3.mb-0.text-gray-800 Th&ocirc;ng tin cu&#x309;a t&ocirc;i
-        if lect.changePassword == true
+        if admin.changePassword == true
           .alert.alert-success.text-center(role="alert")
             | Đổi mật khẩu thành công
-        if lect.changePassword == false
+        if admin.changePassword == false
           .alert.alert-danger.text-center(role="alert")
             | Đổi mật khẩu thất bại
 
@@ -211,25 +213,25 @@ body#page-top
         // Content Row
         .row.content.mt-5
           .col-xs-12.col-md-2.flex-column.d-flex.justify-content-center.align-items-center
-            img.avatar.rounded-circle(src=lect.avatar)
+            img.avatar.rounded-circle(src=admin.avatar)
             strong A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
           .col-xs-12.col-md-7.list-info
             ul
               li
                 strong Ho&#x323; T&ecirc;n : 
-                = lect.name
+                = admin.name
               li
                 strong Email : 
-                = lect.email
+                = admin.email
               li
                 strong S&ocirc;&#x301; &Dstrok;i&ecirc;&#x323;n Thoa&#x323;i : 
-                = lect.phone
+                = admin.phone
               li
                 strong Nga&#x300;y sinh : 
-                = lect.birthday
+                = admin.birthday
               li
                 strong Facebook : 
-                = lect.facebook
+                = admin.facebook
             // Button trigger modal
             button.btn.btn-primary.ml-5(type='button' data-toggle='modal' data-target='#editInfo')
               | S&#x1B0;&#x309;a th&ocirc;ng tin
@@ -258,7 +260,7 @@ a.scroll-to-top.rounded(href='#page-top')
         h5#exampleModalLabel.modal-title Ready to Leave?
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
-      .modal-body Select &quot;Logout&quot; below if you are ready to end your current session.
+      .modal-body Seadmin &quot;Logout&quot; below if you are ready to end your current session.
       .modal-footer
         button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
         a.btn.btn-primary(href='login.html') Logout
@@ -271,24 +273,24 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='/lecture/editInfo?_method=PUT' method='POST' enctype="multipart/form-data")
-          input(type="hidden" name="id" value= lect._id)
-          input(type="hidden" name="oldAvatar" value= lect.avatar)
+        form(action='/admin/editInfo?_method=PUT' method='POST' enctype="multipart/form-data")
+          input(type="hidden" name="id" value= admin._id)
+          input(type="hidden" name="oldAvatar" value= admin.avatar)
           .form-group
             label(for='name') Ho&#x323; t&ecirc;n
-            input#name.form-control(type='text' name='name' value=lect.name)
+            input#name.form-control(type='text' name='name' value=admin.name)
           .form-group
             label(for='email') Email
-            input#email.form-control(type='email' name="email" value=lect.email)
+            input#email.form-control(type='email' name="email" value=admin.email)
           .form-group
             label(for='phone') S&ocirc;&#x301; &Dstrok;i&ecirc;&#x323;n Thoa&#x323;i
-            input#phone.form-control(type='text' name='phone' pattern='((09|03|07|08|05)+([0-9]{8}))' value=lect.phone)
+            input#phone.form-control(type='text' name='phone' pattern='((09|03|07|08|05)+([0-9]{8}))' value=admin.phone)
           .form-group
             label(for='birthday') Nga&#x300;y sinh
-            input#birthday.form-control(type='text' name='birthday' value=lect.birthday)
+            input#birthday.form-control(type='text' name='birthday' value=admin.birthday)
           .form-group
             label(for='facebook') Facebook
-            input#facebook.form-control(type='url' name='facebook' value=lect.facebook)
+            input#facebook.form-control(type='url' name='facebook' value=admin.facebook)
           .form-group
             label(for='avatar') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
             input#avatar.form-control-file(type='file' name='avatar')
@@ -305,9 +307,9 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form#formChangePassword(action='/lecture/changePassword?_method=PUT' method='POST')
+        form#formChangePassword(action='/admin/changePassword?_method=PUT' method='POST')
           .form-group
-            input(type="hidden" name="id" value= lect._id)
+            input(type="hidden" name="id" value= admin._id)
             label(for='password') M&acirc;&#x323;t kh&acirc;&#x309;u cu&#x303;
             input#password.form-control(type='text' name='password' placeholder='Nhập mật khẩu cũ')
           .form-group

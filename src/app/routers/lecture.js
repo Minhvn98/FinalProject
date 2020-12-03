@@ -11,7 +11,8 @@ const authLecutreMiddleware = require('../middlewares/authLecture');
 router.get('/info/:id', lectureController.showInfo);
 router.get('/:id', lectureController.lecture);
 router.get('/courses/:slug', detailCourseController.detailCourse);
-
+router.put('/editInfo', upload.single('avatar'), lectureController.editInfo);
+router.put('/changePassword', lectureController.changePassword);
 
 router.post('/courses/addYouCanLearn', detailCourseController.addYouCanLearn);
 router.put('/courses/editYouCanLearn', detailCourseController.editYouCanLearn);

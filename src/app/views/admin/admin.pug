@@ -7,17 +7,17 @@ head
   meta(name='author' content='')
   title Trang qua&#x309;n tri&#x323;
   // Custom fonts for this template
-  link(href='./fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
+  link(href='/fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
   // Custom styles for this template
-  link(href='./bootstrap/css/bootstrap.min.css' rel='stylesheet')
+  link(href='/bootstrap/css/bootstrap.min.css' rel='stylesheet')
   link(rel='stylesheet' href='/css/admin1.css ')
 // Page Wrapper
 #wrapper
   // Sidebar
   ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
     // Sidebar - Brand
-    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='index.html')
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/admin/${admin._id}`)
       .sidebar-brand-icon.rotate-n-15
         i.fas.fa-laugh-wink
       .sidebar-brand-text.mx-3 LMS Admin
@@ -28,7 +28,7 @@ head
     li.nav-item.active
       a.nav-link(href='#')
         i.fas.fa-chalkboard-teacher
-        span Xin cha&#x300;o Admin
+        span Xin cha&#x300;o #{admin.name} !
     // Divider
     hr.sidebar-divider
     li.nav-item
@@ -52,15 +52,9 @@ head
         span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
     // Nav Item - Pages Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
+      a.nav-link.collapsed(href=`/admin/info/${admin._id}`)
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-      #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
-        .bg-white.py-2.collapse-inner.rounded
-          h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-          a.collapse-item(href='#') Xem th&ocirc;ng tin
-          a.collapse-item(href='#') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
-          a.collapse-item(href='#') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
     // Nav Item - Utilities Collapse Menu
     li.nav-item
       a.nav-link(href='#')
@@ -70,7 +64,7 @@ head
     hr.sidebar-divider
     // Nav Item - Tables
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href='/auth/logout')
         i.fas.fa-sign-out-alt
         span &Dstrok;&abreve;ng xu&acirc;&#x301;t
     // Divider
@@ -224,7 +218,7 @@ head
                 .row.no-gutters.align-items-center
                   .col.mr-2
                     .text-xs.font-weight-bold.text-primary.text-uppercase.mb-1
-                      | Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
+                      | Số lượng khóa học
                     .h5.mb-0.font-weight-bold.text-gray-800
                       | #{numCourse} khóa học
                   .col-auto
@@ -235,11 +229,11 @@ head
                 .row.no-gutters.align-items-center
                   .col.mr-2
                     .text-xs.font-weight-bold.text-success.text-uppercase.mb-1
-                      | Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+                      | Số lượng giảng viên
                     .h5.mb-0.font-weight-bold.text-gray-800
-                      | #{numStudent} học viên
+                      | #{numLecture} giảng viên
                   .col-auto
-                    i.fas.fa-user.fa-2x.text-gray-300
+                    i.fas.fa-chalkboard-teacher.fa-2x.text-gray-300
           // Earnings (Monthly) Card Example
           .col-xl-3.col-md-6.mb-4
             .card.border-left-info.shadow.h-100.py-2
@@ -247,13 +241,14 @@ head
                 .row.no-gutters.align-items-center
                   .col.mr-2
                     .text-xs.font-weight-bold.text-info.text-uppercase.mb-1
-                      | Th&ocirc;ng ba&#x301;o
+                      | Số lượng học viên
                     .row.no-gutters.align-items-center
                       .col-auto
                         .h5.mb-0.mr-3.font-weight-bold.text-gray-800
-                          | 5 th&ocirc;ng ba&#x301;o
+                          | #{numStudent} học viên
                   .col-auto
-                    i.fas.fa-bell.fa-2x.text-gray-300
+                    i.fas.fa-user-graduate.fa-2x.text-gray-300
+                  
           // Pending Requests Card Example
           .col-xl-3.col-md-6.mb-4
             .card.border-left-warning.shadow.h-100.py-2
@@ -310,9 +305,9 @@ a.scroll-to-top.rounded(href='#page-top')
           | Cancel
         a.btn.btn-primary(href='login.html') Logout
 // Bootstrap core JavaScript
-script(src='./jquery/jquery.min.js')
-script(src='./bootstrap/js/bootstrap.bundle.min.js')
+script(src='/jquery/jquery.min.js')
+script(src='/bootstrap/js/bootstrap.bundle.min.js')
 // Core plugin JavaScript
-script(src='./jquery-easing/jquery.easing.min.js')
+script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
-script(src='./javascripts/sb-admin-2.min.js')
+script(src='/javascripts/sb-admin-2.min.js')

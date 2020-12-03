@@ -7,6 +7,8 @@ const StudentSchema = new Schema(
     phone: { type: String, required: true },
     email: { type: String, unique: true },
     password: String,
+    brithday: String,
+    facebook: String,
     avatar: { type: String, default: '/images/user.png' },
     listCourses: [
       {

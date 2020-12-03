@@ -25,7 +25,7 @@ html(lang='en')
                   h1.h4.text-gray-900.mb-4 Đăng Nhập!
                 form.user#form-login(action="/auth/login" method="POST")
                   .form-group
-                    input#role(type="text" name="role" value="0")
+                    input#role(type="hidden" name="role" value="0")
                     input#inputEmail.form-control.form-control-user(type='email' aria-describedby='emailHelp' placeholder='Nhập email của bạn ...' name="email" required)
                   .form-group
                     input#inputPassword.form-control.form-control-user(type='password' placeholder='Nhập mật khẩu ...' autocomplete="true" name="password" required)

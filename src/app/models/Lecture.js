@@ -10,7 +10,6 @@ const LectureSchema = new Schema({
     categories: String,
     avatar: String,
     description: String,
-    password: String,
     birthday: String,
     facebook: String,
     listCourse: [{ type: Schema.Types.ObjectId, ref: 'Course' }],

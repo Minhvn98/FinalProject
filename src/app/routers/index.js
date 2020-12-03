@@ -10,7 +10,7 @@ router.get('/auth/register', homeController.register);
 router.get('/auth/forgot-password', homeController.forgotPassword);
 
 router.post('/auth/login', homeController.checkLogin)
-
+router.get('/auth/logout', homeController.logout)
 router.post('/auth/create-account', homeController.createAcc);
 
 router.get('/courses', homeController.listCourses);

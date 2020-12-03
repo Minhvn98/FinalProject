@@ -2,14 +2,17 @@ const path = require('path');
 const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
 const Course = require('../models/Course');
+const Admin = require("../models/Admin");
+
 class StudentController {
 
   //[GET] /admin/management-student
-  managementStudent(req, res, next) {
+  async managementStudent(req, res, next) {
+    const admin = await Admin.findById(req.session.adminId);
     Student.find({})
       .then((students) => {
         Course.find({}).then((courses) =>
-          res.render(path.join('admin', 'admin-student'), { students, courses })
+          res.render(path.join('admin', 'admin-student'), { admin, students, courses })
         );
       })
       .catch((err) => next(err));
@@ -109,6 +112,13 @@ class StudentController {
     const requireCourses = await Course.find({}, null, { sort: { createdAt: -1 }, limit: 4 });
     //console.log(req)
     res.render(path.join('student', 'student'), { student, requireCourses})
+  }
+
+  showInfo(req, res, next) {
+    Student.findById(req.params.id)
+      .then(student => res.render(path.join('student', 'student-info'), {student}))
+      .catch(err => next(err))
+    
   }
 }
 

@@ -8,6 +8,8 @@ const AdminSchema = new Schema({
     phone: String,
     avatar: String,
     password: String,
+    facebook: String,
+    birthday: String
 }, { timestamps: true });
 
 module.exports = mongoose.model('Admin', AdminSchema);

@@ -18,6 +18,9 @@ const adminRouter = require('./routers/admin');
 const lectureRouter = require('./routers/lecture');
 const studentRouter = require('./routers/student')
 
+const authAdmin = require('./middlewares/authAdmin');
+const authStudent = require('./middlewares/authStudent');
+const authLecture = require('./middlewares/authLecture');
 db.connect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,10 +38,11 @@ app.use(expressSession({
   resave: true,
   saveUninitialized: true
 }));
+
 app.use('/', indexRouter);
-app.use('/admin', adminRouter);
-app.use('/lecture', lectureRouter);
-app.use('/student', studentRouter);
+app.use('/admin', authAdmin, adminRouter);
+app.use('/lecture', authLecture, lectureRouter);
+app.use('/student', authStudent, studentRouter);
 
 
 
@@ -63,24 +67,3 @@ app.use(function(err, req, res, next) {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
-
-// const express = require('express')
-// const path = require('path')
-// const app = express();
-
-
-// const adminRouter = require('./routers/admin');
-// app.use(express.static('public'));
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'pug');
-// app.use(express.json()) // for parsing application/json
-// app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-// app.get('/', (req, res) =>
-//     res.render(path.join(__dirname, 'views', 'admin', 'admin-lecture'))
-// )
-
-// app.use('/admin', adminRouter);
-
-
-// console.log(__dirname)
-// app.listen(3000, () => console.log(`App listen on port 3000`))
