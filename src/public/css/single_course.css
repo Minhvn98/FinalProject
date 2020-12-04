@@ -276,4 +276,9 @@ img.card-img-top {
     height: 48px;
     overflow: hidden;
   }
+
+  .block-button {
+    display: flex;
+    justify-content: flex-end;
+}
   

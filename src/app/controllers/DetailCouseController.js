@@ -12,6 +12,7 @@ const Admin = require('../models/Admin');
 class DetailCourseController {
   //[Get] /lecture/courses/:slug
   detailCourse(req, res, next) {
+    
     console.log(req.params.slug);
     Course.findOne({ slug: req.params.slug })
       .populate(

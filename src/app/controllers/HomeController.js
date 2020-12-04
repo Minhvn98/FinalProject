@@ -23,26 +23,7 @@ class HomeController {
   }
 
   async detailsCourse(req, res, next) {
-    // Course.findOne({ slug: req.params.slug })
-    //   .then(function (course) {
-    //     course.price = new Intl.NumberFormat("vi-VN", {
-    //       style: "currency",
-    //       currency: "VND",
-    //     }).format(course.price);
-    //     course.price = course.price.slice(1) + " đ";
-    //     console.log(course.price);
-    //     Lecture.findById(course.lecture.lectureId).then((lect) =>
-    //       res.render("detailt-course", { course, lect })
-    //     );
-    //   })
-    //   .catch((err) => next(err));
-
-    // .then(courses => res.render('detailt-course'))
-    // .catch(err => next(err))
-
-    //     console.log(x)
-    // res.json(x);
-
+    
     const course = await Course.findOne({ slug: req.params.slug }).populate(
       'youCanLearn lecture.lectureId lessons homeworks documents requirements'
     );
@@ -55,9 +36,15 @@ class HomeController {
       _id: { $nin: course._id },
       categories: course.categories,
     }).limit(3)
-    console.log(reCourses)
-    res.render('detailt-course', { course, reCourses });
-
+    //console.log(reCourses)
+    if(req.session.role == 0){
+      const student = await Student.findById(req.session.studentId);
+      return res.render('detailt-course', { course, reCourses, student });
+      console.log(student)
+    }
+    
+    res.render('detailt-course', { course, reCourses});
+    console.log('cc')
     // res.json(course)
   }
 
@@ -127,3 +114,4 @@ class HomeController {
 }
 
 module.exports = new HomeController();
+

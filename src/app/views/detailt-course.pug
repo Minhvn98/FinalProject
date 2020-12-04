@@ -27,8 +27,12 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
           a.nav-link(href='/courses') Course
         li.nav-item
           a.nav-link(href='#contact') Contact
-        li.nav-item
-          a.nav-link(href='/auth/login') Login
+        if (!loggedIn)
+          li.nav-item
+            a.nav-link(href='/auth/login') Login
+        if (loggedIn)
+          li.nav-item
+            a.nav-link(href='/auth/logout') Logout
 .container
   .row.content
     .col-md-8.col-sm-12.left-content
@@ -119,25 +123,25 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             span.lecture-desc
               = course.lecture.lectureId.description
       .block-rating
-        h4.my-3 Ca&#x309;m nh&acirc;&#x323;n ho&#x323;c vi&ecirc;n
-        .box-rating
-          .media
-            img.mr-3.rounded-circle(src='../images/banh.jpg' alt='...')
-            .media-body
-              .form-group
-                textarea#input-rating.form-control(rows='3' placeholder='Cảm nhận của bạn ?')
+        h4.my-3 Bình luận
+        if (student)
+          .box-comment
+            form(action='/addComment' method='POST')
+              input(type="hidden" name='idUser')
+              .media
+                img.mr-3.rounded-circle(src= student.avatar alt= student.name)
+                .media-body
+                  .form-group
+                    textarea#input-comment.form-control(rows='3' placeholder='Cảm nhận của bạn ?')
+              .block-button
+                .btn.btn-primary(type="submit") Bi&#x300;nh lu&acirc;&#x323;n
+                .btn.btn-secondary.ml-2 Hu&#x309;y
         hr
         ul.list-unstyled
           li.media.border-bottom
             img.mr-3.rounded-circle(src='../images/banh.jpg' alt='...')
             .media-body
               h6.mt-0.mb-1 Ng&ocirc; Ba&#x301; Kha&#x301;
-              span.star-rating
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.far.fa-star
-                i.far.fa-star
               p
                 | Kho&#x301;a ho&#x323;c hay qua&#x301; anh &#x1A1;i.
                 | H&ocirc;m na&#x300;o va&#x300;o tu&#x300; v&#x1A1;&#x301;i em cho vui.
@@ -145,12 +149,6 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             img.mr-3.rounded-circle(src='../images/dungtroc.jpg' alt='...')
             .media-body
               h6.mt-0.mb-1 Du&#x303;ng Tro&#x323;c
-              span.star-rating
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.far.fa-star
               p
                 | Va&#x300;o nha&#x300; &dstrok;a&#x301; v&#x1A1;&#x301;i anh &dstrok;i em.
                 | Trong na&#x300;y vui l&abreve;&#x301;m em a&#x323;.
@@ -158,12 +156,6 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             img.mr-3.rounded-circle(src='../images/phu.jpg' alt='...')
             .media-body
               h6.mt-0.mb-1 Phu&#x301; L&ecirc;
-              span.star-rating
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
               p
                 | H&ocirc;m na&#x300;o anh em mi&#x300;nh &dstrok;o&#x301;ng MV &dstrok;i.
     .col-md-4.col-sm-12.right-content

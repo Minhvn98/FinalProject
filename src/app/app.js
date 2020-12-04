@@ -21,6 +21,8 @@ const studentRouter = require('./routers/student')
 const authAdmin = require('./middlewares/authAdmin');
 const authStudent = require('./middlewares/authStudent');
 const authLecture = require('./middlewares/authLecture');
+global.loggedIn = null;
+
 db.connect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +40,10 @@ app.use(expressSession({
   resave: true,
   saveUninitialized: true
 }));
-
+app.use('*', (req, res, next) => {
+  loggedIn = req.session.studentId || req.session.lectureId || req.session.adminId;
+  next();
+})
 app.use('/', indexRouter);
 app.use('/admin', authAdmin, adminRouter);
 app.use('/lecture', authLecture, lectureRouter);

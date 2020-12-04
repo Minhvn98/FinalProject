@@ -43,14 +43,14 @@ head
       
     // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='/auth/logout')
+      a.nav-link.collapsed(href='#')
         i.far.fa-bell
         span Th&ocirc;ng ba&#x301;o
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
     li.nav-item
-      a.nav-link(href='tables.html')
+      a.nav-link(href='#' data-toggle='modal' data-target='#logoutModal')
         i.fas.fa-sign-out-alt
         span &Dstrok;&abreve;ng xu&acirc;&#x301;t
     // Divider
@@ -167,23 +167,17 @@ head
           // Nav Item - User Information
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              span.mr-2.d-none.d-lg-inline.text-gray-600.small Valerie Luna
-              img.img-profile.rounded-circle(src='https://source.unsplash.com/QAB-WJcbgJk/60x60')
+              span.mr-2.d-none.d-lg-inline.text-gray-600.small= student.name
+              img.img-profile.rounded-circle(src= student.avatar)
             // Dropdown - User Information
             .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
-              a.dropdown-item(href='#')
+              a.dropdown-item(href=`/student/info/${student._id}`)
                 i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
                 |                   Profile
-              a.dropdown-item(href='#')
-                i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
-                |                   Settings
-              a.dropdown-item(href='#')
-                i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400
-                |                   Activity Log
               .dropdown-divider
               a.dropdown-item(href='#' data-toggle='modal' data-target='#logoutModal')
                 i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
-                |                   Logout
+                |                   Đăng xuất
       // End of Topbar
       // Begin Page Content
       .container-fluid
@@ -242,17 +236,8 @@ head
 a.scroll-to-top.rounded(href='#page-top')
   i.fas.fa-angle-up
 // Logout Modal
-#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
-  .modal-dialog(role='document')
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title Ready to Leave?
-        button.close(type='button' data-dismiss='modal' aria-label='Close')
-          span(aria-hidden='true') &times;
-      .modal-body Select &quot;Logout&quot; below if you are ready to end your current session.
-      .modal-footer
-        button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
-        a.btn.btn-primary(href='login.html') Logout
+include ../layouts/modal-logout.pug
+
 // Bootstrap core JavaScript
 script(src='/jquery/jquery.min.js')
 script(src='/bootstrap/js/bootstrap.bundle.min.js')

@@ -1,0 +1,11 @@
+#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title Đăng xuất?
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body Bạn có muốn đăng xuất ?
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Đóng
+        a.btn.btn-primary(href='/auth/logout') Đăng xuất
