@@ -110,4 +110,14 @@ $(document).ready(function () {
     $('#contentRequire')[0].textContent = `Bạn có muốn xóa : ${content} ?`;
 
   })
+
+  const formComment = $('#formComment');
+  
+
+  $('#btn-submit').click(function(){
+    const inputComment = $('#input-comment').val();
+    if(inputComment){
+      formComment.submit();
+    }
+  })
 });

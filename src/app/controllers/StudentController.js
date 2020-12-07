@@ -3,6 +3,7 @@ const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
 const Course = require('../models/Course');
 const Admin = require("../models/Admin");
+const Comment = require("../models/details_course/Comment");
 
 class StudentController {
 
@@ -119,6 +120,30 @@ class StudentController {
       .then(student => res.render(path.join('student', 'student-info'), {student}))
       .catch(err => next(err))
     
+  }
+
+  detailCourse(req, res, next) {
+    res.render(path.join('student', 'student-detail-course'))
+  }
+
+  //[POST] /student/addComment
+  async addComment(req, res, next){
+    const comment = new Comment({
+      idUser: req.body.idUser,
+      idCourse: req.body.idCourse,
+      content: req.body.content,
+      onModel: 'Student'
+    })
+    // res.json(comment)
+    // console.log(req.body)
+    const course = await Course.findById(req.body.idCourse);
+    course.comments.push(comment._id);
+    course.save();
+
+    Comment.create(comment)
+      .then(() => res.redirect('back'))
+      .catch(err => next(err))
+
   }
 }
 

@@ -11,21 +11,21 @@ const Admin = require('../models/Admin');
 
 class DetailCourseController {
   //[Get] /lecture/courses/:slug
-  detailCourse(req, res, next) {
+  async detailCourse(req, res, next) {
     
     console.log(req.params.slug);
-    Course.findOne({ slug: req.params.slug })
+    const course = await Course.findOne({ slug: req.params.slug })
       .populate(
         'youCanLearn lecture.lectureId lessons homeworks documents requirements'
       )
-      // .then((data) => res.json(data))
-      .then((course) =>
-        // res.json(course)
-        res.render(path.join('lecture', 'lecture-detail-course'), { course })
-      )
-      .catch((err) => next(err));
-    //res.render(path.join("lecture", "lecture-detail-course"));
-    
+    const comments = await Comment.find({idCourse: course._id})
+      .populate('idUser')
+    // res.json(comments)
+    res.render(path.join('lecture', 'lecture-detail-course'), { comments, course })
+    // //res.render(path.join("lecture", "lecture-detail-course"));
+    // Comment.find({idCourse: '5faf33138f0a2e23f86b5be8'})
+    //   .populate('idUser')
+    //   .then(d => res.json(d))
   }
 
   //[POST] /lesson/courses/addYouCanLearn
@@ -72,6 +72,25 @@ class DetailCourseController {
 
   //[DELETE] /lecture/deleteRequirement
   deleteRequirement = requirementController.deleteRequirement;
+
+  //[POST] /lecture/addComment
+  async addComment(req, res, next){
+    const comment = new Comment({
+      idUser: req.body.idUser,
+      idCourse: req.body.idCourse,
+      content: req.body.content,
+      onModel: 'Lecture'
+    })
+
+    const course = await Course.findById(req.body.idCourse);
+    course.comments.push(comment._id);
+    course.save();
+
+    Comment.create(comment)
+      .then(() => res.redirect('back'))
+      .catch(err => next(err))
+
+  }
 }
 
 module.exports = new DetailCourseController();

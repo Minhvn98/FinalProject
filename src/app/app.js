@@ -46,7 +46,8 @@ app.use('*', (req, res, next) => {
 })
 app.use('/', indexRouter);
 app.use('/admin', authAdmin, adminRouter);
-app.use('/lecture', authLecture, lectureRouter);
+app.use('/lecture', lectureRouter);
+// app.use('/lecture', authLecture, lectureRouter);
 app.use('/student', authStudent, studentRouter);
 
 

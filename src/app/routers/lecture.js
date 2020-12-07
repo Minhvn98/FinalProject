@@ -36,5 +36,6 @@ router.post('/courses/addRequirement', detailCourseController.addRequirement);
 router.put('/courses/editRequirement', detailCourseController.editRequirement);
 router.delete('/courses/deleteRequirement', detailCourseController.deleteRequirement);
 
+router.post('/addComment', detailCourseController.addComment)
 
 module.exports = router;

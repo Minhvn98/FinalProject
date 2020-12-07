@@ -6,7 +6,7 @@ const Lesson = require('../models/details_course/Lesson');
 const HomeWork = require('../models/details_course/HomeWork');
 const Document = require('../models/details_course/Document');
 const Admin = require('../models/Admin');
-const User = require('../models/User');
+const Comment = require('../models/details_course/Comment');
 
 class HomeController {
   //[GET] /
@@ -37,13 +37,16 @@ class HomeController {
       categories: course.categories,
     }).limit(3)
     //console.log(reCourses)
+
+    const comments = await Comment.find({idCourse: course._id}).populate('idUser');
+
     if(req.session.role == 0){
       const student = await Student.findById(req.session.studentId);
-      return res.render('detailt-course', { course, reCourses, student });
+      return res.render('detailt-course', { course, reCourses, student, comments });
       console.log(student)
     }
     
-    res.render('detailt-course', { course, reCourses});
+    res.render('detailt-course', { course, reCourses, comments});
     console.log('cc')
     // res.json(course)
   }
