@@ -7,6 +7,6 @@ router.get('/:id', studentController.student);
 router.get('/info/:id', studentController.showInfo);
 router.get('/courses/:slug', studentController.detailCourse);
 
-router.post('/student/addComment', studentController.addComment);
+router.post('/addComment', studentController.addComment);
 
 module.exports = router;

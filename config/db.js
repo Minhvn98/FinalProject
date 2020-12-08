@@ -9,9 +9,9 @@ async function connect() {
             useFindAndModify: false,
             useCreateIndex: true
         });
-        console.log('Kết nối thành công !!!');
+        console.log('Kết nối cơ sở dữ liệu thành công !!!');
     } catch (error) {
-        console.log('Kết nối thất bại !!!')
+        console.log('Kết nối cơ sở dữ liệu thất bại !!!')
         next(error);
     }
 }

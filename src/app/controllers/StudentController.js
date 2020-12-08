@@ -122,8 +122,18 @@ class StudentController {
     
   }
 
-  detailCourse(req, res, next) {
-    res.render(path.join('student', 'student-detail-course'))
+  async detailCourse(req, res, next) {
+    const student = await Student.findById(req.session.studentId)
+    console.log(student)
+    const course = await Course.findOne({ slug: req.params.slug })
+      .populate(
+        'youCanLearn lecture.lectureId lessons homeworks documents requirements'
+      )
+    const comments = await Comment.find({idCourse: course._id})
+      .populate('idUser', ['avatar', 'name'])
+    console.log(course)
+    // res.json(comments)
+    res.render(path.join('student', 'student-detail-course'), { student, comments, course })
   }
 
   //[POST] /student/addComment

@@ -7,8 +7,11 @@ const app = express();
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
+const dotenv = require('dotenv');
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
-require('dotenv').config()
+dotenv.config()
 
 const db = require('../../config/db')
 const port = (process.env.PORT || 3000)
@@ -51,7 +54,6 @@ app.use('/lecture', lectureRouter);
 app.use('/student', authStudent, studentRouter);
 
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -68,8 +70,11 @@ app.use(function(err, req, res, next) {
   res.render('error', {err: err.message});
 });
 
+io.on('connection', (socket) => {
+  console.log('connected')
+  socket.on('disconnect', ()=> console.log('disconnected'))
+})
 
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+http.listen(port, () => {
+  console.log(`Ứng dụng chạy tại http://localhost:${port}`)
 })

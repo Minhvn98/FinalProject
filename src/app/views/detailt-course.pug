@@ -124,23 +124,11 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
               = course.lecture.lectureId.description
       .block-rating
         h4.my-3 Bình luận
-        if (student)
-          .box-comment
-            form#formComment(action='/student/addComment' method='POST')
-              input(type="hidden" name='idUser' value= student._id)
-              input(type="hidden" name="idCourse" value= course._id)
-              .media
-                img.mr-3.rounded-circle(src= student.avatar alt= student.name)
-                .media-body
-                  .form-group
-                    textarea#input-comment.form-control(rows='3' placeholder='Cảm nhận của bạn ?' name="content")
-              .block-button
-                .btn.btn-primary#btn-submit(type="submit") Bi&#x300;nh lu&acirc;&#x323;n
-                .btn.btn-secondary.ml-2 Hu&#x309;y
+        
         hr
         ul.list-unstyled
           each cmt in comments
-            li.media.border-bottom
+            li.media.border-bottom.py-3
               img.mr-3.rounded-circle(src= cmt.idUser.avatar alt= cmt.idUser.name)
               .media-body
                 h6.mt-0.mb-1= cmt.idUser.name
@@ -171,7 +159,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
               
   // end rowconent
   .row.related.course
-    .col-sm-12
+    .col-sm-12.my-2
       h4 Kho&#x301;a ho&#x323;c li&ecirc;n quan
     each course in reCourses
       .col-lg-4.col-md-6.col-sm-12.mb-5

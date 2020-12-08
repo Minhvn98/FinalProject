@@ -1652,3 +1652,7 @@ h5.card-title {
   color: red;
   font-style: italic;
 }
+
+.img-course {
+  width: 100% !important;
+}
