@@ -5,9 +5,9 @@ const upload = require('../middlewares/upload.file')
 
 const lectureController = require('../controllers/LectureController');
 const detailCourseController = require('../controllers/DetailCouseController');
+const { route } = require('./student');
 
-const authLecutreMiddleware = require('../middlewares/authLecture');
-
+router.get('/getdata', lectureController.getdata)
 router.get('/info/:id', lectureController.showInfo);
 router.get('/:id', lectureController.lecture);
 router.get('/courses/:slug', detailCourseController.detailCourse);
@@ -36,6 +36,8 @@ router.post('/courses/addRequirement', detailCourseController.addRequirement);
 router.put('/courses/editRequirement', detailCourseController.editRequirement);
 router.delete('/courses/deleteRequirement', detailCourseController.deleteRequirement);
 
-router.post('/addComment', detailCourseController.addComment)
+router.post('/addComment', detailCourseController.addComment);
+router.get('/homework/:id', lectureController.homeWork)
+
 
 module.exports = router;

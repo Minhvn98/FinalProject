@@ -238,25 +238,15 @@ body#page-top
                     th Trình độ
                     th Giảng viên
                     th Học viên
-                    th Chi phí
                     th Danh mục
                     th Thao tác
-                tfoot
-                  tr
-                    th Ảnh
-                    th Tên khóa học
-                    th Mô tả
-                    th Trình độ
-                    th Giảng viên
-                    th Học viên
-                    th Chi phí
-                    th Danh mục
-                    th Thao tác
+                
                 tbody
                   each course in courses
                     tr
                       td
-                        img(src=course.image width='130px')
+                        a(href=`/courses/${course.slug}`)
+                          img(src=course.image width='130px')
                       td=course.name
                       td=course.description
                       td=course.level
@@ -265,7 +255,6 @@ body#page-top
                         p(hidden) -
                         =course.lecture.name 
                       td #{course.listStudent.length} học viên
-                      td=course.price
                       td=course.categories
                       td
                         .btn-group(role='group')
@@ -322,16 +311,12 @@ include ../layouts/modal-logout.pug
                 option(value="Lập trình Web" selected) Lập trình Web
                 option(value="Lập trình Mobile") Lập trình Mobile
                 option(value="Lập trình Game") Lập trình Game
-          .form-row
-            .form-group.col-md-6
-              label(for='selectLecture') Giảng Viên
-              select#selectLecture.form-control.form-control-sm(name="lecture")
-                each lect, idx in lectures
-                  option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
-                  
-            .form-group.col-md-6
-              label(for='inputPriceCourse') Chi phí
-              input#inputPriceCourse.form-control.form-control-sm(type='text' placeholder='Nhập chi phí khóa học' name="price")
+          .form-group
+            label(for='selectLecture') Giảng Viên
+            select#selectLecture.form-control.form-control-sm(name="lecture")
+              each lect, idx in lectures
+                option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
+
           .form-row
             .form-group.col-md-6
               label(for='videoId') VideoId
@@ -375,20 +360,16 @@ include ../layouts/modal-logout.pug
                 option(value='Nâng cao') Nâng cao
             .form-group.col-md-6
               label(for='editCate') Danh mục
-              select#editCate.form-control.form-control-sm(name="categories")
-                option(value="Lập trình Web" selected) Lập trình Web
+              select#editCate.form-control.form-control-sm(name="categories" required)
+                option(value="Lập trình Web") Lập trình Web
                 option(value="Lập trình Mobile") Lập trình Mobile
                 option(value="Lập trình Game") Lập trình Game
-          .form-row
-            .form-group.col-md-6
-              label(for='editLecture') Giảng Viên
-              select#editLecture.form-control.form-control-sm(name="lecture" required)
-                each lect, idx in lectures
-                  option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
-                  
-            .form-group.col-md-6
-              label(for='editPrice') Chi phí
-              input#editPrice.form-control.form-control-sm(type='text' placeholder='Nhập chi phí khóa học' name="price")
+          .form-group
+            label(for='editLecture') Giảng Viên
+            select#editLecture.form-control(name="lecture" required)
+              each lect, idx in lectures
+                option(value=lect._id+'-'+lect.name ) #{idx+1} - #{lect.name}
+
           .form-row
             .form-group.col-md-6
               label(for='editVideoId') VideoId

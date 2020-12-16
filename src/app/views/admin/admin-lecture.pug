@@ -70,10 +70,7 @@ body#page-top
       a.nav-link.collapsed(href=`/admin/info/${admin._id}`)
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-    li.nav-item
-      a.nav-link(href='#')
-        i.fas.fa-bell
-        span Th&ocirc;ng ba&#x301;o
+
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
@@ -192,7 +189,8 @@ body#page-top
                   .small.text-gray-500 Chicken the Dog &middot; 2w
               a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
           .topbar-divider.d-none.d-sm-block
-          // Nav Item - User Information
+
+          
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
               span.mr-2.d-none.d-lg-inline.text-gray-600.small= admin.name
@@ -232,16 +230,7 @@ body#page-top
                     th Kho&#x301;a ho&#x323;c gia&#x309;ng da&#x323;y
                     th Ho&#x323;c vi&ecirc;n
                     th S&#x1B0;&#x309;a-Xo&#x301;a
-                tfoot
-                  tr
-                    th Ho&#x323; T&ecirc;n
-                    th M&ocirc; ta&#x309;
-                    th Email
-                    th S&ocirc;&#x301; &dstrok;i&ecirc;&#x323;n thoa&#x323;i
-                    th Li&#x303;nh v&#x1B0;&#x323;c gia&#x309;ng da&#x323;y
-                    th Kho&#x301;a ho&#x323;c gia&#x309;ng da&#x323;y
-                    th Ho&#x323;c vi&ecirc;n
-                    th S&#x1B0;&#x309;a-Xo&#x301;a
+              
                 tbody
                   each lecture in lectures
                     tr

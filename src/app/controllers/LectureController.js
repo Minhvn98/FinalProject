@@ -4,6 +4,7 @@ const Lecture = require("../models/Lecture");
 const Student = require("../models/Student");
 const Course = require("../models/Course");
 const Admin = require("../models/Admin");
+const SubmitHomework = require('../models/details_course/SubmitHomework')
 class LectureController {
   //[GET] /admin/management-lecture
   async index(req, res, next) {
@@ -24,7 +25,7 @@ class LectureController {
 
     file
       ? (req.body.avatarLecture = req.file.path.split("public")[1])
-      : (req.body.avatarLecture = "");
+      : (req.body.avatarLecture = "\\upload\\1608048312663-avatar-default.jpg");
 
     const lect = {
       name: req.body.inputNameLecture,
@@ -126,6 +127,27 @@ class LectureController {
     }
 
     
+  }
+
+  async homeWork(req, res, next) {
+    const lect = await Lecture.findById(req.params.id)
+      .populate('listCourse', '_id');
+    
+    const listHomeworks = [];
+    for(var i = 0; i < lect.listCourse.length; i++){
+      listHomeworks.push(await SubmitHomework.find({idCourse: lect.listCourse[i]._id}).populate('idCourse idStudent', 'name'))
+    }
+    // console.log(arr)
+    // res.json(arr)
+
+    res.render(path.join('lecture', 'lecture-homework'), { lect, listHomeworks })
+  }
+
+  getdata(req, res, next){
+    console.log(req.query.search)
+    Lecture.find()
+      .then(data => res.json(data))
+      .catch(err => next(err))
   }
 
 }

@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const LectureSchema = new Schema({
     name: String,
-    email: String,
+    email: { type: String, unique: true},
     phone: String,
     password: String,
     categories: String,

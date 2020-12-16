@@ -80,9 +80,9 @@ body#page-top
         // Topbar Search
         form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search
           .input-group
-            input.form-control.bg-light.border-0.small(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+            input.form-control.bg-light.border-0.small#inputSearch(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2' name="search")
             .input-group-append
-              button.btn.btn-primary(type='button')
+              button.btn.btn-primary#btnSearch(type='button')
                 i.fas.fa-search.fa-sm
         // Topbar Navbar
         ul.navbar-nav.ml-auto
@@ -340,7 +340,7 @@ body#page-top
                 ul.mt-3
                   li
                     i.fas.fa-tachometer-alt
-                    | Tri&#x300;nh &dstrok;&ocirc;&#x323; c&#x1A1; ba&#x309;n
+                    | Trình độ #{course.level}
                   li
                     i.fas.fa-list
                     | N&ocirc;&#x323;i dung &dstrok;&#x1B0;&#x1A1;&#x323;c bi&ecirc;n soa&#x323;n khoa ho&#x323;c

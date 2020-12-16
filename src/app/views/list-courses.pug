@@ -22,7 +22,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
         li.nav-item.active
           a.nav-link(href='/courses/') Course
         li.nav-item
-          a.nav-link(href='#') Contact
+          a.nav-link(href='#contact') Contact
         li.nav-item
           a.nav-link(href='/auth/login') Login
 // ======================== Courses =========================
@@ -111,28 +111,18 @@ section.courses.my-5
           li.page-item
             a.page-link(href='#') 1
           li.page-item.disabled
-            a.page-link(href='#') 2
-          li.page-item.disabled
-            a.page-link(href='#') 3
-          li.page-item.disabled
             a.page-link(href='#' aria-label='Next')
               span(aria-hidden='true') &raquo;
               span.sr-only Next
     // end pagination
 // ======================== Footer ========================
-footer.footer.my-5
+footer.footer.my-5#contact
   .container
     .row
       .col-md-3
-        a.navbar-brand.mt-5(href='index.html') LMS Page
+        a.navbar-brand.mt-5(href='/') LMS Page
         p H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
-        .footer-icon
-          a(target='blank' href='https://fb.com/Minhvn98')
-            i.fab.fa-facebook
-          a(target='blank' href='https://github.com/Minhvn98')
-            i.fab.fa-github
-          a(target='blank' href='https://fb.com/mik.nguyen.102')
-            i.fab.fa-facebook
+
       .col-md-5
         h3.footer-title.mt-5 References
         ul

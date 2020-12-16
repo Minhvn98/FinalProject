@@ -43,9 +43,9 @@ head
       
     // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#')
-        i.far.fa-bell
-        span Th&ocirc;ng ba&#x301;o
+      a.nav-link.collapsed(href='/student/homework/' + student._id)
+        i.fas.fa-list
+        span Bài tập đã nộp
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
@@ -94,32 +94,14 @@ head
             a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
               i.fas.fa-bell.fa-fw
               // Counter - Alerts
-              span.badge.badge-danger.badge-counter 3+
+              span.badge.badge-danger.badge-counter
             // Dropdown - Alerts
             .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
               h6.dropdown-header
-                | Alerts Center
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-primary
-                    i.fas.fa-file-alt.text-white
-                div
-                  .small.text-gray-500 December 12, 2019
-                  span.font-weight-bold A new monthly report is ready to download!
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-success
-                    i.fas.fa-donate.text-white
-                div
-                  .small.text-gray-500 December 7, 2019
-                  |                     $290.29 has been deposited into your account!
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-warning
-                    i.fas.fa-exclamation-triangle.text-white
-                div
-                  .small.text-gray-500 December 2, 2019
-                  |                     Spending Alert: We&apos;ve noticed unusually high spending for your account.
+                | Thông báo
+              #showAlerts
+              
+              
               a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
           // Nav Item - Messages
           li.nav-item.dropdown.no-arrow.mx-1
@@ -164,7 +146,7 @@ head
                   .small.text-gray-500 Chicken the Dog &middot; 2w
               a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
           .topbar-divider.d-none.d-sm-block
-          // Nav Item - User Information
+          
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
               span.mr-2.d-none.d-lg-inline.text-gray-600.small= student.name
@@ -245,4 +227,5 @@ script(src='/bootstrap/js/bootstrap.bundle.min.js')
 script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
+script(src="/javascripts/student.js")
 

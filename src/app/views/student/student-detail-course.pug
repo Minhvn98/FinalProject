@@ -27,42 +27,23 @@ head
     hr
     // Nav Item - Dashboard
     li.nav-item.active
-      a.nav-link(href='#')
+      a.nav-link(href=`/student/${student._id}`)
         i.fas.fa-chalkboard-teacher
-        span Xin chào #{student.name} !
+        span Xin chào 
+          = student.name + ' !'
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href=`/student/${student._id}`)
         i.fas.fa-tachometer-alt
         span Dashboard
     // Divider
     hr.sidebar-divider
-    // Nav Item - Quản lý khóa học
     li.nav-item
-      a.nav-link(href='admin-course.html')
-        i.fas.fa-book
-        span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
-    li.nav-item
-      a.nav-link(href='admin.lecture.html')
-        i.fas.fa-chalkboard-teacher
-        span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
-    li.nav-item
-      a.nav-link(href='admin.lecture.html')
-        i.fas.fa-user-graduate
-        span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
-    // Nav Item - Pages Collapse Menu
-    li.nav-item
-      a.nav-link.collapsed(href='#' data-toggle='collapse' data-target='#collapseMyInfo' aria-expanded='true' aria-controls='collapseMyInfo')
+      a.nav-link.collapsed(href=`/student/info/${student._id}` )
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-      #collapseMyInfo.collapse(aria-labelledby='headingTwo' data-parent='#accordionSidebar')
-        .bg-white.py-2.collapse-inner.rounded
-          h6.collapse-header Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-          a.collapse-item(href='#') Xem th&ocirc;ng tin
-          a.collapse-item(href='#') Chi&#x309;nh s&#x1B0;&#x309;a th&ocirc;ng tin
-          a.collapse-item(href='#') &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
-    // Nav Item - Utilities Collapse Menu
+    
     li.nav-item
       a.nav-link(href='#')
         i.fas.fa-bell
@@ -71,7 +52,7 @@ head
     hr.sidebar-divider
     // Nav Item - Tables
     li.nav-item
-      a.nav-link(href='#')
+      a.nav-link(href='#' data-toggle='modal' data-target='#logoutModal')
         i.fas.fa-sign-out-alt
         span &Dstrok;&abreve;ng xu&acirc;&#x301;t
     // Divider
@@ -110,101 +91,21 @@ head
                   .input-group-append
                     button.btn.btn-primary(type='button')
                       i.fas.fa-search.fa-sm
-          // Nav Item - Alerts
-          li.nav-item.dropdown.no-arrow.mx-1
-            a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              i.fas.fa-bell.fa-fw
-              // Counter - Alerts
-              span.badge.badge-danger.badge-counter 3+
-            // Dropdown - Alerts
-            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
-              h6.dropdown-header
-                | Alerts Center
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-primary
-                    i.fas.fa-file-alt.text-white
-                div
-                  .small.text-gray-500 December 12, 2019
-                  span.font-weight-bold A new monthly report is ready to download!
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-success
-                    i.fas.fa-donate.text-white
-                div
-                  .small.text-gray-500 December 7, 2019
-                  |                     $290.29 has been deposited into your account!
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-warning
-                    i.fas.fa-exclamation-triangle.text-white
-                div
-                  .small.text-gray-500 December 2, 2019
-                  |                     Spending Alert: We&apos;ve noticed unusually high spending for your account.
-              a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
-          // Nav Item - Messages
-          li.nav-item.dropdown.no-arrow.mx-1
-            a#messagesDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              i.fas.fa-envelope.fa-fw
-              // Counter - Messages
-              span.badge.badge-danger.badge-counter 7
-            // Dropdown - Messages
-            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='messagesDropdown')
-              h6.dropdown-header
-                | Message Center
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/fn_BT9fwg_E/60x60' alt='')
-                  .status-indicator.bg-success
-                .font-weight-bold
-                  .text-truncate Hi there! I am wondering if you can help me with a problem I&apos;ve been having.
-                  .small.text-gray-500 Emily Fowler &middot; 58m
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/AU4VPcFN4LE/60x60' alt='')
-                  .status-indicator
-                div
-                  .text-truncate
-                    | I have the photos that you ordered last month, how would you like them sent to you?
-                  .small.text-gray-500 Jae Chun &middot; 1d
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/CS2uCrpNzJY/60x60' alt='')
-                  .status-indicator.bg-warning
-                div
-                  .text-truncate
-                    | Last month&apos;s report looks great, I am very happy with the progress so far, keep up the good work!
-                  .small.text-gray-500 Morgan Alvarez &middot; 2d
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/Mv9hjnEUHR4/60x60' alt='')
-                  .status-indicator.bg-success
-                div
-                  .text-truncate
-                    | Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren&apos;t good...
-                  .small.text-gray-500 Chicken the Dog &middot; 2w
-              a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
-          .topbar-divider.d-none.d-sm-block
+          
           // Nav Item - User Information
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              span.mr-2.d-none.d-lg-inline.text-gray-600.small Valerie Luna
-              img.img-profile.rounded-circle(src='https://source.unsplash.com/QAB-WJcbgJk/60x60')
+              span.mr-2.d-none.d-lg-inline.text-gray-600.small= student.name
+              img.img-profile.rounded-circle(src= student.avatar)
             // Dropdown - User Information
             .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
-              a.dropdown-item(href='#')
+              a.dropdown-item(href=`/student/info/${student._id}`)
                 i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
                 |                   Profile
-              a.dropdown-item(href='#')
-                i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
-                |                   Settings
-              a.dropdown-item(href='#')
-                i.fas.fa-list.fa-sm.fa-fw.mr-2.text-gray-400
-                |                   Activity Log
               .dropdown-divider
               a.dropdown-item(href='#' data-toggle='modal' data-target='#logoutModal')
                 i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
-                |                   Logout
+                |                   Đăng xuất
       // End of Topbar
       // Begin Page Content
       .container-fluid
@@ -239,9 +140,9 @@ head
                         each less, index in course.lessons
                           li.d-flex.justify-content-between.align-items-center
                             | #{index+1}. #{less.title}
-                            a(href= less.path target="_blank")
-                              i.fas.fa-file-download.mr-1
-                              | Ta&#x309;i xu&ocirc;&#x301;ng  
+                            // Button trigger modal
+                            button.btn.btn-primary.btn-video(type='button' data-toggle='modal' data-target='#videoModal' data-video= less.path)
+                              i.fas.fa-play-circle
                 .card.shadow-sm
                   #headingTwo.card-header.d-flex.justify-content-between
                     h2.mb-0
@@ -253,9 +154,10 @@ head
                         each hw, index in course.homeworks
                           li.d-flex.justify-content-between.align-items-center
                             | #{index+1}. #{hw.title}
-                            a(href= hw.path)
+                            a.btn(href= hw.path).btn-sucess
                               i.fas.fa-file-download.mr-1
-                              | Ta&#x309;i xu&ocirc;&#x301;ng  
+                            button(class="btn btn-primary btnHomework" data-toggle="modal" data-target="#submitHomework") Nộp bài tập
+                            i(hidden)= hw._id
                 .card.shadow-sm
                   #headingThree.card-header.d-flex.justify-content-between
                     h2.mb-0
@@ -344,17 +246,7 @@ head
 a.scroll-to-top.rounded(href='#page-top')
   i.fas.fa-angle-up
 // Logout Modal
-#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
-  .modal-dialog(role='document')
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title Ready to Leave?
-        button.close(type='button' data-dismiss='modal' aria-label='Close')
-          span(aria-hidden='true') &times;
-      .modal-body Select &quot;Logout&quot; below if you are ready to end your current session.
-      .modal-footer
-        button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
-        a.btn.btn-primary(href='/auth/logout') Logout
+include ../layouts/modal-logout.pug
 .row
   .col-sm-4.col-md-6
     #previewCourse.modal.fade(tabindex='-1' aria-labelledby='previewCourseLabel' aria-hidden='true')
@@ -362,11 +254,51 @@ a.scroll-to-top.rounded(href='#page-top')
         .modal-content
           .modal-header
             h5#previewCourseLabel.modal-title
-              | X&acirc;y d&#x1EF1;ng web v&#x1EDB;i NodeJS &amp; ExpressJS
+              | #{course.name}
             button.close(type='button' data-dismiss='modal' aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
             iframe.preVideo(src=`https://www.youtube.com/embed/${course.videoId}?enablejsapi=1&version=3&playerapiid=ytplayer` frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+
+#submitHomework.modal.fade(tabindex='-1' aria-labelledby='submitHomeworkLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#submitHomeworkLabel.modal-title Nộp bài tập
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='/student/submitHomework' method='POST' enctype='multipart/form-data')
+          input#idCourse(type="hidden" name="idCourse" value= course._id)
+          input#idHomework(type="hidden" name="idHomework")
+          input#idStudent(type="hidden" name="idStudent" value= student._id)
+          .form-group
+            label(for='content') Nội dung
+            textarea#content.form-control(rows='3' name="content")
+          .form-group
+            label(for='file') File đính kèm
+            input#file.form-control-file(type='file' name="file")
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') Gửi
+
+
+
+// Modal
+#videoModal.modal.fade(tabindex='-1' aria-labelledby='videoModalLabel' aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        h5#videoModalLabel.modal-title
+        button.close.btn-close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        video#videoElement(controls width='100%' autoplay)
+          source#videoSrc(src='' type='video/mp4')
+
+      .modal-footer
+        button.btn.btn-secondary.btn-close(type='button' data-dismiss='modal') Đóng
+
 
 // Bootstrap core JavaScript
 script(src='/jquery/jquery.min.js')

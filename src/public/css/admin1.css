@@ -392,6 +392,11 @@ a:focus {
 
 .topbar {
   height: 4.375rem;
+  width: calc(100% - 225px);
+  height: 4.375rem;
+  position: fixed;
+  right: 0px;
+  z-index: 9;
 }
 
 .topbar #sidebarToggleTop {
@@ -1561,7 +1566,8 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .info-lecture img {
-  width: 120px;
+  width: 100px;
+  height: 100px;
 }
 
 /* .btn-success {
@@ -1655,4 +1661,20 @@ h5.card-title {
 
 .img-course {
   width: 100% !important;
+  height: 250px !IMPORTANT;
+}
+
+
+#content {
+  width: calc(100% - 225px);
+  position: absolute;
+  right: 0px;
+}
+
+.sidebar {
+  position: fixed;
+}
+
+.container-fluid {
+  margin-top: 100px;
 }

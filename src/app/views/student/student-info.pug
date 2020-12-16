@@ -40,14 +40,14 @@ body#page-top
     // Divider
     hr.sidebar-divider
     li.nav-item
-      a.nav-link.collapsed(href=`/info/${student._id}` )
+      a.nav-link.collapsed(href=`/student/info/${student._id}` )
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
     
     li.nav-item
-      a.nav-link(href='/auth/logout')
-        i.fas.fa-bell
-        span Th&ocirc;ng ba&#x301;o
+      a.nav-link(href=`/student/homework/${student._id}`)
+        i.fas.fa-list
+        span Bài tập đã nộp
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
@@ -166,7 +166,7 @@ body#page-top
                   .small.text-gray-500 Chicken the Dog &middot; 2w
               a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
           .topbar-divider.d-none.d-sm-block
-          // Nav Item - User Information
+
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
               span.mr-2.d-none.d-lg-inline.text-gray-600.small= student.name
@@ -186,7 +186,12 @@ body#page-top
         // Page Heading
         .d-sm-flex.align-items-center.justify-content-between.mb-4
           h1.h3.mb-0.text-gray-800 Th&ocirc;ng tin cu&#x309;a t&ocirc;i
-          
+        if student.changePassword == true
+          .alert.alert-success.text-center(role="alert")
+            | Đổi mật khẩu thành công
+        if student.changePassword == false
+          .alert.alert-danger.text-center(role="alert")
+            | Đổi mật khẩu thất bại
         // Content Row
         .row.content.mt-5
           .col-xs-12.col-md-2.flex-column.d-flex.justify-content-center.align-items-center
@@ -230,17 +235,7 @@ body#page-top
 a.scroll-to-top.rounded(href='#page-top')
   i.fas.fa-angle-up
 // Logout Modal
-#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
-  .modal-dialog(role='document')
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title Ready to Leave?
-        button.close(type='button' data-dismiss='modal' aria-label='Close')
-          span(aria-hidden='true') &times;
-      .modal-body Select &quot;Logout&quot; below if you are ready to end your current session.
-      .modal-footer
-        button.btn.btn-secondary(type='button' data-dismiss='modal') Cancel
-        a.btn.btn-primary(href='login.html') Logout
+include ../layouts/modal-logout.pug
 // Modal Edit Info
 #editInfo.modal.fade(tabindex='-1' aria-labelledby='editInfoLabel' aria-hidden='true')
   .modal-dialog
@@ -250,7 +245,9 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='/student/editInfo' method='POST')
+        form(action='/student/editInfo?_method=PUT' method='POST' enctype='multipart/form-data')
+          input(type="hidden" name="id" value= student._id)
+          input(type="hidden" name="oldAvatar" value= student.avatar)
           .form-group
             label(for='name') Ho&#x323; t&ecirc;n
             input#name.form-control(type='text' name='name' value=student.name)
@@ -282,16 +279,17 @@ a.scroll-to-top.rounded(href='#page-top')
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='/student/changePassword' method='POST')
+        form(action='/student/changePassword?_method=PUT' method='POST')
           .form-group
+            input(type="hidden" name="id" value= student._id)
             label(for='password') M&acirc;&#x323;t kh&acirc;&#x309;u cu&#x303;
-            input#password.form-control(type='text' name='password' placeholder='Nhập mật khẩu cũ')
+            input#password.form-control(type='text' name='password' placeholder='Nhập mật khẩu cũ' required)
           .form-group
             label(for='new_password') M&acirc;&#x323;t kh&acirc;&#x309;u m&#x1A1;&#x301;i
-            input#new_password.form-control(type='text' name='new_password' placeholder='Nhập mật khẩu mới')
+            input#new_password.form-control(type='text' name='new_password' placeholder='Nhập mật khẩu mới' required)
           .form-group
             label(for='password_confirm') Xa&#x301;c nh&acirc;&#x323;n la&#x323;i m&acirc;&#x323;t kh&acirc;&#x309;u
-            input#password_confirm.form-control(type='text' name='password_confirm' placeholder='Xác nhận lại mật khẩu')
+            input#password_confirm.form-control(type='text' name='password_confirm' placeholder='Xác nhận lại mật khẩu' required)
           br
           .modal-footer
             button.btn.btn-primary(type='submit') L&#x1B0;u

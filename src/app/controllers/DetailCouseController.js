@@ -7,7 +7,9 @@ const homeWorkController = require('./detail_course/HomeWorkController');
 const lessonController = require('./detail_course/LessonController');
 const youCanLearnController = require('./detail_course/YouCanLearnController');
 const requirementController = require('./detail_course/RequirementController');
-const Admin = require('../models/Admin');
+const SubmitHomework = require('../models/details_course/SubmitHomework');
+const Lesson = require('../models/details_course/Lesson');
+const HomeWork = require('../models/details_course/HomeWork');
 
 class DetailCourseController {
   //[Get] /lecture/courses/:slug
@@ -20,12 +22,14 @@ class DetailCourseController {
       )
     const comments = await Comment.find({idCourse: course._id})
       .populate('idUser')
-    // res.json(comments)
+
+
     res.render(path.join('lecture', 'lecture-detail-course'), { comments, course })
-    // //res.render(path.join("lecture", "lecture-detail-course"));
+    //res.render(path.join("lecture", "lecture-detail-course"));
     // Comment.find({idCourse: '5faf33138f0a2e23f86b5be8'})
     //   .populate('idUser')
     //   .then(d => res.json(d))
+
   }
 
   //[POST] /lesson/courses/addYouCanLearn

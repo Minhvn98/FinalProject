@@ -3,7 +3,9 @@ const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
 const Course = require('../models/Course');
 const Admin = require("../models/Admin");
+const Notification = require("../models/Notification");
 const Comment = require("../models/details_course/Comment");
+const SubmitHomework = require("../models/details_course/SubmitHomework");
 
 class StudentController {
 
@@ -154,6 +156,68 @@ class StudentController {
       .then(() => res.redirect('back'))
       .catch(err => next(err))
 
+  }
+
+  editInfo(req, res, next) {
+    const file = req.file;
+    file
+      ? (req.body.avatar = req.file.path.split('public')[1])
+      : (req.body.avatar = req.body.oldAvatar);
+    console.log(req.file);
+
+    Student.findByIdAndUpdate(req.body.id, req.body)
+      .then(() => res.redirect('back'))
+      .catch((err) => next(err));
+  }
+
+  async changePassword(req, res, next) {
+    // res.json(req.body)
+    const st = await Student.findById(req.body.id);
+
+    if (st.password !== req.body.password) {
+      const student = JSON.parse(JSON.stringify(st));
+      student.changePassword = false;
+      return res.render(path.join('student', 'student-info'), { student });
+    } else {
+      await Student.findByIdAndUpdate(req.body.id, {
+        password: req.body.new_password,
+      });
+      const student = JSON.parse(JSON.stringify(st));
+      student.changePassword = true;
+      return res.render(path.join('student', 'student-info'), { student });
+    }
+  }
+
+  submitHomework(req, res, next) {
+    const file = req.file;
+    file
+      ? (req.body.path = req.file.path.split('public')[1])
+      : (req.body.path = '/');
+
+    const hw = new SubmitHomework({
+      idCourse: req.body.idCourse,
+      idStudent: req.body.idStudent,
+      idHomework: req.body.idHomework,
+      content: req.body.content,
+      path: req.body.path
+    })
+    
+    SubmitHomework.create(hw)
+      .then(() => res.redirect('back'))
+      .catch(err => next(err))
+  }
+
+  homeWork(req, res, next) {
+    Student.findById(req.params.id)
+      .then(student => res.render(path.join('student', 'student-homework'), {student}))
+      .catch(err => next(err))
+    // res.json(req.params.id)
+  }
+
+  getNotification(req, res, next) {
+    Notification.find({idUserReceived: req.session.studentId})
+      .then(data => res.json(data))
+      .catch(err => next(err))
   }
 }
 

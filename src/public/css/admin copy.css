@@ -1462,3 +1462,17 @@ html {
     width: 100%;
   }
   
+  
+#content {
+  width: calc(100% - 225px);
+  position: absolute;
+  right: 0px;
+}
+
+.sidebar {
+  position: fixed;
+}
+
+.container-fluid {
+  margin-top: 100px;
+}
