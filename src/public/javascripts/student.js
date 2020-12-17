@@ -5,7 +5,7 @@ $(document).ready(function () {
     let newNoti = notifications.filter(noti => noti.status == 1);
     $('#alertsDropdown .badge-counter').text(newNoti.length);
     let html = '';
-    notifications.forEach(item => {
+    notifications.reverse().forEach(item => {
       html += `
       <a class="dropdown-item d-flex align-items-center" href="${location.origin}${item.link}">
         <div class="mr-3">
@@ -35,5 +35,6 @@ $(document).ready(function () {
       },
     });
   }
+  getNotification();
   setInterval(getNotification, 3000);
 });

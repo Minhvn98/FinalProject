@@ -44,10 +44,11 @@ head
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
     
+    // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link(href='#')
-        i.fas.fa-bell
-        span Th&ocirc;ng ba&#x301;o
+      a.nav-link.collapsed(href='/student/homework/' + student._id)
+        i.fas.fa-list
+        span Bài tập đã nộp
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
@@ -91,7 +92,19 @@ head
                   .input-group-append
                     button.btn.btn-primary(type='button')
                       i.fas.fa-search.fa-sm
-          
+          // Nav Item - Alerts
+          li.nav-item.dropdown.no-arrow.mx-1
+            a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-bell.fa-fw
+              // Counter - Alerts
+              span.badge.badge-danger.badge-counter 3+
+            // Dropdown - Alerts
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
+              h6.dropdown-header
+                | Thông báo
+              #showAlerts
+              a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
+          .topbar-divider.d-none.d-sm-block
           // Nav Item - User Information
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
@@ -154,10 +167,12 @@ head
                         each hw, index in course.homeworks
                           li.d-flex.justify-content-between.align-items-center
                             | #{index+1}. #{hw.title}
-                            a.btn(href= hw.path).btn-sucess
-                              i.fas.fa-file-download.mr-1
-                            button(class="btn btn-primary btnHomework" data-toggle="modal" data-target="#submitHomework") Nộp bài tập
-                            i(hidden)= hw._id
+                            
+                            .btn-group(role="group" aria-label="Basic example")
+                              a(href=hw.path target="_blank")
+                                button(class="btn btn-warning btnHomework" data-toggle="modal" data-target="#submitHomework" type="button") Tải xuống
+                              button(class="btn btn-primary btnHomework" data-toggle="modal" data-target="#submitHomework" type="button") Nộp bài tập
+                              i(hidden)= hw._id
                 .card.shadow-sm
                   #headingThree.card-header.d-flex.justify-content-between
                     h2.mb-0
@@ -273,8 +288,8 @@ include ../layouts/modal-logout.pug
           input#idHomework(type="hidden" name="idHomework")
           input#idStudent(type="hidden" name="idStudent" value= student._id)
           .form-group
-            label(for='content') Nội dung
-            textarea#content.form-control(rows='3' name="content")
+            label(for='content1') Nội dung
+            textarea#content1.form-control(rows='3' name="content")
           .form-group
             label(for='file') File đính kèm
             input#file.form-control-file(type='file' name="file")
@@ -308,3 +323,4 @@ script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
 script(src='/javascripts/detail-course.js')
+script(src="/javascripts/student.js")

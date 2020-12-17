@@ -38,6 +38,7 @@ router.delete('/courses/deleteRequirement', detailCourseController.deleteRequire
 
 router.post('/addComment', detailCourseController.addComment);
 router.get('/homework/:id', lectureController.homeWork)
+router.patch('/commentHomework', lectureController.commentHomework)
 
 
 module.exports = router;

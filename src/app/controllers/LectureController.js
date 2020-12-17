@@ -2,7 +2,7 @@ const path = require("path");
 
 const Lecture = require("../models/Lecture");
 const Student = require("../models/Student");
-const Course = require("../models/Course");
+const Notification = require("../models/Notification");
 const Admin = require("../models/Admin");
 const SubmitHomework = require('../models/details_course/SubmitHomework')
 class LectureController {
@@ -138,7 +138,7 @@ class LectureController {
       listHomeworks.push(await SubmitHomework.find({idCourse: lect.listCourse[i]._id}).populate('idCourse idStudent', 'name'))
     }
     // console.log(arr)
-    // res.json(arr)
+    // return res.json(listHomeworks)
 
     res.render(path.join('lecture', 'lecture-homework'), { lect, listHomeworks })
   }
@@ -147,6 +147,23 @@ class LectureController {
     console.log(req.query.search)
     Lecture.find()
       .then(data => res.json(data))
+      .catch(err => next(err))
+  }
+
+  async commentHomework(req, res, next) {
+    const noti = new Notification({
+      idUserSend: req.body.idUserSend,
+      idUserReceived: req.body.idUserReceived,
+      content: `Giảng viên vừa phản hồi về bài tập về nhà của bạn`,
+      link: '/student/homework/'+ req.body.idUserReceived,
+    });
+
+    Notification.create(noti)
+      .then()
+      .catch(err => next(err));
+
+    SubmitHomework.findByIdAndUpdate(req.body.id, {comment: req.body.comment})
+      .then(() => res.redirect('back'))
       .catch(err => next(err))
   }
 

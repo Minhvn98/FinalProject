@@ -5,7 +5,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(name='description' content='')
   meta(name='author' content='')
-  title Thông tin cá nhân!
+  title Danh sách nộp bài tập
   // Custom fonts for this template
   link(href='/fontawesome/css/all.min.css' rel='stylesheet' type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
@@ -130,26 +130,27 @@ body#page-top
                 th(scope='col') Tên Học Viên
                 th(scope='col') Nội dung
                 th(scope='col') File đính kèm
+                th(scope='col') Nhận xét của giảng viên
+                th(scope='col')
             tbody
-              tr
-                td Lập trình Android
-                td Nguyễn Văn An
-                td Em nộp bài tập 2
-                td
-                  a(href="\\upload\\1607658145328-3011.DS-Giao-K1-20-21.xlsx") Tải xuống
-              tr
-                td Lập trình Android
-                td Nguyễn Văn B
-                td Em nộp bài tập 2
-                td
-                  a(href="\\upload\\1607658145328-3011.DS-Giao-K1-20-21.xlsx") Tải xuống
-              tr
-                td Lập trình Javascript cơ bản
-                td Nguyễn Văn C
-                td Em nộp bài tập 1
-                td
-                  a(href="\\upload\\1607658145328-3011.DS-Giao-K1-20-21.xlsx") Tải xuống
-
+              each list in listHomeworks
+                each hw in list
+                  tr
+                    td= hw.idCourse.name
+                    td= hw.idStudent.name
+                    td= hw.content
+                    td
+                      a(href= hw.path) Tải xuống  
+                    td
+                      button.btn.btn-primary.btn-comment.mr-2(type='button' data-toggle='modal' data-target='#writeComment')
+                        i.far.fa-comment-alt
+                      i(hidden)= hw._id
+                      i(hidden)= hw.idStudent._id
+                      if !hw.comment
+                        |Chưa có nhận xét.
+                      if hw.comment
+                        | #{hw.comment}
+             
           .col-md-3.col-sx-0
         // end rowconent
       // /.container-fluid
@@ -168,65 +169,25 @@ a.scroll-to-top.rounded(href='#page-top')
   i.fas.fa-angle-up
 // Logout Modal
 include ../layouts/modal-logout.pug
-// Modal Edit Info
-#editInfo.modal.fade(tabindex='-1' aria-labelledby='editInfoLabel' aria-hidden='true')
+#writeComment.modal.fade(tabindex='-1' aria-labelledby='writeCommentLabel' aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h5#editInfoLabel.modal-title S&#x1B0;&#x309;a th&ocirc;ng tin
+        h5#writeCommentLabel.modal-title Viết nhận xét
         button.close(type='button' data-dismiss='modal' aria-label='Close')
           span(aria-hidden='true') &times;
       .modal-body
-        form(action='/lecture/editInfo?_method=PUT' method='POST' enctype="multipart/form-data")
-          input(type="hidden" name="id" value= lect._id)
-          input(type="hidden" name="oldAvatar" value= lect.avatar)
+        form(method="POST" action="/lecture/commentHomework?_method=PATCH")
+          input#idHomework(type="hidden" name="id")
+          input(type="hidden" name="idUserSend" value=lect._id)
+          input#idUserReceived(type="hidden" name="idUserReceived")
           .form-group
-            label(for='name') Ho&#x323; t&ecirc;n
-            input#name.form-control(type='text' name='name' value=lect.name)
-          .form-group
-            label(for='email') Email
-            input#email.form-control(type='email' name="email" value=lect.email)
-          .form-group
-            label(for='phone') S&ocirc;&#x301; &Dstrok;i&ecirc;&#x323;n Thoa&#x323;i
-            input#phone.form-control(type='text' name='phone' pattern='((09|03|07|08|05)+([0-9]{8}))' value=lect.phone)
-          .form-group
-            label(for='birthday') Nga&#x300;y sinh
-            input#birthday.form-control(type='text' name='birthday' value=lect.birthday)
-          .form-group
-            label(for='facebook') Facebook
-            input#facebook.form-control(type='url' name='facebook' value=lect.facebook)
-          .form-group
-            label(for='avatar') A&#x309;nh &dstrok;a&#x323;i di&ecirc;&#x323;n
-            input#avatar.form-control-file(type='file' name='avatar')
-          br
+            label(for='comment') Viết nhận xét
+            textarea#comment.form-control(rows='3' name="comment" required)
+
           .modal-footer
-            button.btn.btn-primary(type='submit') L&#x1B0;u
-            button.btn.btn-secondary(type='button' data-dismiss='modal') Thoa&#x301;t
-// Modal Change Passowrd
-#changePassword.modal.fade(tabindex='-1' aria-labelledby='changePasswordLabel' aria-hidden='true')
-  .modal-dialog
-    .modal-content
-      .modal-header
-        h5#changePasswordLabel.modal-title &Dstrok;&ocirc;&#x309;i m&acirc;&#x323;t kh&acirc;&#x309;u
-        button.close(type='button' data-dismiss='modal' aria-label='Close')
-          span(aria-hidden='true') &times;
-      .modal-body
-        form#formChangePassword(action='/lecture/changePassword?_method=PUT' method='POST')
-          .form-group
-            input(type="hidden" name="id" value= lect._id)
-            label(for='password') M&acirc;&#x323;t kh&acirc;&#x309;u cu&#x303;
-            input#password.form-control(type='text' name='password' placeholder='Nhập mật khẩu cũ')
-          .form-group
-            label(for='new_password') M&acirc;&#x323;t kh&acirc;&#x309;u m&#x1A1;&#x301;i
-            input#new_password.form-control(type='text' name='new_password' placeholder='Nhập mật khẩu mới')
-          .form-group
-            label(for='password_confirm') Xa&#x301;c nh&acirc;&#x323;n la&#x323;i m&acirc;&#x323;t kh&acirc;&#x309;u
-            input#password_confirm.form-control(type='text' name='password_confirm' placeholder='Xác nhận lại mật khẩu')
-          br
-          #message
-          .modal-footer
-            button.btn.btn-primary#btn-save(type='button') L&#x1B0;u
-            button.btn.btn-secondary(type='button' data-dismiss='modal') Thoa&#x301;t
+            button.btn.btn-secondary(type='button' data-dismiss='modal') Thoát
+            button.btn.btn-primary(type='submit') Gửi
 // Bootstrap core JavaScript
 script(src='/jquery/jquery.min.js')
 script(src='/bootstrap/js/bootstrap.bundle.min.js')
@@ -234,4 +195,4 @@ script(src='/bootstrap/js/bootstrap.bundle.min.js')
 script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
-script(src='/javascripts/info.js')
+script(src='/javascripts/lecture-homework.js')

@@ -7,7 +7,8 @@ const SubmitHomeworkSchema = new Schema(
     idStudent: { type: Schema.Types.ObjectId, ref: 'Student' },
     idHomework: { type: Schema.Types.ObjectId, ref: 'HomeWork' },
     content: String,
-    path: String
+    path: String,
+    comment: String
   },
   { timestamps: true }
 );

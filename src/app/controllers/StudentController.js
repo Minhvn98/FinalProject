@@ -207,11 +207,18 @@ class StudentController {
       .catch(err => next(err))
   }
 
-  homeWork(req, res, next) {
-    Student.findById(req.params.id)
-      .then(student => res.render(path.join('student', 'student-homework'), {student}))
-      .catch(err => next(err))
-    // res.json(req.params.id)
+  async homeWork(req, res, next) {
+    const processStudent = Student.findById(req.params.id);
+    const processHomework = SubmitHomework.find({idStudent: req.params.id}).populate('idCourse');
+
+    const student = await processStudent;
+    const homeworks = await processHomework;
+    console.log(homeworks[0].idCourse.name)
+    // return res.json(homeworks)
+    const cc = await Course.findById('5faf33138f0a2e23f86b5be8').populate('lessons')
+    // return res.json(homeworks)
+    res.render(path.join('student', 'student-homework'), {student,homeworks, cc})
+   
   }
 
   getNotification(req, res, next) {
