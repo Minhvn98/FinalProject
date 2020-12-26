@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  
   $('#previewCourse').click(function () {
     $('.preVideo')[0].contentWindow.postMessage(
       '{"event":"command","func":"stopVideo","args":""}',

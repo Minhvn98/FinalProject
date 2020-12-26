@@ -5,7 +5,7 @@ const router = express.Router();
 const adminController = require('../controllers/AdminController');
 const upload = require('../middlewares/upload.file')
 
-
+router.get('/getNotification', adminController.getNotification);
 
 //Management Lecture
 router.get('/management-lecture', adminController.managementLecture);

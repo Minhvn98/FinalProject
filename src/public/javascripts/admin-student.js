@@ -19,19 +19,6 @@ $(document).ready(function () {
       courses,
       lecture,
     };
-
-    // const listSelected = [
-    //   "Lập trình Web",
-    //   "Lập trình Mobile",
-    //   "Lập trình Game",
-    // ];
-
-    // const listLecture = [];
-
-    // const lst = $('#selectLecture')[0];
-    // for(let item of lst) {
-    //   listLecture.push(item.value)
-    // }
     
     $('#idStudent').val(id);
     $('#nameStudent').val(name);

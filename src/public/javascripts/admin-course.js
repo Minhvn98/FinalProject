@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     const id = $(this)[0].parentElement.lastElementChild.textContent;
     const name = element[1].textContent;
-    const image = element[0].children[0].currentSrc.split('3000')[1];
+    const image = element[0].children[0].children[0].currentSrc.split('3000')[1];
     const desc = element[2].textContent;
     const level = element[3].textContent;
     const lecture = element[4].textContent;
@@ -26,18 +26,6 @@ $(document).ready(function () {
       videoId
     };
 
-    // const listSelected = [
-    //   "Lập trình Web",
-    //   "Lập trình Mobile",
-    //   "Lập trình Game",
-    // ];
-
-    // const listLecture = [];
-
-    // const lst = $('#selectLecture')[0];
-    // for(let item of lst) {
-    //   listLecture.push(item.value)
-    // }
    
     $("#idCourse").val(id);
     $('#imgOld').val(image);

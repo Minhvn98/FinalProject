@@ -7,7 +7,7 @@ const lectureController = require('../controllers/LectureController');
 const detailCourseController = require('../controllers/DetailCouseController');
 const { route } = require('./student');
 
-router.get('/getdata', lectureController.getdata)
+router.get('/getNotification', lectureController.getNotification)
 router.get('/info/:id', lectureController.showInfo);
 router.get('/:id', lectureController.lecture);
 router.get('/courses/:slug', detailCourseController.detailCourse);
@@ -19,6 +19,7 @@ router.put('/courses/editYouCanLearn', detailCourseController.editYouCanLearn);
 router.delete('/courses/deleteYouCanLearn', detailCourseController.deleteYouCanLearn);
 
 
+router.post('/courses/addVideo', upload.single('videoId'), detailCourseController.addVideo)
 router.post('/courses/addLesson', upload.single('fileLesson'), detailCourseController.addLesson)
 router.put('/courses/editLesson', upload.single('fileLesson'), detailCourseController.editLesson)
 router.delete('/courses/deleteLesson',detailCourseController.deleteLesson)

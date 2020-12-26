@@ -1,34 +1,34 @@
 const path = require("path");
 
-const Lecture = require("../models/Lecture");
-const Student = require("../models/Student");
-const Course = require("../models/Course");
 const Admin = require("../models/Admin");
+const Course = require("../models/Course");
+const Lecture = require("../models/Lecture");
+const Notification = require("../models/Notification");
 
 class CourseController {
   //[GET] /admin/management-course
   async index(req, res, next) {
-    const admin = await Admin.findById(req.session.adminId);
-    Course.find({})
-      .then((courses) => {
-        Lecture.find({}, "name").then((lectures) => {
-          res.render(path.join("admin", "admin-course"), { admin, courses, lectures });
-        });
-      })
-      .catch((err) => next(err));
-    //res.render(path.join('admin', 'admin-course'));
+    const adminPromise = Admin.findById(req.session.adminId);
+    const coursesPromise = Course.find({});
+    const lecturePromise = Lecture.find({}, "name");
+
+    const admin = await adminPromise;
+    const courses = await coursesPromise;
+    const lectures = await lecturePromise;
+
+    res.render(path.join("admin", "admin-course"), { admin, courses, lectures });
     console.log(req.session)
-    //console.log(admin)
+
   }
 
   //[POST] /admin/addCourse
-  addCourse(req, res, next) {
+  async addCourse(req, res, next) {
     const file = req.file;
     file
       ? (req.body.image = req.file.path.split("public")[1])
-      : (req.body.image = "trong");
+      : (req.body.image = "#");
 
-    const course = new Course({
+    const course = await new Course({
       name: req.body.name,
       categories: req.body.categories,
       description: req.body.description,
@@ -37,7 +37,6 @@ class CourseController {
         lectureId: req.body.lecture.split("-")[0],
         name: req.body.lecture.split("-")[1],
       },
-      videoId: req.body.videoId,
       image: req.body.image,
       price: req.body.price,
     });
@@ -53,10 +52,18 @@ class CourseController {
           .catch((err) => next(err));
       })
       .catch((err) => next(err));
+    
 
-    //Course.find({}).then((i)=>res.json(i))
+    const noti = new Notification({
+      idUserSend: req.session.adminId,
+      idUserReceived: course.lecture.lectureId,
+      content: `Bạn vừa được phân quyền giảng dạy khóa học ${course.name}`,
+      link: `${course.slug}`
+    })
 
-    //res.json(course1)
+    Notification.create(noti)
+      .then(()=> console.log('tao thong bao thnah cong'))
+      .catch(err => next(err))
   }
 
   //[PUT] /admin/editCourse
@@ -100,9 +107,6 @@ class CourseController {
       await oldLecture.save();
       await newLecture.listCourse.addToSet(oldCourse._id);
       await newLecture.save();
-
-      //console.log('old: ' + oldLecture);
-      //console.log('new: ' + newLecture);
 
       Course.findByIdAndUpdate(req.body.id, newCourse)
         .then(() => res.redirect("/admin/management-course"))

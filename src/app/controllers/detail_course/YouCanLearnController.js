@@ -34,7 +34,7 @@ class YouCanLearnController {
     await course.youCanLearn.pull(req.body.id);
     await course.save();
 
-    await YouCanLearn.findByIdAndDelete(req.body.id).exec((err, data) =>
+    YouCanLearn.findByIdAndDelete(req.body.id).exec((err, data) =>
       res.redirect('back')
     );
   }

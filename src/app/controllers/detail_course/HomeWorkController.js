@@ -1,14 +1,19 @@
 
 const Course = require('../../models/Course');
 const HomeWork = require('../../models/details_course/HomeWork');
+const Notification = require('../../models/Notification');
 
 class HomeWorkController {
+
    //[POST] /lecture/courses/addHomeWork
    async addHomeWork(req, res, next) {
+
+    const coursePromise = Course.findById(req.body.idCourse);
     const file = req.file;
+
     file
       ? (req.body.path = req.file.path.split('public')[1])
-      : (req.body.path = '/');
+      : (req.body.path = '#');
 
     const homeWork = new HomeWork({
       idCourse: req.body.idCourse,
@@ -16,9 +21,22 @@ class HomeWorkController {
       path: req.body.path,
     });
 
-    const course = await Course.findById(req.body.idCourse);
+    const course = await coursePromise;
     await course.homeworks.push(homeWork._id);
     await course.save();
+
+    course.listStudent.forEach(idStudent => {
+      const noti = new Notification({
+        idUserSend: course.lecture.lectureId,
+        idUserReceived: idStudent,
+        status: 1,
+        content: `${course.lecture.name} đã thêm " ${homeWork.title} " vào khóa học ${course.name}`,
+        link: '/courses/'+ course.slug
+      })
+      Notification.create(noti)
+        .then(() => console.log('Add noti success!'))
+        .catch(err => next(err))
+    });
 
     HomeWork.create(homeWork)
       .then(() => res.redirect('back'))
@@ -53,9 +71,9 @@ class HomeWorkController {
     await course.homeworks.pull(req.body.id);
     await course.save();
 
-    await HomeWork.findByIdAndDelete(req.body.id).exec((err, data) =>
-      res.redirect('back')
-    );
+    HomeWork.findByIdAndDelete(req.body.id)
+      .then(() => res.redirect('back'))
+      .catch(err => next(err));
   }
 }
 

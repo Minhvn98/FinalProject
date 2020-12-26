@@ -1,12 +1,10 @@
-const path = require('path');
+
+
+const Admin = require('../models/Admin');
 const Course = require('../models/Course');
+const Comment = require('../models/details_course/Comment');
 const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
-const Lesson = require('../models/details_course/Lesson');
-const HomeWork = require('../models/details_course/HomeWork');
-const Document = require('../models/details_course/Document');
-const Admin = require('../models/Admin');
-const Comment = require('../models/details_course/Comment');
 
 class HomeController {
   //[GET] /
@@ -17,11 +15,14 @@ class HomeController {
   }
 
   listCourses(req, res, next) {
+    const session = req.session;
+    console.log(session)
     Course.find({})
-      .then((courses) => res.render('list-courses', { courses }))
+      .then((courses) => res.render('list-courses', { courses, session }))
       .catch((err) => next(err));
   }
 
+  // [GET] /course/:slug
   async detailsCourse(req, res, next) {
     
     const course = await Course.findOne({ slug: req.params.slug }).populate(
@@ -47,8 +48,7 @@ class HomeController {
     }
     
     res.render('detailt-course', { course, reCourses, comments});
-    console.log('cc')
-    // res.json(course)
+
   }
 
   login(req, res, next) {
@@ -71,8 +71,11 @@ class HomeController {
   createAcc(req, res, next) {
     const student = new Student(req.body);
     Student.create(student)
-      .then(() => res.redirect('/'))
-      .catch((err) => next(err));
+      .then(() => res.redirect('/auth/login'))
+      .catch((err) => {
+        res.redirect('/auth/register')
+        next(err)
+      });
   }
 
   async checkLogin(req, res, next) {

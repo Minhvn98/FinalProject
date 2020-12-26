@@ -64,7 +64,7 @@ class LessonController {
     await course.lessons.pull(req.body.id);
     await course.save();
 
-    await Lesson.findByIdAndDelete(req.body.id).exec((err, data) =>
+    Lesson.findByIdAndDelete(req.body.id).exec((err, data) =>
       res.redirect('back')
     );
   }

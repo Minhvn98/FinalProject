@@ -20,7 +20,7 @@ body#page-top
     // Sidebar - Brand
     a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/lecture/${lect._id}`)
       .sidebar-brand-icon.rotate-n-15
-        i.fas.fa-laugh-wink
+        i.fas.fa-graduation-cap
       .sidebar-brand-text.mx-3 LMS Lecture
     // Divider
     hr.sidebar-divider.my-0
@@ -47,7 +47,7 @@ body#page-top
 
     // Nav Item - Pages Collapse Menu
     li.nav-item
-      a.nav-link.collapsed(href='#')
+      a.nav-link(href='/lecture/info/' + lect.id)
         i.far.fa-user
         span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
       
@@ -99,7 +99,19 @@ body#page-top
                   .input-group-append
                     button.btn.btn-primary(type='button')
                       i.fas.fa-search.fa-sm
-          
+          // Nav Item - Alerts
+          li.nav-item.dropdown.no-arrow.mx-1
+            a#alertsDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-bell.fa-fw
+              // Counter - Alerts
+              span.badge.badge-danger.badge-counter 3+
+            // Dropdown - Alerts
+            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
+              h6.dropdown-header
+                | Thông báo
+              #showAlerts
+              a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
+
           // Nav Item - User Information
           li.nav-item.dropdown.no-arrow
             a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
@@ -196,3 +208,4 @@ script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
 script(src='/javascripts/lecture-homework.js')
+script(src='/javascripts/adlecture.js')

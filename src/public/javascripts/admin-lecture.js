@@ -33,12 +33,7 @@ $(document).ready(function () {
         $("#inputEditNameLecture").val(name);
         $("#inputEditEmailLecture").val(email);
         $("#inputEditPhoneLecture").val(phone);
-        $("#selectEditCategories").val(categories)
-
-        // [0].selectedIndex = listSelected.indexOf(
-        //   categories
-        // );
-        //$('#editAvatarLecture').val('rỗng')
+        $("#selectEditCategories").val(categories);
         $("#inputEditDescLecture").val(desc);
         console.log(obj);
       }
@@ -64,8 +59,5 @@ $(document).ready(function () {
         $('.btn-delete').click(getIdDelete);
     })
 
-
-
-    
   });
   

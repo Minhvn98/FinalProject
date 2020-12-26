@@ -7,9 +7,7 @@ const homeWorkController = require('./detail_course/HomeWorkController');
 const lessonController = require('./detail_course/LessonController');
 const youCanLearnController = require('./detail_course/YouCanLearnController');
 const requirementController = require('./detail_course/RequirementController');
-const SubmitHomework = require('../models/details_course/SubmitHomework');
-const Lesson = require('../models/details_course/Lesson');
-const HomeWork = require('../models/details_course/HomeWork');
+
 
 class DetailCourseController {
   //[Get] /lecture/courses/:slug
@@ -30,6 +28,19 @@ class DetailCourseController {
     //   .populate('idUser')
     //   .then(d => res.json(d))
 
+  }
+
+  async addVideo(req, res, next) {
+      const file = req.file;
+      file
+        ? (req.body.path = req.file.path.split('public')[1])
+        : (req.body.path = '/');
+  
+
+      Course.findByIdAndUpdate(req.body.idCourse, {videoId: req.body.path})
+        .then(() => res.redirect('back'))
+        .catch((err) => next(err));
+ 
   }
 
   //[POST] /lesson/courses/addYouCanLearn

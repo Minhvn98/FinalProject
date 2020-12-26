@@ -22,17 +22,17 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
     #navbarTogglerDemo02.collapse.navbar-collapse
       ul.navbar-nav
         li.nav-item
-          a.nav-link(href='/') Home
+          a.nav-link(href='/') Trang Chủ
         li.nav-item.active
-          a.nav-link(href='/courses') Course
+          a.nav-link(href='/courses') Khóa Học
         li.nav-item
-          a.nav-link(href='#contact') Contact
+          a.nav-link(href='#contact') Liên Hệ
         if (!loggedIn)
           li.nav-item
-            a.nav-link(href='/auth/login') Login
+            a.nav-link(href='/auth/login') Đăng Nhập
         if (loggedIn)
           li.nav-item
-            a.nav-link(href='/auth/logout') Logout
+            a.nav-link(href='#' data-toggle='modal' data-target='#logoutModal') Đăng Xuất
 .container
   .row.content
     .col-md-8.col-sm-12.left-content
@@ -140,8 +140,13 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
           img.card-img-top(src=course.image alt=course.name)
           i.fas.fa-play-circle
         .card-body
-          a.btn.btn-success.btn-block(href='#') Đăng ký khóa học
+          button.btn.btn-success.btn-block(type='button' data-toggle='modal' data-target='#registerCourse')
+            | Đăng ký khóa học
+          
           ul.mt-3
+            li
+              i.fas.fa-money-check-alt
+              | Khóa học miễn phí
             li
               i.fas.fa-tachometer-alt
               | Tri&#x300;nh &dstrok;&ocirc;&#x323; c&#x1A1; ba&#x309;n
@@ -166,7 +171,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
           .card-body
             h5.card-title= course.name
             p.card-text= course.description
-            a.btn.btn-block.btn-success(href=`/courses/${course.slug}`) Ho&#x323;c ngay
+            a.btn.btn-block.btn-success(href=`/courses/${course.slug}`) Xem chi tiết
     
     
 // ======================== Footer ========================
@@ -174,20 +179,26 @@ footer#contact.footer.my-5
   .container
     .row
       .col-md-3
-        a.navbar-brand.mt-5(href='index.html') LMS Page
+        a.navbar-brand.mt-5(href='/') LMS Page
         p H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
-       
+        .footer-icon
+          a(target='blank' href='https://fb.com/Minhvn98')
+            i.fab.fa-facebook
+          a(target='blank' href='https://github.com/Minhvn98')
+            i.fab.fa-github
+          a(href='#')
+            i.fab.fa-youtube
       .col-md-5
-        h3.footer-title.mt-5 References
+        h3.footer-title.mt-5 Liên Kết Hữu Ích
         ul
           li.mb-2
-            a(href='https://getbootstrap.com/docs/4.1') Bootstrap 4
+            a(href='#') Cộng đồng học lập trình miễn phí
           li.mb-2
-            a(href='https://w3school.com') W3school
+            a(href='#') Học lập trình mọi lúc mọi nơi
           li.mb-2
-            a(href='https://github.com/Minhvn98/LMS_Project') Source Code
+            a(href='#') Chả biết viết gì nữa
       .col-md-4
-        h3.footer-title.mt-5 Contact
+        h3.footer-title.mt-5 Liên Hệ
         p Add : 175, T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
         p S&Dstrok;T : 0969 969 969
         p Email : lmspage123@tlu.vn
@@ -204,5 +215,22 @@ i.fas.fa-chevron-up.back-to-top
             button.close(type='button' data-dismiss='modal' aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
-            iframe.preVideo(src=`https://www.youtube.com/embed/${course.videoId}?enablejsapi=1&version=3&playerapiid=ytplayer` frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+            video(controls width='100%' autoplay)
+              source(src= course.videoId type='video/mp4')
+
+// Modal registerCourse
+#registerCourse.modal.fade(tabindex='-1' aria-labelledby='registerCourseLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#registerCourseLabel.modal-title Đăng ký khóa học
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        | Bạn có muốn đăng ký khóa học #{course.name} ?
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Đóng
+        a.btn.btn-primary(href='/student/registerCourse/'+course._id) Đăng ký
+
+include ./layouts/modal-logout.pug
 

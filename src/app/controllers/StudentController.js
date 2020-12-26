@@ -6,36 +6,28 @@ const Admin = require("../models/Admin");
 const Notification = require("../models/Notification");
 const Comment = require("../models/details_course/Comment");
 const SubmitHomework = require("../models/details_course/SubmitHomework");
+const { link } = require('fs');
 
 class StudentController {
 
   //[GET] /admin/management-student
   async managementStudent(req, res, next) {
-    const admin = await Admin.findById(req.session.adminId);
-    Student.find({})
-      .then((students) => {
-        Course.find({}).then((courses) =>
-          res.render(path.join('admin', 'admin-student'), { admin, students, courses })
-        );
-      })
-      .catch((err) => next(err));
+    const adminPromise = Admin.findById(req.session.adminId);
+    const studentsPromise = Student.find({});
+    const coursesPromise = Course.find({})
+
+    const admin = await adminPromise;
+    const students = await studentsPromise;
+    const courses = await coursesPromise;
+
+    res.render(path.join('admin', 'admin-student'), { admin, students, courses })
+
   }
 
 
   //[POST] /admin/addStudent
   async addStudent(req, res, next) {
-    //     if (!("courses" in req.body))
-    //         req.body.courses = [];
-    //    // const listIdCourses = req.body.courses
-    //     let listIdCourses = [];
-
-    //     typeof req.body.courses === "string"
-    //       ? (listIdCourses.push(req.body.courses.split("-")[0]))
-    //       : (listIdCourses = req.body.courses.map(
-    //           (item) => item.split("-")[0]
-    //         ));
-    //     req.body.listIdCourses = listIdCourses;
-
+ 
     const listStudent = await Student.find({ email: req.body.email });
 
     if (!listStudent.length) {
@@ -110,6 +102,8 @@ class StudentController {
       .catch((err) => next(err));
   }
 
+
+  // [GET] /student/:id
   async student(req, res, next) {
     const student = await Student.findById(req.params.id).populate('listCourses.idCourse');
     const requireCourses = await Course.find({}, null, { sort: { createdAt: -1 }, limit: 4 });
@@ -117,6 +111,7 @@ class StudentController {
     res.render(path.join('student', 'student'), { student, requireCourses})
   }
 
+  //[GET] /student/info/:id
   showInfo(req, res, next) {
     Student.findById(req.params.id)
       .then(student => res.render(path.join('student', 'student-info'), {student}))
@@ -124,6 +119,7 @@ class StudentController {
     
   }
 
+  //[GET] /student/course/:slug
   async detailCourse(req, res, next) {
     const student = await Student.findById(req.session.studentId)
     console.log(student)
@@ -158,6 +154,7 @@ class StudentController {
 
   }
 
+  //[PUT] /student/editInfo
   editInfo(req, res, next) {
     const file = req.file;
     file
@@ -170,6 +167,7 @@ class StudentController {
       .catch((err) => next(err));
   }
 
+  //[PUT] /student/changePassword
   async changePassword(req, res, next) {
     // res.json(req.body)
     const st = await Student.findById(req.body.id);
@@ -188,6 +186,7 @@ class StudentController {
     }
   }
 
+  //[POST] /student/submitHomework
   submitHomework(req, res, next) {
     const file = req.file;
     file
@@ -207,6 +206,7 @@ class StudentController {
       .catch(err => next(err))
   }
 
+  //[GET] /student/homework/:id
   async homeWork(req, res, next) {
     const processStudent = Student.findById(req.params.id);
     const processHomework = SubmitHomework.find({idStudent: req.params.id}).populate('idCourse');
@@ -221,10 +221,49 @@ class StudentController {
    
   }
 
+  //[GET] /student/getNotification
   getNotification(req, res, next) {
-    Notification.find({idUserReceived: req.session.studentId})
+    Notification.find({idUserReceived: req.session.studentId}, null, {sort: {createdAt: -1}})
       .then(data => res.json(data))
       .catch(err => next(err))
+  }
+
+  //[GET] /student/registerCourse
+  async registerCourse(req, res, next){
+    const processCourse =  Course.findById(req.params.id);
+    const processStudent = Student.findById(req.session.studentId);
+
+    const course = await processCourse;
+    const noti = new Notification({
+      idUserSend: req.session.studentId,
+      idUserReceived: req.session.studentId,
+      content: `Bạn đã đăng ký thành công khóa học ${course.name}`,
+      link: `/student/courses/${course.slug}`
+    })
+    course.listStudent.addToSet(req.session.studentId)
+    course.save();
+
+    const c = {
+      idCourse: course._id,
+      nameCourse: course.name
+    }
+
+    const student = await processStudent;
+    student.listCourses.addToSet(c)
+    await student.save();
+
+    const noti2 = new Notification({
+      idUserSend: student._id,
+      idUserReceived: course.lecture.lectureId,
+      content: `Học viên ${student.name} đã đăng ký khóa học ${course.name}`,
+      link: `/lecture/courses/${course.slug}`
+    })
+
+    Notification.create([noti, noti2])
+      .then(() => console.log('Add notification success !'))
+      .catch(err => next(err));
+
+    res.redirect('/student/'+ req.session.studentId);
   }
 }
 

@@ -17,14 +17,27 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
       span.navbar-toggler-icon
     #navbarTogglerDemo02.collapse.navbar-collapse
       ul.navbar-nav
-        li.nav-item
-          a.nav-link(href='/') Home
+        if (!session.studentId)
+          li.nav-item
+            a.nav-link(href='/') Trang Chủ
+
+        if (session.studentId)
+          li.nav-item
+            a.nav-link(href='/student/'+ session.studentId) Trang Chủ
+
         li.nav-item.active
-          a.nav-link(href='/courses/') Course
+          a.nav-link(href='/courses/') Khóa Học
         li.nav-item
-          a.nav-link(href='#contact') Contact
-        li.nav-item
-          a.nav-link(href='/auth/login') Login
+          a.nav-link(href='#contact') Liên Hệ
+        
+        if (!session.studentId || !session.lectureId || !session.adminId)
+          li.nav-item
+            a.nav-link(href='/auth/login') Đăng Nhập
+        
+        if (session.studentId || session.lectureId || session.adminId)
+          li.nav-item
+            a.nav-link(href='#' data-toggle='modal' data-target='#logoutModal') Đăng Xuất
+          
 // ======================== Courses =========================
 section.courses.my-5
   .container
@@ -122,22 +135,29 @@ footer.footer.my-5#contact
       .col-md-3
         a.navbar-brand.mt-5(href='/') LMS Page
         p H&#x1EC7; th&#x1ED1;ng qu&#x1EA3;n l&yacute; kh&oacute;a h&#x1ECD;c
-
+        .footer-icon
+          a(target='blank' href='https://fb.com/Minhvn98')
+            i.fab.fa-facebook
+          a(target='blank' href='https://github.com/Minhvn98')
+            i.fab.fa-github
+          a(target='blank' href='#')
+            i.fab.fa-youtube
       .col-md-5
-        h3.footer-title.mt-5 References
+        h3.footer-title.mt-5 LIÊN KẾT HỮU ÍCH
         ul
           li.mb-2
-            a(href='https://getbootstrap.com/docs/4.1') Bootstrap 4
+            a(href='#') Cộng đồng học lập trình miễn phí
           li.mb-2
-            a(href='https://w3school.com') W3school
+            a(href='#') Học lập trình mọi lúc mọi, mọi nơi
           li.mb-2
-            a(href='https://github.com/Minhvn98/LMS_Project') Source Code
+            a(href='#') Viết gì bây giờ
       .col-md-4
-        h3.footer-title.mt-5 Contact
+        h3.footer-title.mt-5 Liên Hệ
         p Add : 175, T&acirc;y S&#x1A1;n, &Dstrok;&#x1ED1;ng &Dstrok;a, H&agrave; N&#x1ED9;i
         p S&Dstrok;T : 0969 969 969
         p Email : lmspage123@tlu.vn
 i.fas.fa-chevron-up.back-to-top
+include ./layouts/modal-logout.pug
 // ================== JS ========================
 script(defer='' src='/jquery/jquery.min.js')
 script(defer='' src='/bootstrap/js/bootstrap.min.js')

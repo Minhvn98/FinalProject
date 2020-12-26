@@ -1,7 +1,6 @@
 const path = require("path");
 
 const Lecture = require("../models/Lecture");
-const Student = require("../models/Student");
 const Notification = require("../models/Notification");
 const Admin = require("../models/Admin");
 const SubmitHomework = require('../models/details_course/SubmitHomework')
@@ -11,12 +10,9 @@ class LectureController {
     const admin = await Admin.findById(req.session.adminId);
     Lecture.find({})
       .then((lectures) => {
-        //lectures.forEach((item) => console.log(item.createdAt));
         res.render(path.join("admin", "admin-lecture"), { admin, lectures });
       })
       .catch((err) => next(err));
-
-    //res.render(path.join('admin', 'admin-lecture'));
   }
 
   //[POST] /admin/addLecture
@@ -62,10 +58,7 @@ class LectureController {
     Lecture.findByIdAndUpdate(req.body.idLecture, lect)
       .then(() => res.redirect("/admin/management-lecture"))
       .catch((err) => next(err));
-    // console.log('avar', req.body.avatar2)
-    // console.log('req ', req.body);
-    // console.log('lect ', lect);
-    // res.json(lect)
+
   }
 
   //[DELETE] /admin/deleteLecture
@@ -143,9 +136,9 @@ class LectureController {
     res.render(path.join('lecture', 'lecture-homework'), { lect, listHomeworks })
   }
 
-  getdata(req, res, next){
-    console.log(req.query.search)
-    Lecture.find()
+  getNotification(req, res, next){
+    console.log(req.session.lectureId)
+    Notification.find({idUserReceived: req.session.lectureId})
       .then(data => res.json(data))
       .catch(err => next(err))
   }

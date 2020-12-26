@@ -1,12 +1,13 @@
+
 $(document).ready(function () {
 
   function displayNumberNotification(notifications) {
-    let newNoti = notifications.filter((noti) => noti.status == 1);
+    let newNoti = notifications.filter(noti => noti.status == 1);
     notifications = notifications.slice(0, 5);
     $('#alertsDropdown .badge-counter').text(newNoti.length);
-    $('#alert').text(newNoti.length + ' thông báo');
+    $('#alerts').text(newNoti.length + ' thông báo');
     let html = '';
-    notifications.forEach((item) => {
+    notifications.forEach(item => {
       html += `
       <a class="dropdown-item d-flex align-items-center" href="${location.origin}${item.link}">
         <div class="mr-3">
@@ -27,12 +28,12 @@ $(document).ready(function () {
   function getNotification() {
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:3000/lecture/getNotification',
+      url: 'http://localhost:3000/admin/getNotification',
       data: 'data',
       dataType: 'json',
       success: function (response) {
-        displayNumberNotification(response);
-        console.log(response);
+        displayNumberNotification(response)
+        console.log(response)
       },
     });
   }

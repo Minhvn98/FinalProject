@@ -3,27 +3,32 @@ const path = require('path');
 const Lecture = require('../models/Lecture');
 const Student = require('../models/Student');
 const Course = require('../models/Course');
+const Admin = require('../models/Admin');
+const Notification = require('../models/Notification');
 const courseController = require('./CourseController');
 const lectureController = require('./LectureController');
 const studentController = require('./StudentController');
-const Admin = require('../models/Admin');
+
 class AdminController {
   // [GET] /admin
   async index(req, res) {
-    const admin = await Admin.findById(req.params.id);
-    const course = await Course.find({});
-    const numCourse = course.length;
 
-    const lecture = await Lecture.find({});
-    const numLecture = lecture.length;
-
-    const student = await Student.find({});
-    const numStudent = student.length;
-
-    const recentCourse = await Course.find({}, null, {
+    const adminPromise = Admin.findById(req.params.id);
+    const coursesPromise = Course.count({});
+    const lecturesPromise = Lecture.count({});
+    const studentsPromise = Student.count({});
+    const recentCoursePromise = Course.find({}, null, {
       sort: { createdAt: -1 },
       limit: 4,
     });
+    
+    
+    const admin = await adminPromise;
+    const numCourse = await coursesPromise;
+    const numLecture = await lecturesPromise;
+    const numStudent = await studentsPromise;
+    const recentCourse = await recentCoursePromise;
+
     console.log(admin);
     res.render(path.join('admin', 'admin'), {
       admin,
@@ -70,6 +75,14 @@ class AdminController {
       admin.changePassword = true;
       return res.render(path.join('admin', 'admin-info'), { admin });
     }
+  }
+
+  //[GET] /admin/getNotification
+  getNotification(req, res, next) {
+    console.log(req.session)
+    Notification.find({idUserReceived: req.session.adminId}, null, {sort: {createdAt: -1}})
+      .then(data => res.json(data))
+      .catch(err => next(err))
   }
 
   // [GET] /admin/management-lecture

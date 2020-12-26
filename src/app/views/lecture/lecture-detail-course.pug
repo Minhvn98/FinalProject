@@ -20,7 +20,7 @@ body#page-top
     // Sidebar - Brand
     a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/lecture/${course.lecture.lectureId._id}`)
       .sidebar-brand-icon.rotate-n-15
-        i.fas.fa-laugh-wink
+        i.fas.fa-graduation-cap
       .sidebar-brand-text.mx-3 LMS Lecture
     // Divider
     hr.sidebar-divider.my-0
@@ -52,9 +52,9 @@ body#page-top
       
     // Nav Item - Utilities Collapse Menu
     li.nav-item
-      a.nav-link(href='#')
-        i.fas.fa-bell
-        span Th&ocirc;ng ba&#x301;o
+      a.nav-link(href='/lecture/homework/' + course.lecture.lectureId._id)
+        i.fas.fa-list
+        span Danh sách bài tập
     // Divider
     hr.sidebar-divider
     // Nav Item - Tables
@@ -108,70 +108,8 @@ body#page-top
             .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='alertsDropdown')
               h6.dropdown-header
                 | Alerts Center
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-primary
-                    i.fas.fa-file-alt.text-white
-                div
-                  .small.text-gray-500 December 12, 2019
-                  span.font-weight-bold A new monthly report is ready to download!
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-success
-                    i.fas.fa-donate.text-white
-                div
-                  .small.text-gray-500 December 7, 2019
-                  |                     $290.29 has been deposited into your account!
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .mr-3
-                  .icon-circle.bg-warning
-                    i.fas.fa-exclamation-triangle.text-white
-                div
-                  .small.text-gray-500 December 2, 2019
-                  |                     Spending Alert: We&apos;ve noticed unusually high spending for your account.
+              #showAlerts
               a.dropdown-item.text-center.small.text-gray-500(href='#') Show All Alerts
-          // Nav Item - Messages
-          li.nav-item.dropdown.no-arrow.mx-1
-            a#messagesDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              i.fas.fa-envelope.fa-fw
-              // Counter - Messages
-              span.badge.badge-danger.badge-counter 7
-            // Dropdown - Messages
-            .dropdown-list.dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='messagesDropdown')
-              h6.dropdown-header
-                | Message Center
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/fn_BT9fwg_E/60x60' alt='')
-                  .status-indicator.bg-success
-                .font-weight-bold
-                  .text-truncate Hi there! I am wondering if you can help me with a problem I&apos;ve been having.
-                  .small.text-gray-500 Emily Fowler &middot; 58m
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/AU4VPcFN4LE/60x60' alt='')
-                  .status-indicator
-                div
-                  .text-truncate
-                    | I have the photos that you ordered last month, how would you like them sent to you?
-                  .small.text-gray-500 Jae Chun &middot; 1d
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/CS2uCrpNzJY/60x60' alt='')
-                  .status-indicator.bg-warning
-                div
-                  .text-truncate
-                    | Last month&apos;s report looks great, I am very happy with the progress so far, keep up the good work!
-                  .small.text-gray-500 Morgan Alvarez &middot; 2d
-              a.dropdown-item.d-flex.align-items-center(href='#')
-                .dropdown-list-image.mr-3
-                  img.rounded-circle(src='https://source.unsplash.com/Mv9hjnEUHR4/60x60' alt='')
-                  .status-indicator.bg-success
-                div
-                  .text-truncate
-                    | Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren&apos;t good...
-                  .small.text-gray-500 Chicken the Dog &middot; 2w
-              a.dropdown-item.text-center.small.text-gray-500(href='#') Read More Messages
           .topbar-divider.d-none.d-sm-block
           // Nav Item - User Information
           li.nav-item.dropdown.no-arrow
@@ -228,9 +166,9 @@ body#page-top
                   #collapseOne.collapse.show(aria-labelledby='headingOne' data-parent='#accordionCourseDetails')
                     .card-body
                       ul.list-content
-                        each lesson in course.lessons
+                        each lesson, idx in course.lessons
                           li.d-flex.justify-content-between.align-items-center
-                            a(href=lesson.path)= lesson.title
+                            a(href=lesson.path) #{idx +1 }. #{lesson.title}
                             .btn-group(role='group' aria-label='Basic example')
                               button.btn.btn-warning.editLesson(type='button' data-toggle='modal' data-target='#editLesson')
                                 i.far.fa-edit
@@ -249,9 +187,9 @@ body#page-top
                   #collapseTwo.collapse(aria-labelledby='headingTwo' data-parent='#accordionCourseDetails')
                     .card-body
                       ul.list-content
-                        each hw in course.homeworks
+                        each hw, idx in course.homeworks
                           li.d-flex.justify-content-between.align-items-center
-                            a(href= hw.path)= hw.title
+                            a(href= hw.path) #{idx +1 }. #{hw.title}
                             .btn-group(role='group' aria-label='Basic example')
                               button.btn.btn-warning.editHW(type='button' data-toggle='modal' data-target='#editExp')
                                 i.far.fa-edit
@@ -269,9 +207,9 @@ body#page-top
                   #collapseThree.collapse(aria-labelledby='headingThree' data-parent='#accordionCourseDetails')
                     .card-body
                       ul.list-content
-                        each doc in course.documents
+                        each doc, idx in course.documents
                           li.d-flex.justify-content-between.align-items-center
-                            a(href= doc.path)= doc.title
+                            a(href= doc.path)  #{idx +1 }. #{doc.title}
                             .btn-group(role='group' aria-label='Basic example')
                               button.btn.btn-warning.editDoc(type='button' data-toggle='modal' data-target='#editRef')
                                 i.far.fa-edit
@@ -303,7 +241,7 @@ body#page-top
               .media
                 img.mr-3.rounded-circle(src=course.lecture.lectureId.avatar alt=course.lecture.name)
                 .media-body
-                  h5.mt-0=course.lecture.name
+                  h5.mt-0=course.lecture.lectureId.name
                   span.lecture-desc=course.lecture.lectureId.description
             .block-rating
               h4.my-3 Bi&#x300;nh lu&acirc;&#x323;n
@@ -333,10 +271,10 @@ body#page-top
           .col-md-4.col-sm-12.right-content
             .card.shadow
               .image-play
-                img.card-img-top(src= course.image alt='...' data-toggle='modal' data-target='#previewCourse')
-                i.fas.fa-play-circle
+                img.card-img-top(src= course.image alt= course.name data-toggle='modal' data-target='#previewCourse')
+                i.fas.fa-play-circle(data-toggle='modal' data-target='#previewCourse')
               .card-body
-                a.btn.btn-block.btn-success(href='#' data-toggle='modal' data-target='#previewCourse') Xem gi&#x1A1;&#x301;i thi&ecirc;&#x323;u
+                a.btn.btn-block.btn-success(href='#' data-toggle='modal' data-target='#addVideoId') Thêm video giới thiệu
                 ul.mt-3
                   li
                     i.fas.fa-tachometer-alt
@@ -374,7 +312,8 @@ include ../layouts/modal-logout.pug
             button.close(type='button' data-dismiss='modal' aria-label='Close')
               span(aria-hidden='true') &times;
           .modal-body
-            iframe.preVideo(src=`https://www.youtube.com/embed/${course.videoId}?enablejsapi=1&version=3&playerapiid=ytplayer` frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+            video#videoElement(controls width='100%' autoplay)
+              source#videoSrc(src= course.videoId type='video/mp4')
 
 
 
@@ -389,7 +328,7 @@ include ../layouts/modal-logout.pug
           span(aria-hidden='true') &times;
       .modal-body
         form(action='/lecture/courses/addYouCanLearn' method='POST')
-          input(type="text", name="idCourse" value= course._id)
+          input(type="hidden", name="idCourse" value= course._id)
           .form-group
             textarea#inputYouCanLearn.form-control(rows='3' placeholder='Bạn sẽ học được gì ?' name="content")
           .modal-footer
@@ -647,6 +586,24 @@ include ../layouts/modal-logout.pug
           .modal-footer.mt-3
             button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
             button.btn.btn-danger(type='submit') Xo&#x301;a
+
+// add course video
+#addVideoId.modal.fade(tabindex='-1' aria-labelledby='addVideoIdLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#addVideoIdLabel.modal-title Thêm video giới thiệu
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form(action='/lecture/courses/addVideo' method='POST' enctype="multipart/form-data")
+          input(type="hidden" name="idCourse" value= course._id)
+          .form-group
+            label(for='videoId') Upload video giới thiệu
+            input#videoId.form-control-file(type='file' name="videoId")
+          .modal-footer
+            button.btn.btn-secondary(type='button' data-dismiss='modal') &Dstrok;o&#x301;ng
+            button.btn.btn-primary(type='submit') L&#x1B0;u
 // Bootstrap core JavaScript
 script(src='/jquery/jquery.min.js')
 script(src='/bootstrap/js/bootstrap.bundle.min.js')
@@ -655,3 +612,4 @@ script(src='/jquery-easing/jquery.easing.min.js')
 // Custom scripts for all pages
 script(src='/javascripts/sb-admin-2.min.js')
 script(src='/javascripts/lecture-detail-course.js')
+script(src='/javascripts/adlecture.js')

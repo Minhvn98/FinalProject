@@ -4,6 +4,7 @@ const router = express.Router();
 const studentController = require('../controllers/StudentController');
 const upload = require('../middlewares/upload.file');
 
+router.get('/registerCourse/:id', studentController.registerCourse);
 router.get('/getNotification', studentController.getNotification);
 router.get('/:id', studentController.student);
 router.get('/info/:id', studentController.showInfo);

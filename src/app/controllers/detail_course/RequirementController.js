@@ -29,13 +29,15 @@ class RequirementController {
 
   //[DELETE] /lecture/deleteRequirement
   async deleteRequirement(req, res, next) {
-    const course = await Course.findById(req.body.idCourse);
-    await course.requirements.pull(req.body.id);
-    await course.save();
+    const coursePromise = Course.findById(req.body.idCourse);
 
-    await Requirement.findByIdAndDelete(req.body.id).exec((err, data) =>
+    Requirement.findByIdAndDelete(req.body.id).exec((err, data) =>
       res.redirect('back')
     );
+
+    const course = await coursePromise;
+    await course.requirements.pull(req.body.id);
+    course.save();
   }
 
 }
