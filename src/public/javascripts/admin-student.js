@@ -1,8 +1,9 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
-  $("#dataTable").DataTable();
+  $('#dataTable').DataTable();
   function getDataEdit() {
-    const element = $(this)[0].parentElement.parentElement.parentElement.children;
+    const element = $(this)[0].parentElement.parentElement.parentElement
+      .children;
 
     const id = $(this)[0].parentElement.lastElementChild.textContent;
     const name = element[0].textContent;
@@ -10,7 +11,7 @@ $(document).ready(function () {
     const phone = element[2].textContent;
     const courses = element[3].textContent;
     const lecture = element[4].textContent;
-  
+
     const obj = {
       id,
       name,
@@ -19,7 +20,7 @@ $(document).ready(function () {
       courses,
       lecture,
     };
-    
+
     $('#idStudent').val(id);
     $('#nameStudent').val(name);
     $('#emailStudent').val(email);
@@ -38,11 +39,11 @@ $(document).ready(function () {
     console.log(id);
   }
 
-  $(".btn-edit").click(getDataEdit);
+  $('.btn-edit').click(getDataEdit);
   $('.btn-delete').click(getIdDelete);
 
-  $('#dataTable_paginate').click(function(){
-    $(".btn-edit").click(getDataEdit);
+  $('#dataTable_paginate').click(function () {
+    $('.btn-edit').click(getDataEdit);
     $('.btn-delete').click(getIdDelete);
-  })
+  });
 });

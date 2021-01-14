@@ -1,10 +1,11 @@
 const path = require('path');
 
-const Lecture = require('../models/Lecture');
-const Student = require('../models/Student');
-const Course = require('../models/Course');
 const Admin = require('../models/Admin');
+const Course = require('../models/Course');
+const Lecture = require('../models/Lecture');
 const Notification = require('../models/Notification');
+const Student = require('../models/Student');
+
 const courseController = require('./CourseController');
 const lectureController = require('./LectureController');
 const studentController = require('./StudentController');
@@ -12,8 +13,7 @@ const studentController = require('./StudentController');
 class AdminController {
   // [GET] /admin
   async index(req, res) {
-
-    const adminPromise = Admin.findById(req.params.id);
+    const adminPromise = await Admin.findById(req.session.adminId);
     const coursesPromise = Course.count({});
     const lecturesPromise = Lecture.count({});
     const studentsPromise = Student.count({});
@@ -21,8 +21,7 @@ class AdminController {
       sort: { createdAt: -1 },
       limit: 4,
     });
-    
-    
+
     const admin = await adminPromise;
     const numCourse = await coursesPromise;
     const numLecture = await lecturesPromise;
@@ -42,7 +41,7 @@ class AdminController {
   //[GET] /lecture/info/:id
   showInfo(req, res, next) {
     //res.json(req.params.id)
-    Admin.findById(req.params.id).then((admin) =>
+    Admin.findById(req.session.adminId).then((admin) =>
       res.render(path.join('admin', 'admin-info'), { admin })
     );
   }
@@ -79,10 +78,12 @@ class AdminController {
 
   //[GET] /admin/getNotification
   getNotification(req, res, next) {
-    console.log(req.session)
-    Notification.find({idUserReceived: req.session.adminId}, null, {sort: {createdAt: -1}})
-      .then(data => res.json(data))
-      .catch(err => next(err))
+    console.log(req.session);
+    Notification.find({ idUserReceived: req.session.adminId }, null, {
+      sort: { createdAt: -1 },
+    })
+      .then((data) => res.json(data))
+      .catch((err) => next(err));
   }
 
   // [GET] /admin/management-lecture

@@ -26,8 +26,8 @@ router.post('/addStudent', adminController.addStudent );
 router.put('/editStudent', adminController.editStudent );
 router.delete('/deleteStudent', adminController.deleteStudent);
 
-router.get('/:id', adminController.index);
-router.get('/info/:id', adminController.showInfo);
+router.get('/', adminController.index);
+router.get('/info', adminController.showInfo);
 router.put('/editInfo', upload.single('avatar'), adminController.editInfo);
 router.put('/changePassword', adminController.changePassword);
 module.exports = router;

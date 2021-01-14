@@ -1,4 +1,3 @@
-
 const Course = require('../../models/Course');
 const Requirement = require('../../models/details_course/Requirement');
 
@@ -39,7 +38,6 @@ class RequirementController {
     await course.requirements.pull(req.body.id);
     course.save();
   }
-
 }
 
 module.exports = new RequirementController();

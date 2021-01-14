@@ -5,11 +5,10 @@ const upload = require('../middlewares/upload.file')
 
 const lectureController = require('../controllers/LectureController');
 const detailCourseController = require('../controllers/DetailCouseController');
-const { route } = require('./student');
 
 router.get('/getNotification', lectureController.getNotification)
-router.get('/info/:id', lectureController.showInfo);
-router.get('/:id', lectureController.lecture);
+router.get('/info', lectureController.showInfo);
+router.get('/', lectureController.lecture);
 router.get('/courses/:slug', detailCourseController.detailCourse);
 router.put('/editInfo', upload.single('avatar'), lectureController.editInfo);
 router.put('/changePassword', lectureController.changePassword);
@@ -38,7 +37,7 @@ router.put('/courses/editRequirement', detailCourseController.editRequirement);
 router.delete('/courses/deleteRequirement', detailCourseController.deleteRequirement);
 
 router.post('/addComment', detailCourseController.addComment);
-router.get('/homework/:id', lectureController.homeWork)
+router.get('/homework', lectureController.homeWork)
 router.patch('/commentHomework', lectureController.commentHomework)
 
 

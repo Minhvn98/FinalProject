@@ -1,7 +1,6 @@
-
 const Course = require('../../models/Course');
-const Notification = require('../../models/Notification');
 const Lesson = require('../../models/details_course/Lesson');
+const Notification = require('../../models/Notification');
 
 class LessonController {
   //[POST] /lecture/courses/addLesson
@@ -22,19 +21,19 @@ class LessonController {
     await course.lessons.push(lesson._id);
     await course.save();
 
-    course.listStudent.forEach(idStudent => {
+    course.listStudent.forEach((idStudent) => {
       const noti = new Notification({
         idUserSend: course.lecture.lectureId,
         idUserReceived: idStudent,
         status: 1,
         content: `${course.lecture.name} đã thêm ${lesson.title} vào khóa học ${course.name}`,
-        link: '/courses/'+ course.slug
-      })
+        link: '/courses/' + course.slug,
+      });
       Notification.create(noti)
         .then(() => console.log('Add noti success!'))
-        .catch(err => next(err))
+        .catch((err) => next(err));
     });
-  
+
     Lesson.create(lesson)
       .then(() => res.redirect('back'))
       .catch((err) => next(err));
@@ -68,7 +67,6 @@ class LessonController {
       res.redirect('back')
     );
   }
-
 }
 
 module.exports = new LessonController();

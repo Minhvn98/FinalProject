@@ -41,22 +41,22 @@ $(function () {
   //   console.log(1)
   // });
 
-  $('.btn-video').click(function(){
+  $('.btn-video').click(function () {
     const title = this.parentElement.firstChild.textContent;
     const video = $('#videoElement')[0];
     const source = $('#videoSrc')[0];
     const videoSrc = $(this).attr('data-video');
     $('#videoModalLabel')[0].textContent = title;
-    console.log(title )
+    console.log(title);
     source.src = videoSrc;
     video.load();
   });
-   
-  $('#videoModal .btn-close').click(function(){
+
+  $('#videoModal .btn-close').click(function () {
     $('#videoElement')[0].pause();
   });
 
-  $('#videoModal').click(function(){
+  $('#videoModal').click(function () {
     $('#videoElement')[0].pause();
-  })
+  });
 });

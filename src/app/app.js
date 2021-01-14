@@ -8,8 +8,6 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const dotenv = require('dotenv');
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
 
 dotenv.config()
 
@@ -48,7 +46,7 @@ app.use('*', (req, res, next) => {
   next();
 })
 app.use('/', indexRouter);
-app.use('/admin', authAdmin, adminRouter);
+app.use('/admin', authStudent, adminRouter);
 app.use('/lecture', authLecture, lectureRouter);
 app.use('/student', authStudent, studentRouter);
 
@@ -69,11 +67,6 @@ app.use(function(err, req, res, next) {
   res.render('error', {err: err.message});
 });
 
-io.on('connection', (socket) => {
-  console.log('connected')
-  socket.on('disconnect', ()=> console.log('disconnected'))
-})
-
-http.listen(port, () => {
+app.listen(3000, () => {
   console.log(`Ứng dụng chạy tại http://localhost:${port}`)
 })

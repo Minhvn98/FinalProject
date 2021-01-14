@@ -1,5 +1,3 @@
-
-
 const Admin = require('../models/Admin');
 const Course = require('../models/Course');
 const Comment = require('../models/details_course/Comment');
@@ -16,7 +14,7 @@ class HomeController {
 
   listCourses(req, res, next) {
     const session = req.session;
-    console.log(session)
+    console.log(session);
     Course.find({})
       .then((courses) => res.render('list-courses', { courses, session }))
       .catch((err) => next(err));
@@ -24,7 +22,6 @@ class HomeController {
 
   // [GET] /course/:slug
   async detailsCourse(req, res, next) {
-    
     const course = await Course.findOne({ slug: req.params.slug }).populate(
       'youCanLearn lecture.lectureId lessons homeworks documents requirements'
     );
@@ -33,22 +30,28 @@ class HomeController {
       currency: 'VND',
     }).format(course.price);
     course.price = course.price.slice(1) + ' đ';
-    const reCourses =  await Course.find({
+    const reCourses = await Course.find({
       _id: { $nin: course._id },
       categories: course.categories,
-    }).limit(3)
+    }).limit(3);
     //console.log(reCourses)
 
-    const comments = await Comment.find({idCourse: course._id}).populate('idUser');
+    const comments = await Comment.find({ idCourse: course._id }).populate(
+      'idUser'
+    );
 
-    if(req.session.role == 0){
+    if (req.session.role == 0) {
       const student = await Student.findById(req.session.studentId);
-      return res.render('detailt-course', { course, reCourses, student, comments });
-      console.log(student)
+      return res.render('detailt-course', {
+        course,
+        reCourses,
+        student,
+        comments,
+      });
+      console.log(student);
     }
-    
-    res.render('detailt-course', { course, reCourses, comments});
 
+    res.render('detailt-course', { course, reCourses, comments });
   }
 
   login(req, res, next) {
@@ -56,7 +59,7 @@ class HomeController {
   }
 
   logout(req, res, next) {
-    req.session.destroy(()=> res.redirect('/'))
+    req.session.destroy(() => res.redirect('/'));
   }
 
   register(req, res, next) {
@@ -73,8 +76,8 @@ class HomeController {
     Student.create(student)
       .then(() => res.redirect('/auth/login'))
       .catch((err) => {
-        res.redirect('/auth/register')
-        next(err)
+        res.redirect('/auth/register');
+        next(err);
       });
   }
 
@@ -87,7 +90,7 @@ class HomeController {
       if (student.password === password) {
         req.session.studentId = student._id;
         req.session.role = role;
-        res.redirect(`/student/${student._id}`);
+        res.redirect(`/student`);
       } else {
         return res.redirect('back');
       }
@@ -99,7 +102,7 @@ class HomeController {
       if (lecture.password === password) {
         req.session.lectureId = lecture._id;
         req.session.role = role;
-        res.redirect(`/lecture/${lecture._id}`);
+        res.redirect(`/lecture`);
       } else {
         return res.redirect('back');
       }
@@ -111,7 +114,7 @@ class HomeController {
       if (admin.password === password) {
         req.session.adminId = admin._id;
         req.session.role = role;
-        res.redirect(`/admin/${admin._id}`);
+        res.redirect(`/admin`);
       } else {
         return res.redirect('back');
       }
@@ -120,4 +123,3 @@ class HomeController {
 }
 
 module.exports = new HomeController();
-

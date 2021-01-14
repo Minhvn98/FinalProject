@@ -1,13 +1,10 @@
-
 const Course = require('../../models/Course');
 const HomeWork = require('../../models/details_course/HomeWork');
 const Notification = require('../../models/Notification');
 
 class HomeWorkController {
-
-   //[POST] /lecture/courses/addHomeWork
-   async addHomeWork(req, res, next) {
-
+  //[POST] /lecture/courses/addHomeWork
+  async addHomeWork(req, res, next) {
     const coursePromise = Course.findById(req.body.idCourse);
     const file = req.file;
 
@@ -25,25 +22,23 @@ class HomeWorkController {
     await course.homeworks.push(homeWork._id);
     await course.save();
 
-    course.listStudent.forEach(idStudent => {
+    course.listStudent.forEach((idStudent) => {
       const noti = new Notification({
         idUserSend: course.lecture.lectureId,
         idUserReceived: idStudent,
         status: 1,
         content: `${course.lecture.name} đã thêm " ${homeWork.title} " vào khóa học ${course.name}`,
-        link: '/courses/'+ course.slug
-      })
+        link: '/courses/' + course.slug,
+      });
       Notification.create(noti)
         .then(() => console.log('Add noti success!'))
-        .catch(err => next(err))
+        .catch((err) => next(err));
     });
 
     HomeWork.create(homeWork)
       .then(() => res.redirect('back'))
       .catch((err) => next(err));
-
   }
-
 
   //[PUT] /lecture/courses/editHomeWork
   editHomeWork(req, res, next) {
@@ -59,10 +54,9 @@ class HomeWorkController {
 
     HomeWork.findByIdAndUpdate(req.body.id, hw)
       .then(() => res.redirect('back'))
-      .catch((err) => next(err)); 
+      .catch((err) => next(err));
     // console.log(req.file)
     // res.json(req.body)
-
   }
 
   //[DELETE] /lecture/courses/deleteHomeWork
@@ -73,7 +67,7 @@ class HomeWorkController {
 
     HomeWork.findByIdAndDelete(req.body.id)
       .then(() => res.redirect('back'))
-      .catch(err => next(err));
+      .catch((err) => next(err));
   }
 }
 

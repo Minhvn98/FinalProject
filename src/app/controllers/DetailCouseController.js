@@ -5,42 +5,35 @@ const Comment = require('../models/details_course/Comment');
 const documentController = require('./detail_course/DocumentController');
 const homeWorkController = require('./detail_course/HomeWorkController');
 const lessonController = require('./detail_course/LessonController');
-const youCanLearnController = require('./detail_course/YouCanLearnController');
 const requirementController = require('./detail_course/RequirementController');
-
+const youCanLearnController = require('./detail_course/YouCanLearnController');
 
 class DetailCourseController {
   //[Get] /lecture/courses/:slug
   async detailCourse(req, res, next) {
-    
     console.log(req.params.slug);
-    const course = await Course.findOne({ slug: req.params.slug })
-      .populate(
-        'youCanLearn lecture.lectureId lessons homeworks documents requirements'
-      )
-    const comments = await Comment.find({idCourse: course._id})
-      .populate('idUser')
+    const course = await Course.findOne({ slug: req.params.slug }).populate(
+      'youCanLearn lecture.lectureId lessons homeworks documents requirements'
+    );
+    const comments = await Comment.find({ idCourse: course._id }).populate(
+      'idUser'
+    );
 
-
-    res.render(path.join('lecture', 'lecture-detail-course'), { comments, course })
-    //res.render(path.join("lecture", "lecture-detail-course"));
-    // Comment.find({idCourse: '5faf33138f0a2e23f86b5be8'})
-    //   .populate('idUser')
-    //   .then(d => res.json(d))
-
+    res.render(path.join('lecture', 'lecture-detail-course'), {
+      comments,
+      course,
+    });
   }
 
   async addVideo(req, res, next) {
-      const file = req.file;
-      file
-        ? (req.body.path = req.file.path.split('public')[1])
-        : (req.body.path = '/');
-  
+    const file = req.file;
+    file
+      ? (req.body.path = req.file.path.split('public')[1])
+      : (req.body.path = '/');
 
-      Course.findByIdAndUpdate(req.body.idCourse, {videoId: req.body.path})
-        .then(() => res.redirect('back'))
-        .catch((err) => next(err));
- 
+    Course.findByIdAndUpdate(req.body.idCourse, { videoId: req.body.path })
+      .then(() => res.redirect('back'))
+      .catch((err) => next(err));
   }
 
   //[POST] /lesson/courses/addYouCanLearn
@@ -89,13 +82,13 @@ class DetailCourseController {
   deleteRequirement = requirementController.deleteRequirement;
 
   //[POST] /lecture/addComment
-  async addComment(req, res, next){
+  async addComment(req, res, next) {
     const comment = new Comment({
       idUser: req.body.idUser,
       idCourse: req.body.idCourse,
       content: req.body.content,
-      onModel: 'Lecture'
-    })
+      onModel: 'Lecture',
+    });
 
     const course = await Course.findById(req.body.idCourse);
     course.comments.push(comment._id);
@@ -103,8 +96,7 @@ class DetailCourseController {
 
     Comment.create(comment)
       .then(() => res.redirect('back'))
-      .catch(err => next(err))
-
+      .catch((err) => next(err));
   }
 }
 

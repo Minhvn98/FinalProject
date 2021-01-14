@@ -1,4 +1,3 @@
-
 const Course = require('../../models/Course');
 const YouCanLearn = require('../../models/details_course/YouCanLearn');
 
@@ -38,9 +37,6 @@ class YouCanLearnController {
       res.redirect('back')
     );
   }
-
 }
 
 module.exports = new YouCanLearnController();
-
-

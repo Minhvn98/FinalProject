@@ -1,0 +1,50 @@
+ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
+  // Sidebar - Brand
+  a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/student`)
+    .sidebar-brand-icon.rotate-n-15
+      i.fas.fa-graduation-cap
+    .sidebar-brand-text.mx-3 Student
+  // Divider
+  hr.sidebar-divider
+  // Nav Item - Dashboard
+  li.nav-item.active
+    a.nav-link(href=`/student`)
+      span Xin chào #{student.name} !
+  // Divider
+  hr.sidebar-divider
+  // Nav Item - Pages Collapse Menu
+  li.nav-item
+    a.nav-link(href=`/student`)
+      i.fas.fa-tachometer-alt
+      span Dashboard
+  // Divider
+  hr.sidebar-divider
+
+  li.nav-item
+    a.nav-link.collapsed(href=`/courses` )
+      i.fas.fa-book
+      span Danh sách khóa học
+
+  li.nav-item
+    a.nav-link.collapsed(href=`/student/info` )
+      i.far.fa-user
+      span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
+    
+  // Nav Item - Utilities Collapse Menu
+  li.nav-item
+    a.nav-link.collapsed(href='/student/homework/')
+      i.fas.fa-list
+      span Bài tập đã nộp
+  // Divider
+  hr.sidebar-divider
+  // Nav Item - Tables
+  li.nav-item
+    a.nav-link(href='#' data-toggle='modal' data-target='#logoutModal')
+      i.fas.fa-sign-out-alt
+      span &Dstrok;&abreve;ng xu&acirc;&#x301;t
+  // Divider
+  hr.sidebar-divider.d-none.d-md-block
+  // Sidebar Toggler (Sidebar)
+  .text-center.d-none.d-md-inline
+    button#sidebarToggle.rounded-circle.border-0
+// End of Sidebar

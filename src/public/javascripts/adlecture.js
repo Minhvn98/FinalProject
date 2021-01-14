@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   function displayNumberNotification(notifications) {
     let newNoti = notifications.filter((noti) => noti.status == 1);
     notifications = notifications.slice(0, 5);

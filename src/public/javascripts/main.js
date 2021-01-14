@@ -12,5 +12,4 @@ document.addEventListener('DOMContentLoaded', function (event) {
       document.querySelector('html').scrollTop = 0;
     });
   });
-
 });

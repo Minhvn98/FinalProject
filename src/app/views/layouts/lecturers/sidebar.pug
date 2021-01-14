@@ -1,45 +1,39 @@
-// Sidebar
 ul#accordionSidebar.navbar-nav.bg-gradient-primary.sidebar.sidebar-dark.accordion
   // Sidebar - Brand
-  a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/admin/${admin._id}`)
+  a.sidebar-brand.d-flex.align-items-center.justify-content-center(href=`/lecture`)
     .sidebar-brand-icon.rotate-n-15
-      i.fas.fa-laugh-wink
-    .sidebar-brand-text.mx-3 LMS Admin
+      i.fas.fa-graduation-cap
+    .sidebar-brand-text.mx-3 LMS Lecture
   // Divider
   hr.sidebar-divider.my-0
   hr
   // Nav Item - Dashboard
   li.nav-item.active
-    a.nav-link(href='#')
+    a.nav-link(href=`/lecture`)
       i.fas.fa-chalkboard-teacher
-      span Xin cha&#x300;o #{admin.name} !
+      span Xin chào #{lect.name} !
   // Divider
   hr.sidebar-divider
   li.nav-item
-    a.nav-link(href='#')
+    a.nav-link(href='/lecture')
       i.fas.fa-tachometer-alt
       span Dashboard
   // Divider
   hr.sidebar-divider
-  // Nav Item - Quản lý khóa học
   li.nav-item
-    a.nav-link(href=`/admin/management-course`)
+    a.nav-link(href='/lecture#my-courses')
       i.fas.fa-book
-      span Qua&#x309;n ly&#x301; kho&#x301;a ho&#x323;c
-  li.nav-item
-    a.nav-link(href='/admin/management-lecture')
-      i.fas.fa-chalkboard-teacher
-      span Qua&#x309;n ly&#x301; gia&#x309;ng vi&ecirc;n
-  li.nav-item
-    a.nav-link(href='/admin/management-student')
-      i.fas.fa-user-graduate
-      span Qua&#x309;n ly&#x301; ho&#x323;c vi&ecirc;n
+      span Kho&#x301;a ho&#x323;c cu&#x309;a ba&#x323;n
   // Nav Item - Pages Collapse Menu
   li.nav-item
-    a.nav-link.collapsed(href=`/admin/info`)
-      i.far.fa-user
-      span Th&ocirc;ng tin cu&#x309;a ba&#x323;n
-
+    a.nav-link(href='/lecture/info')
+      i.fas.fa-user
+      span Thông tin của bạn
+  // Nav Item - Utilities Collapse Menu
+  li.nav-item
+    a.nav-link(href='/lecture/homework')
+      i.fas.fa-list
+      span Danh sách bài tập
   // Divider
   hr.sidebar-divider
   // Nav Item - Tables

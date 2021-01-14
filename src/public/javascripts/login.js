@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = document.getElementById('inputEmail').textContent.length;
     const password = document.getElementById('inputPassword').textContent
       .length;
-      role.value = '2';
+    role.value = '2';
     if (email && password) {
       form.submit();
     }

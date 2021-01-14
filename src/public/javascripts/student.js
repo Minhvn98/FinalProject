@@ -1,12 +1,10 @@
-
 $(document).ready(function () {
-
   function displayNumberNotification(notifications) {
-    let newNoti = notifications.filter(noti => noti.status == 1);
+    let newNoti = notifications.filter((noti) => noti.status == 1);
     notifications = notifications.slice(0, 5);
     $('#alertsDropdown .badge-counter').text(newNoti.length);
     let html = '';
-    notifications.forEach(item => {
+    notifications.forEach((item) => {
       html += `
       <a class="dropdown-item d-flex align-items-center" href="${location.origin}${item.link}">
         <div class="mr-3">
@@ -31,8 +29,8 @@ $(document).ready(function () {
       data: 'data',
       dataType: 'json',
       success: function (response) {
-        displayNumberNotification(response)
-        console.log(response)
+        displayNumberNotification(response);
+        console.log(response);
       },
     });
   }
