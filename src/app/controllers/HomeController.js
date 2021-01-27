@@ -25,11 +25,7 @@ class HomeController {
     const course = await Course.findOne({ slug: req.params.slug }).populate(
       'youCanLearn lecture.lectureId lessons homeworks documents requirements'
     );
-    course.price = new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(course.price);
-    course.price = course.price.slice(1) + ' đ';
+
     const reCourses = await Course.find({
       _id: { $nin: course._id },
       categories: course.categories,

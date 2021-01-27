@@ -78,7 +78,6 @@ class AdminController {
 
   //[GET] /admin/getNotification
   getNotification(req, res, next) {
-    console.log(req.session);
     Notification.find({ idUserReceived: req.session.adminId }, null, {
       sort: { createdAt: -1 },
     })
