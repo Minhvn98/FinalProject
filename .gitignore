@@ -3,10 +3,10 @@
 /node_modules
 node_modules
 
-/public/upload
-public/upload
-src/public/upload
-/src/public/upload
+/public/upload/
+public/upload/
+src/public/upload/
+/src/public/upload/
 # IDEs and editors
 /.idea
 .project
